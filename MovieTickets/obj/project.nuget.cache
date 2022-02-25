@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "y2BQrcBFsCoj/KMegsopNDGsVokQyo5pm9AbJ5yEBj5ATGPesJnZlUn7jCQ/emX7K5X3n40fhE13Q2SGKRZ1eA==",
+  "success": true,
+  "projectFilePath": "C:\\GraduationProject\\MovieTickets\\MovieTickets.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
