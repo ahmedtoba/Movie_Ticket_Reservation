@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Ahmed\\.nuget\\packages\\": {}
+    "C:\\Users\\TanTawy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GraduationProject\\MovieTickets\\MovieTickets.csproj",
+      "projectUniqueName": "D:\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
       "projectName": "MovieTickets",
-      "projectPath": "C:\\GraduationProject\\MovieTickets\\MovieTickets.csproj",
-      "packagesPath": "C:\\Users\\Ahmed\\.nuget\\packages\\",
-      "outputPath": "C:\\GraduationProject\\MovieTickets\\obj\\",
+      "projectPath": "D:\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+      "packagesPath": "C:\\Users\\TanTawy\\.nuget\\packages\\",
+      "outputPath": "D:\\Movie_Ticket_Reservation\\MovieTickets\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\TanTawy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -58,7 +58,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.12, 5.0.12]"
+            "version": "[5.0.13, 5.0.13]"
           }
         ],
         "frameworkReferences": {
@@ -69,7 +69,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
