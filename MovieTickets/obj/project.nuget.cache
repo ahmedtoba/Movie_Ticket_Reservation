@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "c3bdYNdr1rHX3Wi9U6xb8dMFWxqwLuD5QY6kGxVer4gC1K4hlYoqznnUfC2TxqE6w/y0Epp99TU0uljjeMfl4A==",
+  "dgSpecHash": "b5GA6AhYWhKB9HXe5i2yTp+Wq6y2r66gI57LjS+CTa2OAmACgL18T+O2aj8AYhp5bvM515tNlouG4ziU8xvtvA==",
   "success": true,
   "projectFilePath": "D:\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.13\\microsoft.aspnetcore.cryptography.internal.5.0.13.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.13\\microsoft.aspnetcore.cryptography.keyderivation.5.0.13.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.13\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.13.nupkg.sha512",
+    "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
