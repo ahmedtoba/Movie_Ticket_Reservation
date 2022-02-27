@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MovieTickets.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +26,22 @@ namespace MovieTickets
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-        }
 
+            services.AddDbContext<MovieContext>(options =>
+                            options.UseSqlServer(Configuration.GetConnectionString("ConnectDb")));
+
+            services.AddIdentity<User, IdentityRole>(
+
+           ).AddEntityFrameworkStores<MovieContext>();
+
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
             }
             else
             {
@@ -40,8 +51,10 @@ namespace MovieTickets
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
+            app.UseAuthorization();
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
