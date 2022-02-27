@@ -34,6 +34,7 @@
       "MovieTickets/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.13",
+          "Microsoft.EntityFrameworkCore.Proxies": "5.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.6",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.13",
@@ -188,7 +189,7 @@
           "System.Diagnostics.StackTrace": "5.0.0.0",
           "System.Diagnostics.TextWriterTraceListener": "5.0.0.0",
           "System.Diagnostics.Tools.Reference": "5.0.0.0",
-          "System.Diagnostics.TraceSource": "5.0.0.0",
+          "System.Diagnostics.TraceSource.Reference": "5.0.0.0",
           "System.Diagnostics.Tracing.Reference": "5.0.0.0",
           "System": "4.0.0.0",
           "System.Drawing": "4.0.0.0",
@@ -320,6 +321,29 @@
         },
         "compile": {
           "MovieTickets.dll": {}
+        }
+      },
+      "Castle.Core/4.4.1": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "System.Collections.Specialized": "4.3.0",
+          "System.ComponentModel": "4.3.0",
+          "System.ComponentModel.TypeConverter": "4.3.0",
+          "System.Diagnostics.TraceSource": "4.3.0",
+          "System.Dynamic.Runtime": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Xml.XmlDocument": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.5/Castle.Core.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.4.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -496,6 +520,21 @@
             "assemblyVersion": "5.0.13.0",
             "fileVersion": "5.0.1321.56013"
           }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Proxies/5.0.13": {
+        "dependencies": {
+          "Castle.Core": "4.4.1",
+          "Microsoft.EntityFrameworkCore": "5.0.13"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Proxies.dll": {
+            "assemblyVersion": "5.0.13.0",
+            "fileVersion": "5.0.1321.56013"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Proxies.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Relational/5.0.13": {
@@ -1026,6 +1065,19 @@
           "Microsoft.NETCore.Platforms": "3.1.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Diagnostics.TraceSource/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0",
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "runtime.native.System": "4.3.0"
         }
       },
       "System.Diagnostics.Tracing/4.3.0": {
@@ -2634,7 +2686,7 @@
         },
         "compileOnly": true
       },
-      "System.Diagnostics.TraceSource/5.0.0.0": {
+      "System.Diagnostics.TraceSource.Reference/5.0.0.0": {
         "compile": {
           "System.Diagnostics.TraceSource.dll": {}
         },
@@ -3398,6 +3450,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Castle.Core/4.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zanbjWC0Y05gbx4eGXkzVycOQqVOFVeCjVsDSyuao9P4mtN1w3WxxTo193NGC7j3o2u3AJRswaoC6hEbnGACnQ==",
+      "path": "castle.core/4.4.1",
+      "hashPath": "castle.core.4.4.1.nupkg.sha512"
+    },
     "Humanizer.Core/2.8.26": {
       "type": "package",
       "serviceable": true,
@@ -3474,6 +3533,13 @@
       "sha512": "sha512-T9Qq5RebYkx2EEU7ahHNediObrIE5dsRKt6mTkVwqrVqX1Kp+/HD02T1ZMdI1H62WLHH4QIdcCfjgsKgenTQFg==",
       "path": "microsoft.entityframeworkcore.design/5.0.13",
       "hashPath": "microsoft.entityframeworkcore.design.5.0.13.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Proxies/5.0.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QxriESfFEGooqvrbFniAhoYeIVK26inEXE2pNXE7rB0W3+t0FIXmW18bXdtBIzHZ5yKT2kdYbi1Yozjii7EZbw==",
+      "path": "microsoft.entityframeworkcore.proxies/5.0.13",
+      "hashPath": "microsoft.entityframeworkcore.proxies.5.0.13.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/5.0.13": {
       "type": "package",
@@ -3901,6 +3967,13 @@
       "sha512": "sha512-UUvkJfSYJMM6x527dJg2VyWPSRqIVB0Z7dbjHst1zmwTXz5CcXSYJFWRpuigfbO1Lf7yfZiIaEUesfnl/g5EyA==",
       "path": "system.diagnostics.tools/4.3.0",
       "hashPath": "system.diagnostics.tools.4.3.0.nupkg.sha512"
+    },
+    "System.Diagnostics.TraceSource/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VnYp1NxGx8Ww731y2LJ1vpfb/DKVNKEZ8Jsh5SgQTZREL/YpWRArgh9pI8CDLmgHspZmLL697CaLvH85qQpRiw==",
+      "path": "system.diagnostics.tracesource/4.3.0",
+      "hashPath": "system.diagnostics.tracesource.4.3.0.nupkg.sha512"
     },
     "System.Diagnostics.Tracing/4.3.0": {
       "type": "package",
@@ -5105,7 +5178,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Diagnostics.TraceSource/5.0.0.0": {
+    "System.Diagnostics.TraceSource.Reference/5.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

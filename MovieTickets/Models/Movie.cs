@@ -14,6 +14,7 @@ namespace MovieTickets.Models
         public byte[] Image { get; set; }
         public Double Price { get; set; }
         public string Description { get; set; }
+        public string Trailer { get; set; }
         public double Rate { get; set; }
         [ForeignKey("Category")]
         public int Cat_Id { get; set; }

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "BB8RVwNp1t6ko/qq0Pi22QdWMSaYPba/yK83jytUsqvnqv3NzKx4cvGldDoAzIIZ7ajX/YzWlYsHzUVtna/OZg==",
+  "dgSpecHash": "c3bdYNdr1rHX3Wi9U6xb8dMFWxqwLuD5QY6kGxVer4gC1K4hlYoqznnUfC2TxqE6w/y0Epp99TU0uljjeMfl4A==",
   "success": true,
   "projectFilePath": "D:\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\TanTawy\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.13\\microsoft.aspnetcore.cryptography.internal.5.0.13.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.13\\microsoft.aspnetcore.cryptography.keyderivation.5.0.13.nupkg.sha512",
@@ -15,6 +16,7 @@
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.13\\microsoft.entityframeworkcore.abstractions.5.0.13.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.13\\microsoft.entityframeworkcore.analyzers.5.0.13.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.13\\microsoft.entityframeworkcore.design.5.0.13.nupkg.sha512",
+    "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.entityframeworkcore.proxies\\5.0.13\\microsoft.entityframeworkcore.proxies.5.0.13.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.13\\microsoft.entityframeworkcore.relational.5.0.13.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.entityframeworkcore.relational.design\\1.1.6\\microsoft.entityframeworkcore.relational.design.1.1.6.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.13\\microsoft.entityframeworkcore.sqlserver.5.0.13.nupkg.sha512",
@@ -76,6 +78,7 @@
     "C:\\Users\\TanTawy\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
+    "C:\\Users\\TanTawy\\.nuget\\packages\\system.diagnostics.tracesource\\4.3.0\\system.diagnostics.tracesource.4.3.0.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\system.dynamic.runtime\\4.3.0\\system.dynamic.runtime.4.3.0.nupkg.sha512",
