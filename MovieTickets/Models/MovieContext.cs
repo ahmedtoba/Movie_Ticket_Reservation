@@ -22,6 +22,7 @@ namespace MovieTickets.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=MovieTickets;Integrated Security=True");
+            optionsBuilder.UseLazyLoadingProxies();
         }
     }
 }
