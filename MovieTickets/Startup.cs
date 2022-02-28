@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MovieTickets.Models;
+using MovieTickets.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace MovieTickets
 
             services.AddDbContext<MovieContext>(options =>
                             options.UseSqlServer(Configuration.GetConnectionString("ConnectDb")));
+            services.AddScoped<ICinemaRepository, CinemaRepository>();
 
             services.AddIdentity<User, IdentityRole>(
 
