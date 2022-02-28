@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MovieTickets.Services;
 
 namespace MovieTickets
 {
@@ -30,7 +29,6 @@ namespace MovieTickets
 
             services.AddDbContext<MovieContext>(options =>
                             options.UseSqlServer(Configuration.GetConnectionString("ConnectDb")));
-            services.AddScoped<ICinemaRepository, CinemaRepository>();
 
             services.AddIdentity<User, IdentityRole>(
 
