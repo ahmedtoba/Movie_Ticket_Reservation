@@ -47,7 +47,7 @@ namespace MovieTickets.Controllers
         }
 
 
-        // To add new movie
+        // To add new Category
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Category newCategory)
@@ -63,7 +63,7 @@ namespace MovieTickets.Controllers
 
 
 
-        // To Edit any Movie
+        // To Edit any Category
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Category editCategory, int id)
@@ -77,7 +77,6 @@ namespace MovieTickets.Controllers
 
         }
 
-        // POST: MovieController/Edit/5
 
 
 

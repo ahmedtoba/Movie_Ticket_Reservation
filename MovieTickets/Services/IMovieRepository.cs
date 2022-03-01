@@ -13,7 +13,7 @@ namespace MovieTickets.Services
         Movie GetById(Guid id);
         Movie GetByName(string name);
         int Insert(MovieViewModel newCinema);
-        int update(Movie editMovie, Guid id);
+        int update(MovieViewModel movievm, Guid id);
 
 
     }
