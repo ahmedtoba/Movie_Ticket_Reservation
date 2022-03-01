@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MovieTickets.Services;
 
+
 namespace MovieTickets
 {
     public class Startup
@@ -30,11 +31,20 @@ namespace MovieTickets
 
             services.AddDbContext<MovieContext>(options =>
                             options.UseSqlServer(Configuration.GetConnectionString("ConnectDb")));
+
+
+            //Added Services_____________________________
             services.AddScoped<ICinemaRepository, CinemaRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            //___________________________________________
 
             services.AddIdentity<User, IdentityRole>(
 
            ).AddEntityFrameworkStores<MovieContext>();
+
+
+
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
