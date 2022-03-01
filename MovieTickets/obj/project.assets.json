@@ -7915,19 +7915,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+    "C:\\Users\\Ahmed\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\\c#\\MVC\\github\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+      "projectUniqueName": "C:\\GraduationProject\\MovieTickets\\MovieTickets.csproj",
       "projectName": "MovieTickets",
-      "projectPath": "D:\\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\\c#\\MVC\\github\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\\c#\\MVC\\github\\Movie_Ticket_Reservation\\MovieTickets\\obj\\",
+      "projectPath": "C:\\GraduationProject\\MovieTickets\\MovieTickets.csproj",
+      "packagesPath": "C:\\Users\\Ahmed\\.nuget\\packages\\",
+      "outputPath": "C:\\GraduationProject\\MovieTickets\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

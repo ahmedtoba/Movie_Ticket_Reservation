@@ -1,0 +1,190 @@
+﻿@using MovieTickets.ViewModels
+
+@model MovieViewModel
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h4>Create a new movie</h4>
+        </p>
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="StartDate" class="control-label"></label>
+                                <input asp-for="StartDate" type="date" class="form-control" />
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="EndDate" class="control-label"></label>
+                                <input asp-for="EndDate" type="date" class="form-control" />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label"></label>
+                                <input asp-for="Price" type="number" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Rate" class="control-label"></label>
+                                <input asp-for="Rate" type="number" class="form-control" />
+                                <span asp-validation-for="Rate" class="text-danger"></span>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CinemaIds" class="control-label"></label>
+                                <select asp-for="CinemaIds" class="form-control" asp-items="ViewBag.Cinemas" multiple></select>
+                                <span asp-validation-for="CinemaIds" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Category_Id" class="control-label"></label>
+                                <select asp-for="Category_Id" class="form-control" asp-items="ViewBag.Categories"></select>
+                                <span asp-validation-for="Category_Id" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Producer_Id" class="control-label"></label>
+                                <select asp-for="Producer_Id" class="form-control" asp-items="ViewBag.Producers"></select>
+                                <span asp-validation-for="Producer_Id" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ActorIds" class="control-label"></label>
+                                <select asp-for="ActorIds" class="form-control"  asp-items="ViewBag.Actors" multiple></select>
+                                <span asp-validation-for="ActorIds" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label"></label>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 offset-4 text-center">
+                        <img width="100%" id="ImageUrlPreview" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show all</a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<form>
+    <input id="name" asp-for="Movie.Name"/>
+    <input id="start_date" asp-for="Movie.StartDate"/>
+    <input id="end_date" asp-for="Movie.EndDate"/>
+    <input id="description" asp-for="Movie.Description"/>
+    <input id="price" asp-for="Movie.Price"/>
+    <input id="rate" asp-for="Movie.Rate"/>
+    
+    <select id="producer" asp-for="Movie.Producer_Id" asp-items="producer">
+        <option value="0" disabled>Select producer</option>
+    </select>
+    
+    <select id="cinemas" asp-for="Cinemas" asp-items="cinemas" multiple>
+        <option value="0" disabled>Select Cinemas</option>
+    </select>
+    <input asp-for="Movie.Cat_Id"/>
+
+    <button class="btn btn-primary" onclick="add(event)">Add Movie</button>
+</form>
+
+<script>
+
+function add(e) {
+            e.preventDefault();
+            var checkedCinemas = document.querySelectorAll("#cinemas :checked");
+            var cinemas = [...checkedCinemas].map(option => parseInt(option.value));
+            var data= {
+                Movie : {
+                    Id: 0,
+                    Name: $("#name").val(),
+                    StartDate: $("#start_date").val(),
+                    EndDate: $("#end_date").val(),
+                    Description: $("#description").val(),
+                    Price: 356,
+                    Rate: 4.5,
+                    Producer_Id: 1,
+                },
+                cinemaIds: cinemas
+
+
+            }
+            console.log(data)
+
+            $.ajax({
+                url: '/Movie/SaveAdd',
+                dataType: 'json',
+                method: 'POST',
+                data: JSON.stringify({jsonData: (data)}),
+                contentType: 'application/json',
+                success: function (data) {
+                    alert(JSON.stringify(data));
+                },
+                error: function (er) {
+                    alert(er.statusText)
+                }
+            })
+
+        }
+</script>
+
+
+
+
+
+
+*@

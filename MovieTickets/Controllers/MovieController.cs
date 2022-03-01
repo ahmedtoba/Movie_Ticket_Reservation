@@ -1,17 +1,23 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MovieTickets.Models;
 using MovieTickets.Services;
+using MovieTickets.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MovieTickets.Controllers
 {
     public class MovieController : Controller
     {
+        private readonly MovieContext db;
         IMovieRepository movieRepo;
 
-        public MovieController(IMovieRepository movieRepo)
+        public MovieController(MovieContext db ,IMovieRepository movieRepo, ICategoryRepository categoryRepo, ICinemaRepository cinemaRepo)
         {
+            this.db = db;
             this.movieRepo=movieRepo;
 
 
@@ -29,7 +35,7 @@ namespace MovieTickets.Controllers
         }
 
         // To Get Movie by ID
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
 
             Movie movie= movieRepo.GetById(id);
@@ -40,24 +46,43 @@ namespace MovieTickets.Controllers
         //To get Movie by name
         public ActionResult Details(string name)
         {
-
             Movie movie = movieRepo.GetByName(name);
             return View();
         }
 
-
         // To add new movie
+        //get method opening create page
+        public IActionResult Create()
+        {
+            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
+            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
+            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
+
+            return View(new MovieViewModel());
+
+        }
+
+
+
+        // post create method
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Movie newMovie)
+        public IActionResult Create(MovieViewModel movievm)
         {
             if (ModelState.IsValid)
             {
-                int numOfRowsInsertion = movieRepo.insert(newMovie);
-                return View();
+                movieRepo.Insert(movievm);
+                return RedirectToAction();
             }
 
-            return RedirectToAction();
+
+            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
+            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
+            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
+            return View(movievm);
+
         }
 
 
@@ -65,7 +90,7 @@ namespace MovieTickets.Controllers
         // To Edit any Movie
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Movie editMovie, int id)
+        public ActionResult Edit(Movie editMovie, Guid id)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +108,7 @@ namespace MovieTickets.Controllers
         // To delete movies
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
             int numOfRowsDeleted= movieRepo.delete(id); 
             return View();

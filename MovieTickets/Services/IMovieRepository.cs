@@ -1,4 +1,6 @@
 ﻿using MovieTickets.Models;
+using MovieTickets.ViewModels;
+using System;
 using System.Collections.Generic;
 
 namespace MovieTickets.Services
@@ -6,12 +8,12 @@ namespace MovieTickets.Services
     public interface IMovieRepository
     {
 
-        int delete(int id);
+        int delete(Guid id);
         List<Movie> GetAll();
-        Movie GetById(int id);
+        Movie GetById(Guid id);
         Movie GetByName(string name);
-        int insert(Movie newCinema);
-        int update(Movie editMovie, int id);
+        int Insert(MovieViewModel newCinema);
+        int update(Movie editMovie, Guid id);
 
 
     }
