@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MovieTickets.Models;
+using MovieTickets.Services;
+using MovieTickets.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,15 +14,28 @@ namespace MovieTickets.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICategoryRepository categoryService;
+        private readonly ICinemaRepository cinemaService;
+        private readonly IMovieRepository movieServie;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ICategoryRepository CategoryService,ICinemaRepository CinemaService,IMovieRepository MovieServie)
         {
             _logger = logger;
+            categoryService = CategoryService;
+            cinemaService = CinemaService;
+            movieServie = MovieServie;
         }
 
         public IActionResult Index()
         {
-            return View();
+           
+            HomeViewModel addHome = new HomeViewModel()
+            {
+                Cinemas = cinemaService.GetAll(),
+                Movies = movieServie.GetAll(),
+                Categories = categoryService.GetAll()
+            };
+            return View(addHome);
         }
 
         public IActionResult Privacy()

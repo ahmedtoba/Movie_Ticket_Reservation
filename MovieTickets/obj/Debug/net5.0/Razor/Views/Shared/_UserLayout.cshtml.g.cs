@@ -14,20 +14,27 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\Views\_ViewImports.cshtml"
-using MovieTickets;
+using MovieTickets.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 2 "D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\Views\_ViewImports.cshtml"
+using MovieTickets;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\Views\_ViewImports.cshtml"
 using MovieTickets.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"866c4c34bb696b01053173ab0ea488c815f81dc8", @"/Views/Shared/_UserLayout.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"42515cf16b33b423a66ba9b93ecc1ae23f6e0e23", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"079eb81a01d1a792c4bbac455db6644dedc4b68f", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__UserLayout : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("rel", new global::Microsoft.AspNetCore.Html.HtmlString("stylesheet"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -71,7 +78,7 @@ using MovieTickets.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<!DOCTYPE html>\r\n\r\n<html lang=\"en\" class=\"no-js\">\r\n\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc87584", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc87775", async() => {
                 WriteLiteral("\r\n\t<!-- Basic need -->\r\n\t<title>Open Pediatrics</title>\r\n\t<meta charset=\"UTF-8\">\r\n\t<meta name=\"description\"");
                 BeginWriteAttribute("content", " content=\"", 168, "\"", 178, 0);
                 EndWriteAttribute();
@@ -92,7 +99,7 @@ using MovieTickets.Models;
 
 	<!-- CSS files -->
 	");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "866c4c34bb696b01053173ab0ea488c815f81dc88856", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "866c4c34bb696b01053173ab0ea488c815f81dc89047", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -107,7 +114,7 @@ using MovieTickets.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n\t");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "866c4c34bb696b01053173ab0ea488c815f81dc810033", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "866c4c34bb696b01053173ab0ea488c815f81dc810224", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -134,7 +141,7 @@ using MovieTickets.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc811921", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc812112", async() => {
                 WriteLiteral("\r\n<!--preloading-->\r\n<div id=\"preloader\">\r\n    <img class=\"logo\" src=\"images/logo1.png\"");
                 BeginWriteAttribute("alt", " alt=\"", 808, "\"", 814, 0);
                 EndWriteAttribute();
@@ -151,7 +158,7 @@ using MovieTickets.Models;
         <a href=""#"" class=""close"">x</a>
         <h3>Login</h3>
         ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc812761", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc812952", async() => {
                     WriteLiteral(@"
         	<div class=""row"">
         		 <label for=""username"">
@@ -211,7 +218,7 @@ using MovieTickets.Models;
         <a href=""#"" class=""close"">x</a>
         <h3>sign up</h3>
         ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc816036", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc816227", async() => {
                     WriteLiteral(@"
             <div class=""row"">
                  <label for=""username-2"">
@@ -384,7 +391,7 @@ using MovieTickets.Models;
 	    	<select>
 ");
                 WriteLiteral("\t\t\t\t");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc824895", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc825086", async() => {
                     WriteLiteral("TV show");
                 }
                 );
@@ -400,7 +407,7 @@ using MovieTickets.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n\t\t\t\t");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc826128", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc826319", async() => {
                     WriteLiteral("Others");
                 }
                 );
@@ -471,7 +478,7 @@ Write(RenderBody());
 				<h4>Newsletter</h4>
 			");
                 WriteLiteral("\t<p>Subscribe to our newsletter system now <br> to get latest news from us.</p>\r\n\t\t\t\t");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc829384", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc829575", async() => {
                     WriteLiteral("\r\n\t\t\t\t\t<input type=\"text\" placeholder=\"Enter your email...\">\r\n\t\t\t\t");
                 }
                 );
@@ -502,7 +509,7 @@ Write(RenderBody());
 <!-- end of footer section-->
 
 ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc831194", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc831385", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -516,7 +523,7 @@ Write(RenderBody());
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc832290", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc832481", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -530,7 +537,7 @@ Write(RenderBody());
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc833386", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc833577", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -544,7 +551,7 @@ Write(RenderBody());
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc834482", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866c4c34bb696b01053173ab0ea488c815f81dc834673", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

@@ -13,14 +13,14 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 1 "D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\Views\_ViewImports.cshtml"
+#line 2 "D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\Views\_ViewImports.cshtml"
 using MovieTickets;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\Views\_ViewImports.cshtml"
+#line 3 "D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\Views\_ViewImports.cshtml"
 using MovieTickets.Models;
 
 #line default
@@ -34,7 +34,7 @@ using MovieTickets.ViewModels;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"61d48eb35c847f6b81464adba4109d89c64800b7", @"/Views/Movie/Create.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"42515cf16b33b423a66ba9b93ecc1ae23f6e0e23", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"079eb81a01d1a792c4bbac455db6644dedc4b68f", @"/Views/_ViewImports.cshtml")]
     public class Views_Movie_Create : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<MovieViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("text-danger"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
