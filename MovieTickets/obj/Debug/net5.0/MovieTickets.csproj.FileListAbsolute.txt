@@ -322,3 +322,7 @@ D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTicke
 D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\ref\MovieTickets.dll
 D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.pdb
 D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.genruntimeconfig.cache
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.csproj.AssemblyReference.cache
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Category\Index.cshtml.g.cs
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_Grid.cshtml.g.cs
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_List.cshtml.g.cs

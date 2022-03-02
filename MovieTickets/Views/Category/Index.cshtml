@@ -1,0 +1,75 @@
+﻿@model List<Category>
+@{
+    Layout="~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="hero common-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Category</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="topbar-filter fw ">
+					
+					
+					<a onclick="getList()" class="list " ><i class="ion-ios-list-outline "></i></a>
+					<a  onclick="getData()" class="grid" ><i class="ion-grid "></i></a>
+				</div>
+					<div id="div1"></div>	
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+   function getData(){
+        
+        
+        $.ajax(
+            {
+                url: "/Category/Grid",//?stdid="+id,
+                 
+                success: function(result){
+					
+                   // console.log(result);
+                // alert(result);
+                //document.getElementById("div1").innerHTML=result;
+                    $("#div1").html(result);//dom
+                }
+            }
+         );
+    }
+	
+	 function getList(){
+        $.ajax(
+            {
+                url: "/Category/List",//?stdid="+id,
+                
+                success: function(result){
+					
+                   // console.log(result);
+                // alert(result);
+                //document.getElementById("div1").innerHTML=result;
+                    $("#div1").html(result);//dom
+                }
+            }
+         );
+    }
+	</script>
+@section Scripts{
+<!--JQuery PAckage -->
+ 
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

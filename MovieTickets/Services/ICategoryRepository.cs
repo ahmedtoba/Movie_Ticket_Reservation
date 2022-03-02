@@ -12,6 +12,7 @@ namespace MovieTickets.Services
         Category GetByName(string name);
         int insert(Category newCinema);
         int update(Category editMovie, int id);
+        
 
     }
 }
