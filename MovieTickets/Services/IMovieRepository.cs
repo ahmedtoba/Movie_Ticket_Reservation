@@ -1,7 +1,9 @@
-﻿using MovieTickets.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MovieTickets.Models;
 using MovieTickets.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MovieTickets.Services
 {
@@ -12,8 +14,8 @@ namespace MovieTickets.Services
         List<MovieMovieViewModel> GetAll();
         MovieMovieViewModel GetById(Guid id);
         MovieMovieViewModel GetByName(string name);
-        int Insert(MovieViewModel newCinema);
-        int update(MovieViewModel editMovie, Guid id);
+        Task<int> Insert(MovieViewModel newCinema, List<IFormFile> Image);
+        Task<int> update(MovieViewModel editMovie, Guid id, List<IFormFile> Image);
 
 
     }

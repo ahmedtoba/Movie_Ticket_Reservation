@@ -1,13 +1,14 @@
-﻿using MovieTickets.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MovieTickets.Models;
 using MovieTickets.Services;
 using MovieTickets.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
-
-
-    public class MovieRepository:IMovieRepository
+public class MovieRepository:IMovieRepository
     {
         MovieContext db;
         public MovieRepository(MovieContext _db)
@@ -29,10 +30,21 @@ using System.Linq;
             return db.Movies.SingleOrDefault(c => c.Name == name);
         }
 
-        public int Insert(MovieViewModel movievm)
+        public async Task<int> Insert(MovieViewModel movievm,List<IFormFile> Image)
         {
-            //Adding to movie table
-            var newGuid = Guid.NewGuid();
+        foreach (var item in Image)
+        {
+            if (item.Length > 0)
+            {
+                using (var stream = new MemoryStream())
+                {
+                    await item.CopyToAsync(stream);
+                    movievm.Image = stream.ToArray();
+                }
+            }
+        }
+        //Adding to movie table
+        var newGuid = Guid.NewGuid();
             db.Movies.Add(new MovieMovieViewModel()
             {
                 Name = movievm.Name,
@@ -44,6 +56,7 @@ using System.Linq;
                 Cat_Id = movievm.Category_Id,
                 Rate = movievm.Rate,
                 Producer_Id = movievm.Producer_Id,
+                Image=movievm.Image
 
             });
             //Adding to actor movies table
@@ -68,16 +81,27 @@ using System.Linq;
             return db.SaveChanges();
 
         }
-        public int update(MovieViewModel editMovie, Guid Mid)
+        public async Task<int> update(MovieViewModel editMovie, Guid Mid,List<IFormFile> Image)
         {
             var movie = db.Movies.SingleOrDefault(c => c.Id == Mid);
-            movie.Name = editMovie.Name;
+        foreach (var item in Image)
+        {
+            if (item.Length > 0)
+            {
+                using (var stream = new MemoryStream())
+                {
+                    await item.CopyToAsync(stream);
+                    editMovie.Image = stream.ToArray();
+                }
+            }
+        }
+        movie.Name = editMovie.Name;
             movie.Id = Mid;
             movie.Description = editMovie.Description;
             movie.StartDate = editMovie.StartDate;
             movie.EndDate = editMovie.EndDate;
             movie.Price = editMovie.Price;
-
+              movie.Image = editMovie.Image;
             movie.Rate = editMovie.Rate;
             movie.Cat_Id = editMovie.Category_Id;
             movie.Producer_Id = editMovie.Producer_Id;
