@@ -32,6 +32,26 @@
 		</div>
 	</div>
 </div>
+@*Admin Section Start------------------------------------------------------*@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+	  @foreach(var i in Model){
+    <tr>
+      <th scope="row">@i.Id</th>
+      <td>@i.Name</td>
+      <td><a asp-action="Delete"><i class="ti-trash"></i></a></td>
+    </tr>
+	  }
+  </tbody>
+</table>
+@*Admin Section end -----------------------------------------*@
 <script>
    function getData(){
         
