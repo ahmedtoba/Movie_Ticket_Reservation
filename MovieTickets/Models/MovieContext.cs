@@ -6,7 +6,7 @@ namespace MovieTickets.Models
     public class MovieContext:IdentityDbContext
     {
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Movie> Movies { get; set; }
+        public virtual DbSet<MovieMovieViewModel> Movies { get; set; }
         public virtual DbSet<Cinema> Cinemas { get; set; }
         public virtual DbSet<Actor> Actors { get; set; }
         public virtual DbSet<Producer> Producers { get; set; }

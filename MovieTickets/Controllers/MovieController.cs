@@ -29,7 +29,7 @@ namespace MovieTickets.Controllers
         public ActionResult Index()
         {
 
-            List<Movie> movies= movieRepo.GetAll();
+            List<MovieMovieViewModel> movies= movieRepo.GetAll();
 
             return View();
         }
@@ -38,7 +38,7 @@ namespace MovieTickets.Controllers
         public ActionResult Details(Guid id)
         {
 
-            Movie movie= movieRepo.GetById(id);
+            MovieMovieViewModel movie= movieRepo.GetById(id);
             return View();
         }
 
@@ -46,7 +46,7 @@ namespace MovieTickets.Controllers
         //To get Movie by name
         public ActionResult Details(string name)
         {
-            Movie movie = movieRepo.GetByName(name);
+            MovieMovieViewModel movie = movieRepo.GetByName(name);
             return View();
         }
 
@@ -90,7 +90,7 @@ namespace MovieTickets.Controllers
         // To Edit any Movie
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Movie editMovie, Guid id)
+        public ActionResult Edit(MovieMovieViewModel editMovie, Guid id)
         {
             if (ModelState.IsValid)
             {
