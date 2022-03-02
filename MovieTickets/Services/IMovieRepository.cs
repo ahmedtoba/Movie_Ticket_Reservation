@@ -9,11 +9,11 @@ namespace MovieTickets.Services
     {
 
         int delete(Guid id);
-        List<Movie> GetAll();
-        Movie GetById(Guid id);
-        Movie GetByName(string name);
+        List<MovieMovieViewModel> GetAll();
+        MovieMovieViewModel GetById(Guid id);
+        MovieMovieViewModel GetByName(string name);
         int Insert(MovieViewModel newCinema);
-        int update(Movie editMovie, Guid id);
+        int update(MovieViewModel editMovie, Guid id);
 
 
     }

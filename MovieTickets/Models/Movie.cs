@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieTickets.Models
 {
-    public class Movie
+    public class MovieMovieViewModel
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Required]
