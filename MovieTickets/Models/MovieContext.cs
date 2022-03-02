@@ -19,10 +19,6 @@ namespace MovieTickets.Models
         public MovieContext(DbContextOptions options) : base(options)
         { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=MovieTickets;Integrated Security=True");
-            optionsBuilder.UseLazyLoadingProxies();
-        }
+        
     }
 }
