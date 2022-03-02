@@ -1,6 +1,9 @@
-﻿using MovieTickets.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MovieTickets.Models;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MovieTickets.Services
 {
@@ -28,26 +31,52 @@ namespace MovieTickets.Services
         {
             return db.Cinemas.SingleOrDefault(c => c.Location == location);
         }
-        public int insert(Cinema newCinema)
-        {
-            db.Cinemas.Add(newCinema);
-            int raws = db.SaveChanges();
-            return raws;
-        }
-        public int update(Cinema EditCin, int id)
-        {
-            var cinema = db.Cinemas.SingleOrDefault(c => c.Id == id);
-            cinema.Name = EditCin.Name;
-            cinema.Location = EditCin.Location;
-            cinema.Image = EditCin.Image;
-            cinema.Location = EditCin.Location;
-            int raws = db.SaveChanges();
-            return raws;
-        }
+       
+        
         public int delete(int id)
         {
             Cinema delcin = db.Cinemas.SingleOrDefault(c => c.Id == id);
             db.Cinemas.Remove(delcin);
+            int raws = db.SaveChanges();
+            return raws;
+        }
+
+        public async Task<int> insert(Cinema newCinema, List<IFormFile> Image)
+        {
+            foreach (var item in Image)
+            {
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        newCinema.Image = stream.ToArray();
+                    }
+                }
+            }
+            db.Cinemas.Add(newCinema);
+            int raws = db.SaveChanges();
+            return raws;
+        }
+
+        public async Task<int> update(Cinema EditCin, int id, List<IFormFile> Image)
+        {
+            var cinema = db.Cinemas.SingleOrDefault(c => c.Id == id);
+            foreach (var item in Image)
+            {
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        EditCin.Image = stream.ToArray();
+                    }
+                }
+            }
+            cinema.Name = EditCin.Name;
+            cinema.Location = EditCin.Location;
+            cinema.Image = EditCin.Image;
+            cinema.Location = EditCin.Location;
             int raws = db.SaveChanges();
             return raws;
         }

@@ -1,7 +1,10 @@
-﻿using MovieTickets.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MovieTickets.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MovieTickets.Services
 {
@@ -32,18 +35,39 @@ namespace MovieTickets.Services
         //{
         //    return db.Actors.SingleOrDefault(n => n.Image == image);
         //}
-        public int insert(Actor newActor)
+        public async Task<int> insert(Actor newActor, List<IFormFile> Image)
         {
+            foreach (var item in Image)
+            {
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        newActor.Image = stream.ToArray();
+                    }
+                }
+            }
             db.Actors.Add(newActor);
             int raws = db.SaveChanges();
             return raws;
         }
-        public int update(Actor EditActor, int id)
+        public async Task<int> update(Actor EditActor, int id, List<IFormFile> Image)
         {
             var Actor = db.Actors.SingleOrDefault(n => n.Id == id);
+            foreach (var item in Image)
+            {
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        EditActor.Image = stream.ToArray();
+                    }
+                }
+            }
             Actor.Id = EditActor.Id;
             Actor.Name = EditActor.Name;
-
             Actor.Image = EditActor.Image;
             Actor.Bio = EditActor.Bio;
             int raws = db.SaveChanges();

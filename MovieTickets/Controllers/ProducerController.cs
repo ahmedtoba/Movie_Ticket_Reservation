@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MovieTickets.Models;
 using MovieTickets.Services;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MovieTickets.Controllers
 {
@@ -42,11 +44,11 @@ namespace MovieTickets.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Producer NewProducer)
+        public ActionResult Create(Producer NewProducer, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
-                int numOfRowsInsertion = producerRepository.insert(NewProducer);
+                Task<int> numOfRowsInsertion = producerRepository.insert(NewProducer,Image);
                 return View();
             }
 
@@ -54,11 +56,11 @@ namespace MovieTickets.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Producer EditProducer, int id)
+        public ActionResult Edit(Producer EditProducer, int id,List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
-                int numOfRowsUpdated = producerRepository.update(EditProducer, id);
+               Task< int> numOfRowsUpdated = producerRepository.update(EditProducer, id,Image);
                 return View();
             }
             return RedirectToAction();

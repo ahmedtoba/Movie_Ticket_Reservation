@@ -1,6 +1,8 @@
-﻿using MovieTickets.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MovieTickets.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MovieTickets.Services
 {
@@ -11,7 +13,7 @@ namespace MovieTickets.Services
         List<Producer> GetAll();
         Producer GetById(int id);
         Producer GetByName(string name);
-        int insert(Producer newProducer);
-        int update(Producer EditProducer, int id);
+        Task<int> insert(Producer newProducer, List<IFormFile> Image);
+        Task<int> update(Producer EditProducer, int id, List<IFormFile> Image);
     }
 }

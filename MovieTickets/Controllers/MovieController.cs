@@ -7,6 +7,7 @@ using MovieTickets.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MovieTickets.Controllers
 {
@@ -68,11 +69,11 @@ namespace MovieTickets.Controllers
         // post create method
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(MovieViewModel movievm)
+        public IActionResult Create(MovieViewModel movievm, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
-                movieRepo.Insert(movievm);
+                movieRepo.Insert(movievm,Image);
                 return RedirectToAction();
             }
 
@@ -90,11 +91,11 @@ namespace MovieTickets.Controllers
         // To Edit any Movie
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(MovieMovieViewModel editMovie, Guid id)
+        public ActionResult Edit(MovieViewModel editMovie, Guid id,List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
-                int numOfRowsUpdated=movieRepo.update(editMovie,id);
+                Task<int> numOfRowsUpdated =movieRepo.update(editMovie,id,Image);
                 return View();
             }
             return RedirectToAction();

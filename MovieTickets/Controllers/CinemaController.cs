@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MovieTickets.Models;
 using MovieTickets.Services;
 using System.Collections.Generic;
@@ -46,9 +47,9 @@ namespace MovieTickets.Controllers
             return View("Cinema_Update_Form");
         }
         //insert---------------------------------
-        public IActionResult InsertCinema(Cinema InsertCinema)
+        public IActionResult InsertCinema(Cinema InsertCinema, List<IFormFile> Image)
         {
-            cinemaRepo.insert(InsertCinema);
+            cinemaRepo.insert(InsertCinema,Image);
             return View("Cinema");//Retrun to Details
         }
         //Update From---------------------------------
@@ -57,9 +58,9 @@ namespace MovieTickets.Controllers
             return View("Cinema_Update_Form");
         }
         //Update---------------------------------
-        public IActionResult UpdateCinema(Cinema EditCin , int id)
+        public IActionResult UpdateCinema(Cinema EditCin , int id, List<IFormFile> Image)
         {
-            cinemaRepo.update(EditCin, id);
+            cinemaRepo.update(EditCin, id, Image);
             return View("Cinema");//Retrun to Details
         }
         //------------------------------------------
