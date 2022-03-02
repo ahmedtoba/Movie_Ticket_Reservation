@@ -14,13 +14,15 @@ namespace MovieTickets.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IActorRepository actorService;
         private readonly ICategoryRepository categoryService;
         private readonly ICinemaRepository cinemaService;
         private readonly IMovieRepository movieServie;
 
-        public HomeController(ILogger<HomeController> logger, ICategoryRepository CategoryService,ICinemaRepository CinemaService,IMovieRepository MovieServie)
+        public HomeController(ILogger<HomeController> logger,IActorRepository ActorService, ICategoryRepository CategoryService,ICinemaRepository CinemaService,IMovieRepository MovieServie)
         {
             _logger = logger;
+            actorService = ActorService;
             categoryService = CategoryService;
             cinemaService = CinemaService;
             movieServie = MovieServie;
@@ -28,12 +30,13 @@ namespace MovieTickets.Controllers
 
         public IActionResult Index()
         {
-           
+
             HomeViewModel addHome = new HomeViewModel()
             {
                 Cinemas = cinemaService.GetAll(),
                 Movies = movieServie.GetAll(),
-                Categories = categoryService.GetAll()
+                Categories = categoryService.GetAll(),
+                Actors = actorService.GetAll()
             };
             return View(addHome);
         }

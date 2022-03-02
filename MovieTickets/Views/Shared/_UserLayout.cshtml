@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="~/css/style.css">
 
 </head>
-<body>
+<body onload="getData()">
 <!--preloading-->
 <div id="preloader">
     <img class="logo" src="images/logo1.png" alt="" width="119" height="58">
@@ -284,11 +284,12 @@
 	</div>
 </footer>
 <!-- end of footer section-->
-
-<script src="~/js/jquery.js"></script>
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/plugins.js"></script>
 <script src="~/js/plugins2.js"></script>
 <script src="~/js/custom.js"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
 <script src="https://kit.fontawesome.com/a49558d437.js" crossorigin="anonymous"></script>
 </body>
 

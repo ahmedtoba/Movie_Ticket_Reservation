@@ -90,7 +90,18 @@ namespace MovieTickets.Controllers
             return View();
         }
 
-        // POST: MovieController/Delete/5
+        public ActionResult Grid()
+        {
+           
+            return PartialView("_Grid", categoryRepo.GetAll());
+        }
+
+        public ActionResult List()
+        {
+
+            return PartialView("_List", categoryRepo.GetAll());
+        }
+       
 
 
     }

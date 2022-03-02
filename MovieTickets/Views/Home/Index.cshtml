@@ -1,9 +1,9 @@
 ﻿
 @model HomeViewModel
 @{
-      Layout="~/Views/Shared/_UserLayout.cshtml";
-    ViewData["Title"] = "Home Page";
-      
+	Layout="~/Views/Shared/_UserLayout.cshtml";
+	ViewData["Title"] = "Home Page";
+	int i = 0;
 }
 
 <div class="slider movie-items">
@@ -20,14 +20,14 @@
 				@foreach(var item in Model.Movies){
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="@item.Image" alt="" width="285" height="437"></a>
+	    				<a href="#"><img @item.Image alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
 	    					<span class="blue"><a href="#">@item.Category.Name</a></span>
 	    				</div>
 	    				<h6><a href="#">@item.Name</a></h6>
-	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+	    			
 	    			</div>
 	    		</div>
 				}
@@ -38,10 +38,10 @@
 <div class="movie-items">
 	<div class="container">
 		<div class="row ipad-width">
-			<div class="col-md-12">
+			<div class="col-md-8">
 				<div class="title-hd">
 					<h2>Categories</h2>
-					
+					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
 				</div>
 				<div class="tabs">
 					
@@ -60,7 +60,7 @@
 					            			</div>
 					            			<div class="title-in">
 					            				<h6><a href="#">@item.Name</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            				
 					            			</div>
 					            		</div>
 				            		</div>
@@ -106,6 +106,31 @@
 		</div>
 		</div>
 		</div>
+			<div class="col-md-4">
+				<div class="sidebar">
+					<div class="ads">
+						<img src="images/uploads/ads1.png" alt="" width="336" height="296">
+					</div>
+					<div class="celebrities">
+						<h4 class="sb-title">Spotlight Celebrities</h4>
+						@foreach(var item in Model.Actors){
+						<div class="celeb-item">
+							<a href="#"><img src="@item.Image" alt="" width="70" height="70"></a>
+							<div class="celeb-author">
+								<h6><a href="#">@item.Name</a></h6>
+								
+							</div>
+							</div>
+							if(i==6){
+								break;
+							}
+						}
+						
+						
+						<a href="#" class="btn">See all Actors<i class="ion-ios-arrow-right"></i></a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
