@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MVC Project\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj": {}
+    "D:\\documents\\visual studio\\MVC_project\\Movie_Ticket_Reservation-1\\MovieTickets\\MovieTickets.csproj": {}
   },
   "projects": {
-    "D:\\MVC Project\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj": {
+    "D:\\documents\\visual studio\\MVC_project\\Movie_Ticket_Reservation-1\\MovieTickets\\MovieTickets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MVC Project\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+        "projectUniqueName": "D:\\documents\\visual studio\\MVC_project\\Movie_Ticket_Reservation-1\\MovieTickets\\MovieTickets.csproj",
         "projectName": "MovieTickets",
-        "projectPath": "D:\\MVC Project\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
-        "packagesPath": "C:\\Users\\TanTawy\\.nuget\\packages\\",
-        "outputPath": "D:\\MVC Project\\Movie_Ticket_Reservation\\MovieTickets\\obj\\",
+        "projectPath": "D:\\documents\\visual studio\\MVC_project\\Movie_Ticket_Reservation-1\\MovieTickets\\MovieTickets.csproj",
+        "packagesPath": "C:\\Users\\SoftLaptop\\.nuget\\packages\\",
+        "outputPath": "D:\\documents\\visual studio\\MVC_project\\Movie_Ticket_Reservation-1\\MovieTickets\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TanTawy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SoftLaptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -79,12 +79,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.13, 5.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -93,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
