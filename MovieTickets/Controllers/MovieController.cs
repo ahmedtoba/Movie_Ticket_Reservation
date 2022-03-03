@@ -15,13 +15,26 @@ namespace MovieTickets.Controllers
     {
         private readonly MovieContext db;
         IMovieRepository movieRepo;
+        private readonly ICategoryRepository categoryRepo;
+        private readonly ICinemaRepository cinemaRepo;
+        private readonly IProducerRepository produerService;
+        private readonly IActorRepository actorService;
+        private readonly IMovieActorRepository movieactorService;
+        private readonly IMovieInCinemaRepository movieincinemaService;
 
-        public MovieController(MovieContext db ,IMovieRepository movieRepo, ICategoryRepository categoryRepo, ICinemaRepository cinemaRepo)
+        public MovieController(MovieContext db ,IMovieRepository movieRepo, 
+            ICategoryRepository categoryRepo, ICinemaRepository cinemaRepo,
+            IProducerRepository produerService,IActorRepository actorService,
+            IMovieActorRepository movieactorService,IMovieInCinemaRepository movieincinemaService)
         {
             this.db = db;
             this.movieRepo=movieRepo;
-
-
+            this.categoryRepo = categoryRepo;
+            this.cinemaRepo = cinemaRepo;
+            this.produerService = produerService;
+            this.actorService = actorService;
+            this.movieactorService = movieactorService;
+            this.movieincinemaService = movieincinemaService;
         }
 
 
@@ -30,26 +43,41 @@ namespace MovieTickets.Controllers
         public ActionResult Index()
         {
 
-            List<Movie> movies= movieRepo.GetAll();
 
-            return View();
+            MovieItemViewModel mivm = new MovieItemViewModel()
+            {
+                Movies = movieRepo.GetAll(),
+                Producers = produerService.GetAll(),
+                Cinemas = cinemaRepo.GetAll(),
+                Actors = actorService.GetAll(),
+                Categories = categoryRepo.GetAll(),
+                MovieActors = movieactorService.GetAll()
+
+        };
+
+            return View("IndexUser",mivm);
         }
 
         // To Get Movie by ID
         public ActionResult Details(Guid id)
         {
+            MovieDetailsViewModel mdvm = new MovieDetailsViewModel()
+            {
+                Movie = movieRepo.GetById(id),
+                MovieActors = movieactorService.GetAll().Where(w => w.MovieId == id).ToList(),
+                MoviesInCinemas = movieincinemaService.GetAll().Where(w => w.MovieId == id).ToList()
+            };
 
-            Movie movie= movieRepo.GetById(id);
-            return View();
+            return View("DetailsUser", mdvm);
         }
 
 
         //To get Movie by name
-        public ActionResult Details(string name)
-        {
-            Movie movie = movieRepo.GetByName(name);
-            return View();
-        }
+        //public ActionResult Details(string name)
+        //{
+        //    Movie movie = movieRepo.GetByName(name);
+        //    return View();
+        //}
 
         // To add new movie
         //get method opening create page

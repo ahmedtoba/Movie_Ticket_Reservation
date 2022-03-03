@@ -30,7 +30,7 @@ namespace MovieTickets.Controllers
         {
 
             Producer producer = producerRepository.GetById(id);
-            return View();
+            return View("DetailsUser",producer);
         }
 
 
