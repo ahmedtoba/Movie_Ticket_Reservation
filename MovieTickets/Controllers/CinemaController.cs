@@ -13,18 +13,30 @@ namespace MovieTickets.Controllers
         {
             cinemaRepo = _cinemaRepo;
         }
-        //show all Cinemas--------------
+        //show all Cinemas User View--------------
         public IActionResult Index()
         {
             List<Cinema> cinemas = cinemaRepo.GetAll();
             return View("AllCinemas", cinemas);
         }
+        //show all Cinemas User View--------------
+        public IActionResult AdminCinemas()
+        {
+            List<Cinema> cinemas = cinemaRepo.GetAll();
+            return View("AdminCinemas", cinemas);
+        }
         //-----------------------------
-        //Cinema Details By link Read more 
+        //Cinema Details By link Read more User 
         public IActionResult Cinema(int id)
         {
             Cinema cinema = cinemaRepo.GetById(id);
             return View(cinema);
+        }
+        //Cinema Details By link Read more Admin
+        public IActionResult CinemaDetailsAdmin(int id)
+        {
+            Cinema cinema = cinemaRepo.GetById(id);
+            return View("CinemaDetailsAdmin",cinema);
         }
         //-------------------------------
         //for searcing by name-----------
@@ -40,14 +52,14 @@ namespace MovieTickets.Controllers
             Cinema cinema = cinemaRepo.GetByLocation(location);
             return View(cinema);
         }
-        //[admin Section]===========
+        //[admin Section]=========================================================
         //insert From---------------------------------
         public IActionResult InsertForm()
         {
-            return View("Cinema_Update_Form");
+            return View("Cinema_Insert_Form");
         }
         //insert---------------------------------
-        public IActionResult InsertCinema(Cinema InsertCinema, List<IFormFile> Image)
+        public IActionResult InsertCinema(Cinema InsertCinema, IFormFile Image)
         {
             cinemaRepo.insert(InsertCinema,Image);
             return View("Cinema");//Retrun to Details
@@ -55,10 +67,10 @@ namespace MovieTickets.Controllers
         //Update From---------------------------------
         public IActionResult UpdateForm()
         {
-            return View("Cinema_Update_Form");
+            return View("CinemaUpdateForm");
         }
         //Update---------------------------------
-        public IActionResult UpdateCinema(Cinema EditCin , int id, List<IFormFile> Image)
+        public IActionResult UpdateCinema(Cinema EditCin , int id, IFormFile Image)
         {
             cinemaRepo.update(EditCin, id, Image);
             return View("Cinema");//Retrun to Details

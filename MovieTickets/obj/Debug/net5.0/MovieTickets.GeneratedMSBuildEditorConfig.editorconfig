@@ -14,4 +14,4 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MovieTickets
-build_property.ProjectDir = C:\GraduationProject\MovieTickets\
+build_property.ProjectDir = D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\
