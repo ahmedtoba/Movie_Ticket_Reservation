@@ -1,0 +1,109 @@
+﻿
+@model MovieItemViewModel
+@{
+Layout="~/Views/Shared/_UserLayout.cshtml";
+	ViewData["Title"] = " Movie Page";
+	SelectList ActorList = new SelectList(@Model.Actors,"Id","Name");
+	SelectList CinemaList = new SelectList(@Model.Cinemas,"Id","Name");
+	SelectList ProducerList = new SelectList(@Model.Producers,"Id","Name");
+	SelectList CategoryList = new SelectList(@Model.Categories,"Id","Name");
+}
+<div class="hero common-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1> movie listing - list</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-single movie_list">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				
+				@foreach(var item in Model.Movies){
+					var base64 = Convert.ToBase64String(@item.Image);
+      string imgsrc = string.Format("data:images/*;base64,{0}", base64);
+				<div class="movie-item-style-2">
+					<img src="@imgsrc" alt="">
+					<div class="mv-item-infor">
+						<h6><a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">@item.Name </a></h6>
+						<p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10</p>
+						<p class="describe">@item.Description</p>
+							<p class="run-time"> <span>Release: @item.StartDate</span></p>
+						<p>Director: <a  asp-action="Details" asp-controller="Producer" asp-route-id="@item.Id">@item.Producer.Name</a></p>
+						<p>Stars:@foreach(var act in item.MovieActors){
+						 <a asp-action="Details" asp-controller="Actor" asp-route-id="@act.Actor.Id">@act.Actor.Name,</a>
+						}
+						</p>
+					</div>
+				</div>
+				}
+			
+		 </div>
+		 <div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="sidebar">
+					<div class="searh-form">
+						<h4 class="sb-title">Search for movie</h4>
+						<form class="form-style-1" action="#">
+							<div class="row">
+								<div class="col-md-12 form-it">
+									<label>Movie name</label>
+									<input type="text" placeholder="Enter keywords">
+								</div>
+								<div class="col-md-12 form-it">
+									<label>Category</label>
+									<div class="group-ip">
+										<select asp-for="CategoryId" asp-items="CategoryList">
+											<option hidden selected disabled>-----Select Category----</option>
+										</select>
+									</div>
+									
+								</div><div class="col-md-12 form-it">
+									<label>Cinema</label>
+									<div class="group-ip">
+										<select asp-for="CinemaId" asp-items="CinemaList">
+											<option hidden selected disabled>-----Select Cinema----</option>
+										</select>
+									</div>
+									
+								</div><div class="col-md-12 form-it">
+									<label>Actors</label>
+									<div class="group-ip">
+										<select asp-for="ActorId" asp-items="ActorList">
+											<option hidden selected disabled>-----Select Actor----</option>
+										</select>
+									</div>
+									
+								</div><div class="col-md-12 form-it">
+									<label>Director</label>
+									<div class="group-ip">
+										<select asp-for="ProducerId" asp-items="ProducerList">
+											<option hidden selected disabled>-----Select Producer----</option>
+										</select>
+									</div>
+									
+								</div>
+								
+							
+								<div class="col-md-12 ">
+									<input class="submit" type="submit" value="submit">
+								</div>
+							</div>
+						</form>
+					</div>
+					
+					
+				</div>
+			</div>
+	 </div>
+   </div>
+</div>

@@ -322,7 +322,6 @@ D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTicke
 D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\ref\MovieTickets.dll
 D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.pdb
 D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.genruntimeconfig.cache
-D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.csproj.AssemblyReference.cache
 D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Category\Index.cshtml.g.cs
 D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_Grid.cshtml.g.cs
 D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_List.cshtml.g.cs
@@ -509,7 +508,10 @@ C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\Edit.cshtml
 C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
 C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_Grid.cshtml.g.cs
 C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_List.cshtml.g.cs
-D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\AdminCinemas.cshtml.g.cs
-D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\CinemaDetailsAdmin.cshtml.g.cs
-D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\Cinema_Insert_Form.cshtml.g.cs
-D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\CinemaUpdateForm.cshtml.g.cs
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Category\DetailsUser.cshtml.g.cs
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\DetailsUser.cshtml.g.cs
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\IndexUser.cshtml.g.cs
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.csproj.AssemblyReference.cache
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Actor\DetailsUser.cshtml.g.cs
+D:\MVC Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Producer\DetailsUser.cshtml.g.cs

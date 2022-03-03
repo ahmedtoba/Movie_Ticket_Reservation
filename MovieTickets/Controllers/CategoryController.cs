@@ -26,7 +26,7 @@ namespace MovieTickets.Controllers
 
             List<Category> categories= categoryRepo.GetAll();
 
-            return View();
+            return View(categories);
         }
 
         // To Get Category by ID
@@ -43,7 +43,7 @@ namespace MovieTickets.Controllers
         {
 
             Category category = categoryRepo.GetByName(name);
-            return View();
+            return View("DetailsUser");
         }
 
 

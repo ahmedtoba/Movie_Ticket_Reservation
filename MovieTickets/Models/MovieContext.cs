@@ -17,8 +17,14 @@ namespace MovieTickets.Models
         
         public MovieContext() { }
         public MovieContext(DbContextOptions options) : base(options)
-        { }
-
+        { 
         
+        
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
+
     }
 }

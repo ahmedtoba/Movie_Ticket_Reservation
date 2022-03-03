@@ -30,17 +30,17 @@ namespace MovieTickets.Controllers
         {
 
             Actor Actors = actorRepository.GetById(id);
-            return View();
+            return View("DetailsUser", Actors);
         }
 
 
 
-        public ActionResult Details(string name)
-        {
+        //public ActionResult Details(string name)
+        //{
 
-            Actor Actors = actorRepository.GetByName(name);
-            return View();
-        }
+        //    Actor Actors = actorRepository.GetByName(name);
+        //    return View();
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -1,0 +1,57 @@
+﻿@model Category
+@{
+Layout="~/Views/Shared/_UserLayout.cshtml";
+	ViewData["Title"] = "Details Page";
+}
+<div class="slider sliderv2">
+	<div class="container">
+		<div class="row">
+	    	<div class="slider-single-item">
+	    		<div class="movie-item">
+	    			<div class="row">
+	    				<div class="col-md-8 col-sm-12 col-xs-12">
+	    					<div class="title-in">
+			    				
+			    				<h1>@Model.Name</h1>
+								
+			    				
+			    						
+			    			</div>
+	    				</div>
+	    				<div class="col-md-4 col-sm-12 col-xs-12">
+		    				<div class="mv-img-2">
+			    				<a href="#"><img src="images/uploads/poster1.jpg" alt=""></a>
+			    			</div>
+		    			</div>
+	    			</div>	
+	    		</div>
+	    		
+	    	</div>
+	    </div>
+	</div>
+</div>
+
+<div class="latestnew full-width">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="title-hd">
+					<h2>Latest news</h2>
+					<a href="bloggrid.html" class="viewall">All Movies <i class="ion-ios-arrow-right"></i></a>
+				</div>
+				<div class="latestnewv2">
+					@foreach(var item in Model.Movies){
+					<div class="blog-item-style-2">
+						<a asp-action="DetailsUser" asp-controller="Movie" asp-route-id="@item.Id"><img src="@item.Image" alt=""></a>
+						<div class="blog-it-infor">
+							<h3><a asp-action="DetailsUser" asp-controller="Movie" asp-route-id="@item.Id">@item.Name</a></h3>
+							<span class="time">@item.StartDate</span>
+							<p>@item.Description</p>
+						</div>
+					</div>
+					}
+				</div>
+			</div>
+		
+		</div>
+	</div>
