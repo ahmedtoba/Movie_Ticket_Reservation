@@ -509,3 +509,7 @@ C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\Edit.cshtml
 C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
 C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_Grid.cshtml.g.cs
 C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_List.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\AdminCinemas.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\CinemaDetailsAdmin.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\Cinema_Insert_Form.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\CinemaUpdateForm.cshtml.g.cs

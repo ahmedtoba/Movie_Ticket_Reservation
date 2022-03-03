@@ -41,38 +41,36 @@ namespace MovieTickets.Services
             return raws;
         }
 
-        public async Task<int> insert(Cinema newCinema, List<IFormFile> Image)
+        public async Task<int> insert(Cinema newCinema, IFormFile Image)
         {
-            foreach (var item in Image)
-            {
-                if (item.Length > 0)
+            
+                if (Image.Length > 0)
                 {
                     using (var stream = new MemoryStream())
                     {
-                        await item.CopyToAsync(stream);
+                        await Image.CopyToAsync(stream);
                         newCinema.Image = stream.ToArray();
                     }
                 }
-            }
+            
             db.Cinemas.Add(newCinema);
             int raws = db.SaveChanges();
             return raws;
         }
 
-        public async Task<int> update(Cinema EditCin, int id, List<IFormFile> Image)
+        public async Task<int> update(Cinema EditCin, int id, IFormFile Image)
         {
             var cinema = db.Cinemas.SingleOrDefault(c => c.Id == id);
-            foreach (var item in Image)
-            {
-                if (item.Length > 0)
+            
+                if (Image.Length > 0)
                 {
                     using (var stream = new MemoryStream())
                     {
-                        await item.CopyToAsync(stream);
+                        await Image.CopyToAsync(stream);
                         EditCin.Image = stream.ToArray();
                     }
                 }
-            }
+            
             cinema.Name = EditCin.Name;
             cinema.Location = EditCin.Location;
             cinema.Image = EditCin.Image;
