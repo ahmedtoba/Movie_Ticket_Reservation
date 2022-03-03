@@ -502,3 +502,10 @@ D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\o
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\MovieTickets.pdb
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\MovieTickets.genruntimeconfig.cache
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation-1\MovieTickets\obj\Debug\net5.0\ref\MovieTickets.dll
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\MovieTickets.csproj.AssemblyReference.cache
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Category\Index.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\AllCinemas.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\Edit.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_Grid.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_List.cshtml.g.cs

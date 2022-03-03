@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MovieTickets.Services;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace MovieTickets
 {
@@ -40,13 +40,17 @@ namespace MovieTickets
             services.AddScoped<IProducerRepository, ProducerRepository>();
             services.AddScoped<IActorRepository, ActorRepository>();
             //___________________________________________
+            //Authentication and Authorization
+            
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<MovieContext>();
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
 
-            services.AddIdentity<User, IdentityRole>(
-
-           ).AddEntityFrameworkStores<MovieContext>();
-
-
-
+            
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +68,8 @@ namespace MovieTickets
             app.UseStaticFiles();
 
             app.UseRouting();
+            
+            app.UseSession();
 
             app.UseAuthentication();
 
@@ -75,6 +81,10 @@ namespace MovieTickets
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
+            //Database Data Initializer
+            DBInitializer.CreateUsersAndRolesAsync(app).Wait();
         }
     }
 }

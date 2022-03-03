@@ -15,17 +15,17 @@ public class MovieRepository:IMovieRepository
         {
             db = _db;
         }
-        public List<MovieMovieViewModel> GetAll()
+        public List<Movie> GetAll()
         {
             var movies = db.Movies.ToList();
             return movies;
         }
-        public MovieMovieViewModel GetById(Guid id)
+        public Movie GetById(Guid id)
         {
             return db.Movies.SingleOrDefault(c => c.Id == id);
         }
 
-        public MovieMovieViewModel GetByName(string name)
+        public Movie GetByName(string name)
         {
             return db.Movies.SingleOrDefault(c => c.Name == name);
         }
@@ -45,7 +45,7 @@ public class MovieRepository:IMovieRepository
         }
         //Adding to movie table
         var newGuid = Guid.NewGuid();
-            db.Movies.Add(new MovieMovieViewModel()
+            db.Movies.Add(new Movie()
             {
                 Name = movievm.Name,
                 Id = newGuid,
@@ -129,7 +129,7 @@ public class MovieRepository:IMovieRepository
         }
         public int delete(Guid id)
         {
-            MovieMovieViewModel delMovie = db.Movies.SingleOrDefault(c => c.Id == id);
+            Movie delMovie = db.Movies.SingleOrDefault(c => c.Id == id);
             db.Movies.Remove(delMovie);
             int raws = db.SaveChanges();
             return raws;

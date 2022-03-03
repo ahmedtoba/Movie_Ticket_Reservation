@@ -30,7 +30,7 @@ namespace MovieTickets.Controllers
         public ActionResult Index()
         {
 
-            List<MovieMovieViewModel> movies= movieRepo.GetAll();
+            List<Movie> movies= movieRepo.GetAll();
 
             return View();
         }
@@ -39,7 +39,7 @@ namespace MovieTickets.Controllers
         public ActionResult Details(Guid id)
         {
 
-            MovieMovieViewModel movie= movieRepo.GetById(id);
+            Movie movie= movieRepo.GetById(id);
             return View();
         }
 
@@ -47,7 +47,7 @@ namespace MovieTickets.Controllers
         //To get Movie by name
         public ActionResult Details(string name)
         {
-            MovieMovieViewModel movie = movieRepo.GetByName(name);
+            Movie movie = movieRepo.GetByName(name);
             return View();
         }
 

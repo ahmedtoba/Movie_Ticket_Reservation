@@ -11,9 +11,9 @@ namespace MovieTickets.Services
     {
 
         int delete(Guid id);
-        List<MovieMovieViewModel> GetAll();
-        MovieMovieViewModel GetById(Guid id);
-        MovieMovieViewModel GetByName(string name);
+        List<Movie> GetAll();
+        Movie GetById(Guid id);
+        Movie GetByName(string name);
         Task<int> Insert(MovieViewModel newCinema, List<IFormFile> Image);
         Task<int> update(MovieViewModel editMovie, Guid id, List<IFormFile> Image);
 

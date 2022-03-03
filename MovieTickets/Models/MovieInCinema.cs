@@ -11,7 +11,7 @@ namespace MovieTickets.Models
         public int CinemaId { get; set; }
         [ForeignKey("Movie")]
         public Guid MovieId { get; set; }
-        public virtual MovieMovieViewModel Movie { get; set; }
+        public virtual Movie Movie { get; set; }
         public virtual Cinema Cinema { get; set; }
     }
 }
