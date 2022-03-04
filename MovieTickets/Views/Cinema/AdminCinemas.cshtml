@@ -25,7 +25,8 @@
       <td>@i.Location</td>
       <td>@i.Description</td>
       <td><a asp-action="InsertCinema"> <i class="fa fa-plus-circle"></i></a> <a asp-action="UpdateCinema" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a></td>
-      <td><a asp-action="CinemaDetailsAdmin"><i class="fa fa-arrow-circle-right"></i></a></td>
+      <td><a asp-action="CinemaDetailsAdmin">
+          <i class="fa fa-arrow-circle-right"></i></a></td>
 
     </tr>
 	  }

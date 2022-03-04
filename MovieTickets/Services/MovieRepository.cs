@@ -25,6 +25,28 @@ public class MovieRepository:IMovieRepository
             return db.Movies.SingleOrDefault(c => c.Id == id);
         }
 
+
+    public MovieViewModel GetMovieByIdAdmin(Guid id)
+    {
+
+        var movie=db.Movies.SingleOrDefault(c => c.Id == id);
+
+        MovieViewModel movieModel=new MovieViewModel(); 
+
+        movieModel.Name = movie.Name;
+        movieModel.Description = movie.Description;
+        movieModel.StartDate= movie.StartDate;
+        movieModel.EndDate= movie.EndDate;
+        movieModel.Price = movie.Price;
+        movieModel.Rate = (int)movie.Rate;
+
+
+
+        return movieModel;
+    }
+
+
+
         public Movie GetByName(string name)
         {
             return db.Movies.SingleOrDefault(c => c.Name == name);

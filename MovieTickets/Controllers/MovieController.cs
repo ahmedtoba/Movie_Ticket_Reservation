@@ -58,6 +58,34 @@ namespace MovieTickets.Controllers
             return View("IndexUser",mivm);
         }
 
+        public ActionResult GetMoviesAdmin()
+        {
+           List< Movie> MovieView = movieRepo.GetAll();
+
+            return View("AdminMovie", MovieView);
+
+        }
+
+        public ActionResult GetMoviesDetailsAdmin(Guid id)
+
+        {
+            MovieViewModel Moviemodel = movieRepo.GetMovieByIdAdmin(id);
+
+            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
+            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
+            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
+
+
+
+        
+
+            return View("MovieDetailsAdmain", Moviemodel);
+        }
+
+
+
+
         // To Get Movie by ID
         public ActionResult Details(Guid id)
         {
@@ -124,10 +152,32 @@ namespace MovieTickets.Controllers
             if (ModelState.IsValid)
             {
                 Task<int> numOfRowsUpdated =movieRepo.update(editMovie,id,Image);
-                return View();
+                return View("AdminMovie");
             }
-            return RedirectToAction();
+            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
+            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
+            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
 
+            return RedirectToAction("Edit");
+
+        }
+
+
+        public ActionResult EditMovieFromAdmin(Guid id)
+
+        {
+
+            MovieViewModel Moviemodel = movieRepo.GetMovieByIdAdmin(id);
+
+            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
+            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
+            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
+
+
+
+            return View("Edit", Moviemodel);
         }
 
         // POST: MovieController/Edit/5
