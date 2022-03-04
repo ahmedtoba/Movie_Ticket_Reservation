@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj": {}
+    "D:\\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\\c#\\MVC\\github\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj": {}
   },
   "projects": {
-    "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj": {
+    "D:\\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\\c#\\MVC\\github\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+        "projectUniqueName": "D:\\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\\c#\\MVC\\github\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
         "projectName": "MovieTickets",
-        "projectPath": "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
-        "packagesPath": "C:\\Users\\TanTawy\\.nuget\\packages\\",
-        "outputPath": "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\obj\\",
+        "projectPath": "D:\\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\\c#\\MVC\\github\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\\c#\\MVC\\github\\Movie_Ticket_Reservation\\MovieTickets\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TanTawy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.13, 5.0.13]"
+              "version": "[5.0.12, 5.0.12]"
             }
           ],
           "frameworkReferences": {
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
