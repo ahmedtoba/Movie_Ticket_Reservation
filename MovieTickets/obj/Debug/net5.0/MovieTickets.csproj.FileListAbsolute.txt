@@ -612,3 +612,16 @@ D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTicket
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\ref\MovieTickets.dll
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.pdb
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.genruntimeconfig.cache
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Account\SignUp.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Account\SignUpCompleted.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Actor\DetailsUser.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Category\DetailsUser.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\AdminCinemas.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\CinemaDetailsAdmin.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\CinemaUpdateForm.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\Cinema_Insert_Form.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\DetailsUser.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\IndexUser.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Producer\DetailsUser.cshtml.g.cs
+C:\GraduationProject\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_LoginLayout.cshtml.g.cs

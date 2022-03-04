@@ -4,12 +4,13 @@ namespace MovieTickets.ViewModels
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="Username or Email Required")]
         [Display(Name ="Email or UserName")]
-        public string Userlogin { get; set; }
+        public string UserLogin { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Password Required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public bool RememberMe { get; set; }
     }
 }
