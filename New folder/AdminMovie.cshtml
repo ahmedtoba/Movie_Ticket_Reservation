@@ -1,0 +1,39 @@
+﻿@model List<Movie>
+
+@{
+    Layout = "_AdminLayout";
+}
+
+@*Admin Section Start------------------------------------------------------*@
+<div class="container mt-5">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      
+      <th scope="col">Name</th>
+
+      <th scope="col">Rate</th>
+      <th scope="col">StartDate</th>
+      <th scope="col">EndDate</th>
+    </tr>
+  </thead>
+  <tbody>
+	  @foreach(var i in Model){
+    <tr>
+     
+      <td>@i.Name</td>
+      <td>@i.Rate</td>
+      <td>@i.StartDate</td>
+      <td>@i.EndDate</td>
+      <td><a asp-action="Create"> <i class="fa fa-plus-circle"></i></a> 
+       <a asp-action="EditMovieFromAdmin" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i>
+           </a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a></td>
+      <td><a asp-action="GetMoviesDetailsAdmin" asp-route-id = "@i.Id">
+              <i class="fa fa-arrow-circle-right"></i></a></td>
+
+    </tr>
+	  }
+  </tbody>
+</table>
+</div>
+@*Admin Section end -----------------------------------------*@

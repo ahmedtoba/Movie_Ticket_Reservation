@@ -1,0 +1,38 @@
+﻿@model List<Producer>
+
+@{
+    Layout = "_AdminLayout";
+}
+
+
+<div class="container mt-5">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Image</th>
+      <th scope="col">Bio</th>
+       <th scope="col">Action</th>
+      <th scope="col">Details</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+	  @foreach(var i in Model){
+    <tr>
+      <th scope="row">@i.Id</th>
+      <td>@i.Name</td>
+      <td>@i.Image</td>
+      <td>@i.Bio</td>
+      <td><a asp-action="Create" asp-controller="Producer"> <i class="fa fa-plus-circle"></i></a> 
+          <a asp-action="Edit" asp-controller="Producer" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a>
+          <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a>
+      </td>
+      <td><a asp-action="Details" asp-controller="Producer"asp-route-id = "@i.Id"><i class="fa fa-arrow-circle-right"></i></a></td>
+
+    </tr>
+	  }
+  </tbody>
+</table>
+</div>
