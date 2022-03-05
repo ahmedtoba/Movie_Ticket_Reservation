@@ -22,13 +22,13 @@ namespace MovieTickets.Controllers
         private readonly IMovieActorRepository movieactorService;
         private readonly IMovieInCinemaRepository movieincinemaService;
 
-        public MovieController(MovieContext db, IMovieRepository movieRepo,
+        public MovieController(MovieContext db ,IMovieRepository movieRepo, 
             ICategoryRepository categoryRepo, ICinemaRepository cinemaRepo,
-            IProducerRepository produerService, IActorRepository actorService,
-            IMovieActorRepository movieactorService, IMovieInCinemaRepository movieincinemaService)
+            IProducerRepository produerService,IActorRepository actorService,
+            IMovieActorRepository movieactorService,IMovieInCinemaRepository movieincinemaService)
         {
             this.db = db;
-            this.movieRepo = movieRepo;
+            this.movieRepo=movieRepo;
             this.categoryRepo = categoryRepo;
             this.cinemaRepo = cinemaRepo;
             this.produerService = produerService;
@@ -53,14 +53,14 @@ namespace MovieTickets.Controllers
                 Categories = categoryRepo.GetAll(),
                 MovieActors = movieactorService.GetAll()
 
-            };
+        };
 
-            return View("IndexUser", mivm);
+            return View("IndexUser",mivm);
         }
 
         public ActionResult GetMoviesAdmin()
         {
-            List<Movie> MovieView = movieRepo.GetAll();
+           List< Movie> MovieView = movieRepo.GetAll();
 
             return View("AdminMovie", MovieView);
 
@@ -78,7 +78,7 @@ namespace MovieTickets.Controllers
 
 
 
-
+        
 
             return View("MovieDetailsAdmain", Moviemodel);
         }
@@ -129,7 +129,7 @@ namespace MovieTickets.Controllers
         {
             if (ModelState.IsValid)
             {
-                movieRepo.Insert(movievm, Image);
+                movieRepo.Insert(movievm,Image);
                 return RedirectToAction();
             }
 
@@ -147,11 +147,11 @@ namespace MovieTickets.Controllers
         // To Edit any Movie
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(MovieViewModel editMovie, Guid id, List<IFormFile> Image)
+        public ActionResult Edit(MovieViewModel editMovie, Guid id,List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
-                Task<int> numOfRowsUpdated = movieRepo.update(editMovie, id, Image);
+                Task<int> numOfRowsUpdated =movieRepo.update(editMovie,id,Image);
                 return View("AdminMovie");
             }
             ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
@@ -189,12 +189,12 @@ namespace MovieTickets.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Guid id)
         {
-            int numOfRowsDeleted = movieRepo.delete(id);
+            int numOfRowsDeleted= movieRepo.delete(id); 
             return View();
         }
 
         // POST: MovieController/Delete/5
-
-
+        
+        
     }
 }

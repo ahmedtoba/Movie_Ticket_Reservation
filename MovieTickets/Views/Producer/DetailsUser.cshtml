@@ -29,28 +29,32 @@
 				<div class="mv-ceb">
 					@{base64=	Convert.ToBase64String(@Model.Image);
                 imgsrc= string.Format("data:images/*;base64,{0}", base64);}
-					<img src="imgsrc" alt="">
+					<img src="@imgsrc" alt="">
 				</div>
 			</div>
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<div class="movie-single-ct">
 					<h1 class="bd-hd">@Model.Name</h1>
-					
+					<p class="ceb-single" >Producer </p>
+					<div class="social-link cebsingle-socail" hidden>
+						<a href="#"><i class="ion-social-facebook"></i></a>
+						<a href="#"><i class="ion-social-twitter"></i></a>
+						<a href="#"><i class="ion-social-googleplus"></i></a>
+						<a href="#"><i class="ion-social-linkedin"></i></a>
+					</div>
 					<div class="movie-tabs">
 						<div class="tabs">
-							
+							<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li class="active"><a href="#overviewceb">Films</a></li>
+								                      
+							</ul>
 						    <div class="tab-content">
 						        <div id="overviewceb" class="tab active">
 						            <div class="row">
 						            	<div class="col-md-8 col-sm-12 col-xs-12">
 						            		<p>@Model.Bio</p>
-						            		
-											<div class="title-hd-sm">
-												<h4>filmography</h4>
-											
-											</div>
-										
-										
+						            	
 											<!-- movie cast -->
 											<div class="mvcast-item">	
 												@foreach(var item in Model.Movies){
@@ -72,11 +76,7 @@
 						            	</div>
 						            
 						            </div>
-						            
-						            
-						        
-						        
-					       	 	
+
 						    </div>
 						</div>
 					</div>
