@@ -25,8 +25,11 @@
       <td>@i.Name</td>
       <td>@i.Image</td>
       <td>@i.Bio</td>
-      <td><a asp-action="InsertProducers"> <i class="fa fa-plus-circle"></i></a> <a asp-action="UpdateProducer" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a></td>
-      <td><a asp-action="ProducersDetailsAdmin"><i class="fa fa-arrow-circle-right"></i></a></td>
+      <td><a asp-action="Create" asp-controller="Producer"> <i class="fa fa-plus-circle"></i></a> 
+          <a asp-action="Edit" asp-controller="Producer" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a>
+          <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a>
+      </td>
+      <td><a asp-action="Details" asp-controller="Producer"asp-route-id = "@i.Id"><i class="fa fa-arrow-circle-right"></i></a></td>
 
     </tr>
 	  }

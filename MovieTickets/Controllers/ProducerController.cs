@@ -22,7 +22,7 @@ namespace MovieTickets.Controllers
         public ActionResult Index()
         {
             List<Producer> Producers = producerRepository.GetAll();
-            return View();
+            return View(Producers);
         }
 
        
@@ -44,7 +44,14 @@ namespace MovieTickets.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Producer NewProducer, List<IFormFile> Image)
+        public ActionResult Create()
+        {
+          
+                return View("InserProducer");
+            }
+
+           
+         public ActionResult SaveCreate(Producer NewProducer, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
