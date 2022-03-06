@@ -3,15 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 using MovieTickets.Models;
 using MovieTickets.Services;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace MovieTickets.Controllers
 {
     public class CinemaController : Controller
     {
         ICinemaRepository cinemaRepo;
-        public CinemaController(ICinemaRepository _cinemaRepo)
+        MovieContext db;
+        public CinemaController(ICinemaRepository _cinemaRepo, MovieContext _db)
         {
             cinemaRepo = _cinemaRepo;
+            db = _db;
         }
         //show all Cinemas User View--------------
         public IActionResult Index()
@@ -36,7 +41,7 @@ namespace MovieTickets.Controllers
         public IActionResult CinemaDetailsAdmin(int id)
         {
             Cinema cinema = cinemaRepo.GetById(id);
-            return View("CinemaDetailsAdmin",cinema);
+            return View("CinemaDetailsAdmin", cinema);
         }
         //-------------------------------
         //for searcing by name-----------
@@ -56,24 +61,36 @@ namespace MovieTickets.Controllers
         //insert From---------------------------------
         public IActionResult InsertForm()
         {
-            return View("Cinema_Insert_Form");
+
+            return View("Cinema_Insert_Form", new Cinema());
         }
         //insert---------------------------------
         public IActionResult InsertCinema(Cinema InsertCinema, IFormFile Image)
         {
-            cinemaRepo.insert(InsertCinema,Image);
-            return View("Cinema");//Retrun to Details
+            if (ModelState.IsValid)
+            {
+                cinemaRepo.insert(InsertCinema, Image);
+                return RedirectToAction("AdminCinemas");
+            }
+            return RedirectToAction("InsertForm", InsertCinema);
+            //Retrun to Details
         }
         //Update From---------------------------------
-        public IActionResult UpdateForm()
+        public IActionResult UpdateForm(int id)
         {
-            return View("CinemaUpdateForm");
+
+            Cinema cinema = cinemaRepo.GetById(id);
+            return View("CinemaUpdateForm", cinema);
         }
         //Update---------------------------------
-        public IActionResult UpdateCinema(Cinema EditCin , int id, IFormFile Image)
+        public IActionResult UpdateCinema(Cinema EditCin, int id, IFormFile Image)
         {
-            cinemaRepo.update(EditCin, id, Image);
-            return View("Cinema");//Retrun to Details
+            if (ModelState.IsValid)
+            {
+                cinemaRepo.update(EditCin, id, Image);
+                return RedirectToAction("AdminCinemas");
+            }
+            return View("CinemaUpdateForm", EditCin);//Retrun to Details
         }
         //------------------------------------------
         //Delete----------------------------------
@@ -82,6 +99,18 @@ namespace MovieTickets.Controllers
             cinemaRepo.delete(id);
             return View("Index");
         }
+        //Searching by name or location----------------------------
+        [HttpGet]
+        public async Task<IActionResult> AdminCinemas(string Keyword)
+        {
+            ViewData["searching"] = Keyword;
+            var cinemas = db.Cinemas.Select(x => x);
+            if (!string.IsNullOrEmpty(Keyword))
+            {
+                cinemas = cinemas.Where(c => c.Name.Contains(Keyword) || c.Location.Contains(Keyword));
 
+            }
+            return View(await cinemas.AsNoTracking().ToListAsync());
+        }
     }
 }

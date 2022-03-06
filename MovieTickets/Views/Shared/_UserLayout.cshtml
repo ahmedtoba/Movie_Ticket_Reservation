@@ -215,12 +215,12 @@
 	    </nav>
 	    
 	    <!-- top search form -->
-	    <div class="top-search">
-	    	<select>
-				<option value="united">TV show</option>
-				<option value="saab">Others</option>
-			</select>
-			<input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
+	    <div class="container">
+			
+			 <form asp-action="movieSearch" asp-controller="Movie" method = "get">
+                  <input type="search" value=@ViewData["searching"] name="Keyword" placeholder="Search for a movie, TV Show or celebrity that you are looking for..." style="width:100%; background-color:rgba(2, 13, 24, 0.2); font-weight:bold; margin-bottom: 10px;" >
+                  <input type="submit" style="display: none" />
+             </form>
 	    </div>
 	</div>
 </header>

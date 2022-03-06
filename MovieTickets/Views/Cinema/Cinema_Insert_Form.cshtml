@@ -10,8 +10,18 @@
    <div class="picture-container">
       <div class="picture">
             @*image proplem ===================================================================*@
-          <img src = "/images/logo1.png" class="picture-src" style="height: 100%;" id="ProfileImg">
-          <input name="imagsss" accept="image/*" type="file" class="picfile" id="fileInput" onchange="loadFile(event)">
+                    @if(Model.Image == null)
+                    {
+                        <img src = "/images/placeholder.jfif" class="picture-src" style="height: 100%;" id="ProfileImg">
+                        
+                    }
+            @if(Model.Image != null){
+                var base64 = Convert.ToBase64String(Model.Image);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+          <img src = "@imgSrc" class="picture-src" style="height: 100%;" id="ProfileImg">
+            }
+          <input asp-for="Image" accept="image/*" type="file" class="picfile" id="fileInput" onchange="loadFile(event)">
                      @*<input type="file" asp-for="Image" id="Image" onchange="readURL(this);" />*@
           @*image proplem =========================================================================*@
 

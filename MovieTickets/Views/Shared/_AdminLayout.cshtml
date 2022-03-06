@@ -171,9 +171,10 @@
                             <span></span>
                         </div>
                         <div class="search-box pull-left">
-                            <form action="#">
-                                <input type="text" name="search" placeholder="Search..." required>
+                            <form asp-action="AdminCinemas" asp-controller="Cinema" method = "get">
+                                <input type="search" value=@ViewData["searching"] name="Keyword" placeholder="Search..." >
                                 <i class="ti-search"></i>
+                                <input type="submit" style="display: none" />
                             </form>
                         </div>
                     </div>
