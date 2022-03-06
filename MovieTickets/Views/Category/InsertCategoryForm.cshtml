@@ -1,0 +1,83 @@
+﻿@model Category
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="container mt-5">
+<form asp-action = "InsertCategory" asp-controller= "Category" class="w-50 m-auto" method= "post" enctype= "multipart/form-data" >
+    <div class="container">
+   <div class="picture-container">
+      <div class="picture">
+            @*image proplem ===================================================================*@
+          <img src = "/images/logo1.png" class="picture-src" style="height: 100%;" id="ProfileImg">
+          <input name="imagsss" accept="image/*" type="file" class="picfile" id="fileInput" onchange="loadFile(event)">
+                     @*<input type="file" asp-for="Image" id="Image" onchange="readURL(this);" />*@
+          @*image proplem =========================================================================*@
+
+       </div>
+       </div>
+ </div>
+ 
+    <div>
+
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" >
+    </div>
+      <div class="mb-3">
+        <label asp-for="Image" class="form-label"></label>
+        <input asp-for="Image" class="form-control" type="file" accept="image/*" />
+      
+    </div>
+
+      <div>
+        <label asp-for="Description"></label>
+        <textarea class="form-control" asp-for="Description"></textarea>
+    </div>
+   
+ 
+      <div class="d-flex justify-content-between mt-3">
+        <input type= "submit" value = "Insert" class="btn btn-success ps-5 pe-5"  />
+        <a asp-action="AdminCategories" class="btn btn-danger ">Cancel</a>
+
+    </div>
+
+</form>
+</div>
+
+<script>
+    var loadFile = function (event) {
+  var image = document.getElementById("ProfileImg");
+  image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>
+<style>
+.picture-container{
+    margin:auto;
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+}
+.picture{
+    position:relative;
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+}
+.picture-src{
+    position:absolute;
+    width: inherit;
+    height:inherit;
+    border-radius:inherit;
+}
+.picture input[type="file"] {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+</style>

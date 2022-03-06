@@ -27,25 +27,7 @@
 					<a onclick="getList()" class="list " ><i class="ion-ios-list-outline "></i></a>
 					<a  onclick="getData()" class="grid" ><i class="ion-grid "></i></a>
 				</div>
-					<div id="div1">
-                        <div class="flex-wrap-movielist mv-grid-fw"  >
-				
-
-                           @foreach(var item in Model){
-						<div class="movie-item-style-2 movie-item-style-1">
-							<a asp-action="Details" asp-controller="Category" asp-route-Id="@item.Id">
-							<img src="/images/uploads/mv1.jpg" alt="">
-							
-							<div class="mv-item-infor">
-								<h6>oblivion</h6>
-								<p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10</p>
-							</div>
-							</a>
-						</div>	
-						}	
-
-						</div>
-                    </div>	
+					<div id="div1"></div>	
 			</div>
 		</div>
 	</div>

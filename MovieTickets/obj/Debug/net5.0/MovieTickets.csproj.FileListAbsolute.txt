@@ -715,7 +715,6 @@ D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\bin\Debug\net5.0\zh-Hant\Mic
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
-D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.csproj.AssemblyReference.cache
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
@@ -820,3 +819,5 @@ D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_LoginLayout.cshtml.g.cs
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\movieSearch.cshtml.g.cs
 D:\documents\visual studio\MVC_PROJECT\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\CinemaUserDetails.cshtml.g.cs
+D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\CinemaUserDetails.cshtml.g.cs
+D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\movieSearch.cshtml.g.cs

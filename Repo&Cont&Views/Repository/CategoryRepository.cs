@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using MovieTickets.Models;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MovieTickets.Services
 {
@@ -29,31 +27,32 @@ namespace MovieTickets.Services
             return db.Categories.SingleOrDefault(c => c.Name == name);
         }
 
-        public async Task<int> insert(Category newCategory,IFormFile Image)
+        public int insert(Category newCategory,IFormFile Image)
         {
-            
-                if (Image.Length > 0)
+              foreach (var item in Image)
+            {
+                if (item.Length > 0)
                 {
                     using (var stream = new MemoryStream())
                     {
-                        await Image.CopyToAsync(stream);
+                        await item.CopyToAsync(stream);
                         newCategory.Image = stream.ToArray();
                     }
-                
+                }
             }
             db.Categories.Add(newCategory);
             int raws = db.SaveChanges();
             return raws;
         }
-        public async Task<int> update(Category editCategory, int id,IFormFile Image)
+        public int update(Category editCategory, int id,IFormFile Image)
         {
             var category = db.Categories.SingleOrDefault(c => c.Id == id);
             
-                if (Image.Length > 0)
+                if (item.Length > 0)
                 {
                     using (var stream = new MemoryStream())
                     {
-                        await Image.CopyToAsync(stream);
+                        await item.CopyToAsync(stream);
                         editCategory.Image = stream.ToArray();
                     }
                 }
