@@ -819,3 +819,4 @@ D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_LoginLayout.cshtml.g.cs
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\movieSearch.cshtml.g.cs
+D:\documents\visual studio\MVC_PROJECT\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\CinemaUserDetails.cshtml.g.cs

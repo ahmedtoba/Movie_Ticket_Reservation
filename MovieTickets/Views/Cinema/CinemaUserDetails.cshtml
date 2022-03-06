@@ -1,0 +1,31 @@
+﻿@model Cinema
+
+@{
+    Layout="_UserLayout";
+}
+<div class="slider movie-items" >
+	<div class="container">
+		<div class="row">
+<div class="container">
+<div class="card mb-3" style="max-width: 540px; margin-left:30%;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+        @{
+		    var base64 = Convert.ToBase64String(@Model.Image);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+		}
+      <img src="@imgSrc" style="height:50vh; width:50vw;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body" style="margin-top:20%;">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+        <p class="card-text"><small class="text-muted">@Model.Location</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
