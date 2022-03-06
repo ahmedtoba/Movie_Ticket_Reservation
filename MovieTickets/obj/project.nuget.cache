@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vt3nxKmSzq5V0WlGWhU8BAuQVZth1sO8xQw1L1cRN+3N+ZwQzVNerwPnxVFjcgC+TUmIPwomdiHTjFCSM8YrTg==",
+  "dgSpecHash": "2FOGcYr2W2BYQ1QcdeHMDfG4XPCG6b9Rel3OB4OgEiHGQhAFWF0nTCgnptYI3nwEls1P6RMlH74YAsrAqHSYMQ==",
   "success": true,
-  "projectFilePath": "D:\\documents\\visual studio\\MVC_project\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+  "projectFilePath": "D:\\documents\\visual studio\\MVC_PROJECT\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SoftLaptop\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\SoftLaptop\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

@@ -35,7 +35,7 @@ namespace MovieTickets.Controllers
         public IActionResult Cinema(int id)
         {
             Cinema cinema = cinemaRepo.GetById(id);
-            return View(cinema);
+            return View("CinemaUserDetails", cinema);
         }
         //Cinema Details By link Read more Admin
         public IActionResult CinemaDetailsAdmin(int id)
