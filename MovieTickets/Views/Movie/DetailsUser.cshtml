@@ -1,4 +1,5 @@
-﻿@model MovieDetailsViewModel
+﻿@using MovieTickets.ViewModels
+@model MovieDetailsViewModel
 @{
 Layout="~/Views/Shared/_UserLayout.cshtml";
 	ViewData["Title"] = "Details Movie Page";
@@ -35,8 +36,8 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 						<div class="btn-transform transform-vertical">
 							
 								
-							<div><a href="#" class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
-							<div><a href="#" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
+							<div><a asp-action="insert" asp-controller="Cart" asp-route-id="@Model.Movie.Id" class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
+							<div><a asp-action="insert" asp-controller="Cart" asp-route-id="@Model.Movie.Id" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
 							
 						</div>
 						}

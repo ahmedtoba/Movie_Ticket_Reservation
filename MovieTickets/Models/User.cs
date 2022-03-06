@@ -10,8 +10,8 @@ namespace MovieTickets.Models
         public byte[] Image { get; set; }
 
         public virtual List<MovieOrder> MovieOrders { get; set; }
+        public virtual List<Cart> Carts { get; set; }
 
-       
-        
+
     }
 }

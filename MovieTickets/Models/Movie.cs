@@ -26,6 +26,7 @@ namespace MovieTickets.Models
         public virtual Producer Producer { get; set; }
         public virtual List<MovieOrder> MovieOrders { get; set; }
         public virtual List<MovieInCinema> MoviesInCinema { get; set; }
+        public virtual List<Cart> Carts { get; set; }
         public virtual List<MovieActor> MovieActors { get; set; }
 
 
