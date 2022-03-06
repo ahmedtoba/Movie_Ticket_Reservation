@@ -60,7 +60,9 @@ namespace MovieTickets.Services
             
            
             category.Name=editCategory.Name;
-            category.Movies = editCategory.Movies;
+           category.Image=editCategory.Image;
+            category.Description=editCategory.Description;
+
 
 
 
