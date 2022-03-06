@@ -4,10 +4,7 @@
     Layout = "_AdminLayout";
 }
 
-
-
 @*Admin Section Start------------------------------------------------------*@
-
 <div class="container mt-5">
 <table class="table table-hover">
   <thead>
@@ -17,6 +14,7 @@
       <th scope="col">Location</th>
       <th scope="col">Description</th>
       <th scope="col">Action</th>
+      <th scope="col">Details</th>
     </tr>
   </thead>
   <tbody>
@@ -26,15 +24,12 @@
       <td>@i.Name</td>
       <td>@i.Location</td>
       <td>@i.Description</td>
-      <td><a asp-action="InsertForm"> <i class="fa fa-plus-circle"></i></a> <a asp-action="UpdateForm" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a> <a asp-action="CinemaDetailsAdmin" asp-route-id = "@i.Id"><i class="fa fa-arrow-circle-right"></i></a></td>
+      <td><a asp-action="InsertCinema"> <i class="fa fa-plus-circle"></i></a> <a asp-action="UpdateCinema" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a></td>
+      <td><a asp-action="CinemaDetailsAdmin"><i class="fa fa-arrow-circle-right"></i></a></td>
 
     </tr>
 	  }
   </tbody>
 </table>
-@if(Model.Count == 0)
-{
-    <img src="/images/error/notfound.png" style="height:50vh; text-align:center; margin-left:30%;" />
-}
 </div>
 @*Admin Section end -----------------------------------------*@
