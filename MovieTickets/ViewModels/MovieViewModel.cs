@@ -42,9 +42,10 @@ namespace MovieTickets.ViewModels
         [Required(ErrorMessage = "Movie actor(s) is required")]
         public List<int> ActorIds { get; set; }
 
-        [Display(Name = "Select a cinema")]
+        [Display(Name = "Select Cienams")]
         [Required(ErrorMessage = "Movie cinema is required")]
         public List<int> CinemaIds { get; set; }
+        public List<int> Quantities { get; set; }
 
         [Display(Name = "Select a producer")]
         [Required(ErrorMessage = "Movie producer is required")]

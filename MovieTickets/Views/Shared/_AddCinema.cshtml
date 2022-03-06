@@ -1,0 +1,21 @@
+﻿@model MovieViewModel
+
+
+@foreach(var cinema in ViewBag.Cinemas)
+{
+    <div class="row mt-4">
+        <label class="col-3" for="@cinema">@cinema</label>
+        <input type="number" asp-for="Quantities" id="@cinema" class="form-control col-3" />
+    </div>
+}
+
+
+@*
+<div class="form-group row mb-4">
+      <label asp-for="CinemaIds" class="control-label col"></label>
+      <select asp-for="CinemaIds" class="form-control col" asp-items="ViewBag.Cinemas"></select>
+      <input asp-for="Quatities" class="form-control col" />
+      <a class="btn btn-success" onclick="addCinema()">Add Cinema</a>
+      @*<span asp-validation-for="CinemaIds" class="text-danger col"></span>
+</div>
+*@

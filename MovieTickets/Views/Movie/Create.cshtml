@@ -6,8 +6,8 @@
 }
 
 
-<div class="row">
-    <div class="col-md-8 offset-2">
+<div class="container">
+    <div class="row text center">
         <p>
             <h4>Create a new movie</h4>
         </p>
@@ -47,11 +47,7 @@
                             
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label asp-for="CinemaIds" class="control-label"></label>
-                                <select asp-for="CinemaIds" class="form-control" asp-items="ViewBag.Cinemas" multiple></select>
-                                <span asp-validation-for="CinemaIds" class="text-danger"></span>
-                            </div>
+                            
                             <div class="form-group">
                                 <label asp-for="Category_Id" class="control-label"></label>
                                 <select asp-for="Category_Id" class="form-control" asp-items="ViewBag.Categories"></select>
@@ -62,12 +58,20 @@
                                 <select asp-for="Producer_Id" class="form-control" asp-items="ViewBag.Producers"></select>
                                 <span asp-validation-for="Producer_Id" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label asp-for="ActorIds" class="control-label"></label>
-                                <select asp-for="ActorIds" class="form-control"  asp-items="ViewBag.Actors" multiple></select>
+                                <select asp-for="ActorIds" class="form-control"  asp-items="ViewBag.Actors" multiple size="6"></select>
                                 <span asp-validation-for="ActorIds" class="text-danger"></span>
                             </div>
                         </div>
+                        <div class="col-12 row">
+                                <label asp-for="CinemaIds" class="control-label col-md-4"></label>
+                                <div id="cinemas" class="mb-4 col-md-8">
+                                    <select id="selected_cinemas" asp-for="CinemaIds" class="form-control" asp-items="ViewBag.Cinemas"></select>
+                                    <a class="btn btn-success text-light mt-4" onclick="addCinema()">Add Ticket Quantities</a>
+                                </div>
+                                
+                            </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label asp-for="Description" class="control-label"></label>
@@ -94,97 +98,20 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*<form>
-    <input id="name" asp-for="Movie.Name"/>
-    <input id="start_date" asp-for="Movie.StartDate"/>
-    <input id="end_date" asp-for="Movie.EndDate"/>
-    <input id="description" asp-for="Movie.Description"/>
-    <input id="price" asp-for="Movie.Price"/>
-    <input id="rate" asp-for="Movie.Rate"/>
-    
-    <select id="producer" asp-for="Movie.Producer_Id" asp-items="producer">
-        <option value="0" disabled>Select producer</option>
-    </select>
-    
-    <select id="cinemas" asp-for="Cinemas" asp-items="cinemas" multiple>
-        <option value="0" disabled>Select Cinemas</option>
-    </select>
-    <input asp-for="Movie.Cat_Id"/>
-
-    <button class="btn btn-primary" onclick="add(event)">Add Movie</button>
-</form>
-
 <script>
-
-function add(e) {
-            e.preventDefault();
-            var checkedCinemas = document.querySelectorAll("#cinemas :checked");
-            var cinemas = [...checkedCinemas].map(option => parseInt(option.value));
-            var data= {
-                Movie : {
-                    Id: 0,
-                    Name: $("#name").val(),
-                    StartDate: $("#start_date").val(),
-                    EndDate: $("#end_date").val(),
-                    Description: $("#description").val(),
-                    Price: 356,
-                    Rate: 4.5,
-                    Producer_Id: 1,
-                },
-                cinemaIds: cinemas
-
-
-            }
-            console.log(data)
-
-            $.ajax({
-                url: '/Movie/SaveAdd',
-                dataType: 'json',
-                method: 'POST',
-                data: JSON.stringify({jsonData: (data)}),
-                contentType: 'application/json',
-                success: function (data) {
-                    alert(JSON.stringify(data));
-                },
-                error: function (er) {
-                    alert(er.statusText)
-                }
-            })
-
-        }
+    function addCinema() {
+        var cinemas = $("#selected_cinemas").val();
+        console.log(cinemas)
+        $.ajax({
+                    url: '/Movie/AddCinema',
+                    method: 'POST',
+                    data: {cinemas: cinemas},
+                    success: function (result) {
+                        $("#cinemas").append(result);
+                    },
+                    error: function (er) {
+                        alert(er.statusText)
+                    }
+                })
+    }
 </script>
-
-
-
-
-
-
-*@

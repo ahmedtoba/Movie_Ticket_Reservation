@@ -91,12 +91,13 @@ public class MovieRepository : IMovieRepository
             });
         }
         //adding to cinema movies table
-        foreach (var id in movievm.CinemaIds)
+        for (var i = 0; i < movievm.CinemaIds.Count; i++)
         {
             db.MovieInCinemas.Add(new MovieInCinema()
             {
+                Quantity = movievm.Quantities[i],
                 MovieId = newGuid,
-                CinemaId = id
+                CinemaId = movievm.CinemaIds[i]
             });
         }
 

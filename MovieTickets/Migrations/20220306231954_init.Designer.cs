@@ -10,8 +10,8 @@ using MovieTickets.Models;
 namespace MovieTickets.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20220305204755_cart")]
-    partial class cart
+    [Migration("20220306231954_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

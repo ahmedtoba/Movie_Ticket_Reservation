@@ -237,5 +237,18 @@ namespace MovieTickets.Controllers
         // POST: MovieController/Delete/5
 
 
+        //partial view for adding quantites of tickets of the movie for each cinema
+        [HttpPost]
+        public IActionResult AddCinema(List<string> cinemas)
+        {
+            var cinemaNames = new List<string>();
+            foreach (string id in cinemas)
+            {
+                cinemaNames.Add(cinemaRepo.GetById(int.Parse(id)).Name);
+            }
+            ViewBag.Cinemas = cinemaNames;
+            return PartialView("_AddCinema", new MovieViewModel());
+        }
+
     }
 }

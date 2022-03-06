@@ -9328,19 +9328,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SoftLaptop\\.nuget\\packages\\": {}
+    "C:\\Users\\Ahmed\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\documents\\visual studio\\MVC_project\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+      "projectUniqueName": "C:\\GraduationProject\\MovieTickets\\MovieTickets.csproj",
       "projectName": "MovieTickets",
-      "projectPath": "D:\\documents\\visual studio\\MVC_project\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
-      "packagesPath": "C:\\Users\\SoftLaptop\\.nuget\\packages\\",
-      "outputPath": "D:\\documents\\visual studio\\MVC_project\\Movie_Ticket_Reservation\\MovieTickets\\obj\\",
+      "projectPath": "C:\\GraduationProject\\MovieTickets\\MovieTickets.csproj",
+      "packagesPath": "C:\\Users\\Ahmed\\.nuget\\packages\\",
+      "outputPath": "C:\\GraduationProject\\MovieTickets\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\SoftLaptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9409,6 +9409,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.12, 5.0.12]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -9417,7 +9423,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
