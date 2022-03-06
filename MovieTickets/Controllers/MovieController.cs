@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MovieTickets.Models;
 using MovieTickets.Services;
 using MovieTickets.ViewModels;
@@ -56,6 +57,38 @@ namespace MovieTickets.Controllers
             };
 
             return View("IndexUser", mivm);
+        }
+        //searching by categories-------------------------
+        [HttpGet]
+        public async Task<IActionResult> filterSearch(string MovieName)
+        {
+            ViewData["MovieName"] = MovieName;
+            var movies = new MovieItemViewModel()
+            {
+                Movies = db.Movies.Select(x => x).ToList(),
+
+            };
+            var movie = movies.Movies;
+            if (!string.IsNullOrEmpty(MovieName))
+            {
+                movie = movie.Where(c => c.Name.Contains(MovieName)).ToList();
+            }
+            return View(movie);
+
+        }
+
+        //search by name or actor-------------------
+        [HttpGet]
+        public async Task<IActionResult> movieSearch(string Keyword)
+        {
+            ViewData["searching"] = Keyword;
+            var movies = db.MovieActors.Select(x => x);
+            if (!string.IsNullOrEmpty(Keyword))
+            {
+                movies = movies.Where(c => c.Actor.Name.Contains(Keyword) || c.Movie.Name.Contains(Keyword));
+
+            }
+            return View(await movies.AsNoTracking().ToListAsync());
         }
 
         public ActionResult GetMoviesAdmin()

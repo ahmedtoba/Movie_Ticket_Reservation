@@ -1,10 +1,9 @@
-﻿@model List<Cinema>
-
-
-@*User Section start----------------------------------------*@
+﻿@model List<MovieActor>
 @{
     Layout = "_UserLayout";
 }
+
+
 <div class="slider movie-items">
 	<div class="container">
 	<div class="container">
@@ -12,7 +11,7 @@
 <div class="col-md-12">
 				
 				<div class="title-hd">
-					<h2>OUR CINEMAS</h2>
+					<h2>Movies</h2>
 				</div>
 				<div class="tabs">
 					<ul class="tab-links-2">
@@ -34,7 +33,7 @@
 
 					            			<div class="mv-img">
 												@{
-													   var base64 = Convert.ToBase64String(@i.Image);
+													   var base64 = Convert.ToBase64String(@i.Movie.Image);
 														var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 												}
 					            				<img src="@imgSrc" alt="" style="width:inherit; height:50vh">
@@ -43,14 +42,18 @@
 					            				<a  asp-action="Cinema" asp-route-id=@i.Id asp-controller="Cinema"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
-					            				<h6>@i.Name</h6>
+					            				<h6>@i.Movie.Name</h6>
 					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
 					            			</div>
 					            		</div>
 				            			
 				            		</div>
 										}
+										
 				            	</div>
+								@if(Model.Count == 0 ){
+											<img src="/images/error/notfound.png" style="height:75vh;" />
+										}
 				            </div>
 			       	 	</div>
 				    </div>
@@ -60,5 +63,4 @@
 			</div>
 			</div>
 			</div>
-@*User Section end---------------------------------------------------------*@
-
+	

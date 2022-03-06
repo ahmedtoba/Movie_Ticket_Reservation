@@ -1,5 +1,4 @@
-﻿@using MovieTickets.ViewModels
-
+﻿
 @model MovieItemViewModel
 @{
 Layout="~/Views/Shared/_UserLayout.cshtml";
@@ -54,11 +53,11 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 				<div class="sidebar">
 					<div class="searh-form">
 						<h4 class="sb-title">Search for movie</h4>
-						<form class="form-style-1" action="#">
+						<form class="form-style-1" asp-action="Index" asp-controller="Movie" method="get">
 							<div class="row">
 								<div class="col-md-12 form-it">
 									<label>Movie name</label>
-									<input type="text" placeholder="Enter keywords">
+									<input type="search" value=@ViewData["MovieName"] name="MovieName"  placeholder="Movie Name">
 								</div>
 								<div class="col-md-12 form-it">
 									<label>Category</label>
@@ -102,9 +101,11 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 						</form>
 					</div>
 					
-					
+				
 				</div>
 			</div>
 	 </div>
    </div>
+ 
 </div>
+
