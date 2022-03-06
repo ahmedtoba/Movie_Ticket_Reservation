@@ -1,5 +1,7 @@
-﻿using MovieTickets.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MovieTickets.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MovieTickets.Services
 {
@@ -10,8 +12,8 @@ namespace MovieTickets.Services
         List<Category> GetAll();
         Category GetById(int id);
         Category GetByName(string name);
-        int insert(Category newCinema);
-        int update(Category editMovie, int id);
+        Task<int> insert(Category newCinema,IFormFile Image);
+        Task<int> update(Category editMovie, int id, IFormFile Image);
         
 
     }
