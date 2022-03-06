@@ -12,6 +12,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using MovieTickets.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using payment.PaymentData;
+using Stripe;
 
 namespace MovieTickets
 {
@@ -28,6 +30,7 @@ namespace MovieTickets
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
 
             services.AddDbContext<MovieContext>(options =>
                             options.UseSqlServer(Configuration.GetConnectionString("ConnectDb")));
@@ -59,7 +62,10 @@ namespace MovieTickets
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+
+            StripeConfiguration.ApiKey = "sk_test_51KaLSED25I1FdsuBSpVWATesW9D7o66fKczZ0kPHu1VcwK3NE5BlNwV97iXE2cytRCBxX1bxsyXQwdyNnhmN61bM00AJCInQSA";
+            
+                if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
 

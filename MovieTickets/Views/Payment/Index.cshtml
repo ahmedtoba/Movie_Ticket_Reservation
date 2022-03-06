@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.Extensions.Options
+@inject IOptions<payment.PaymentData.StripeSettings> Stripe
+@{
+    Layout = "_Layout";
+}
+
+<div class="text-center">
+    <form asp-action="Processing" asp-controller="Payment" method="post">
+        <article>
+            <label>Amount: $ @Math.Round(1555.5, 2)</label>
+        </article>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="@Stripe.Value.PublishableKey"
+                data-amount="555.44"
+                data-name="[Deveducate]"
+                data-description="Flower payments"
+               
+                data-locale="en"
+                data-zip-code="true">
+        </script>
+    </form>
+</div>
