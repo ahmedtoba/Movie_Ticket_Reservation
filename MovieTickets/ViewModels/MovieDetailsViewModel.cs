@@ -5,9 +5,9 @@ namespace MovieTickets.ViewModels
 {
     public class MovieDetailsViewModel
     {
-        public Movie Movie { get; set; }
-        public List<MovieActor> MovieActors { get; set; }
-        public List<MovieInCinema> MoviesInCinemas { get; set; }
+        public virtual Movie Movie { get; set; }
+        public virtual List<MovieActor> MovieActors { get; set; }
+        public virtual List<MovieInCinema> MoviesInCinemas { get; set; }
 
     }
 }

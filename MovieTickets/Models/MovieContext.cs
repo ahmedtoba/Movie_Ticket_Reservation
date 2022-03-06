@@ -13,6 +13,7 @@ namespace MovieTickets.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<MovieActor> MovieActors { get; set; }
         public virtual DbSet<MovieInCinema> MovieInCinemas { get; set; }
+        public virtual DbSet<Cart> Cart { get; set; }
         public virtual DbSet<MovieOrder> MovieOrders { get; set; }
         
         public MovieContext() { }

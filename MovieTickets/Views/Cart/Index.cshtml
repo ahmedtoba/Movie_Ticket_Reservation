@@ -1,0 +1,46 @@
+﻿@model List<Cart>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="hero common-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1> Cart</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single movie_list">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-8 col-sm-12 col-xs-12">
+			@foreach(var item in Model){
+				<div class="movie-item-style-2">
+					<img src="/images/uploads/mv2.jpg" alt="">
+					<div class="mv-item-infor">
+						<h6><a href="moviesingle.html">@item.Movie.Name</a></h6>
+						<p class="rate"><i class="fa-solid fa-circle-dollar"></i><span>@item.Movie.Price</span><span> L.E</span></p>
+						<p class="describe">As Steve Rogers struggles to embrace his role in the modern world, he teams up with a fellow Avenger and S.H.I.E.L.D agent, Black Widow, to battle a new threat...</p>
+						<p class="run-time">   <span> </span> <span></span></p>
+						<p><a href="#">Buy Ticket</a></p>
+						
+					 
+				
+						</div>
+				</div>
+				}
+			
+				</div>
+				</div>
+				</div>
+				</div>
