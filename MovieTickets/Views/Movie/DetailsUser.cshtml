@@ -36,9 +36,9 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 						<div class="btn-transform transform-vertical">
 							
 								
-							<div><a asp-action="insert" asp-controller="Cart" asp-route-id="@Model.Movie.Id" class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
-							<div><a asp-action="insert" asp-controller="Cart" asp-route-id="@Model.Movie.Id" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
-							
+							<div><a onclick="getData()" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
+							<div><a onclick="getData()" class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
+						
 						</div>
 						}
 					</div>
@@ -112,7 +112,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 						        <div id="cast" class="tab">
 						        	<div class="row">
 						            	
-					       	 			
+					       	 			<input id="id" asp-for="Movie.Id" hidden/>
 										<!-- //== -->
 					       	 			<div class="title-hd-sm">
 											<h4>Director</h4>
@@ -150,7 +150,24 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 											}
 										</div>
 										<!-- //== -->
-										
+<script>
+	   function getData(){
+        var id=$("#id").val();
+        $.ajax(
+            {
+                url: "/Cart/Insert",//?stdid="+id,
+                data:{"id":id},
+                success: function(result){
+                 
+                // alert(result);
+                //document.getElementById("div1").innerHTML=result;
+                    //dom
+                }
+            }
+         );
+    }
+	
+	</script>
 										</div>
 						            </div>
 					       	 	</div>
@@ -163,4 +180,10 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 			</div>
 		</div>
 	</div>
-
+	
+	@section Scripts{
+<!--JQuery PAckage -->
+ 
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
