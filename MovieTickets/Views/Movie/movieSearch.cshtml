@@ -1,4 +1,4 @@
-﻿@model List<MovieActor>
+﻿@model List<Movie>
 @{
     Layout = "_UserLayout";
 }
@@ -30,19 +30,21 @@
 				            		<div class="slide-it">
 										
 											<div class="movie-item">
-
+												@if(@i.Image != null){
+											
 					            			<div class="mv-img">
 												@{
-													   var base64 = Convert.ToBase64String(@i.Movie.Image);
+													   var base64 = Convert.ToBase64String(@i.Image);
 														var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 												}
 					            				<img src="@imgSrc" alt="" style="width:inherit; height:50vh">
 					            			</div>
+												}
 					            			<div class="hvr-inner">
 					            				<a  asp-action="Cinema" asp-route-id=@i.Id asp-controller="Cinema"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
-					            				<h6>@i.Movie.Name</h6>
+					            				<h6>@i.Name</h6>
 					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
 					            			</div>
 					            		</div>

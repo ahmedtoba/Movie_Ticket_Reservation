@@ -63,17 +63,25 @@ namespace MovieTickets.Controllers
         public async Task<IActionResult> filterSearch(string MovieName)
         {
             ViewData["MovieName"] = MovieName;
-            var movies = new MovieItemViewModel()
-            {
-                Movies = db.Movies.Select(x => x).ToList(),
-
-            };
-            var movie = movies.Movies;
+           
             if (!string.IsNullOrEmpty(MovieName))
             {
-                movie = movie.Where(c => c.Name.Contains(MovieName)).ToList();
+                var movies = new MovieItemViewModel()
+                {
+                    Movies = db.Movies.Where(c => c.Name.Contains(MovieName)).ToList(),
+                    Producers = produerService.GetAll(),
+                    Cinemas = cinemaRepo.GetAll(),
+                    Actors = actorService.GetAll(),
+                    Categories = categoryRepo.GetAll(),
+                    MovieActors = movieactorService.GetAll()
+                };
+
+                //movie = movie;
+                return View("IndexUser", movies);
+
+
             }
-            return View(movie);
+            return Content("nothing");
 
         }
 
@@ -82,10 +90,10 @@ namespace MovieTickets.Controllers
         public async Task<IActionResult> movieSearch(string Keyword)
         {
             ViewData["searching"] = Keyword;
-            var movies = db.MovieActors.Select(x => x);
+            var movies = db.Movies.Select(x => x);
             if (!string.IsNullOrEmpty(Keyword))
             {
-                movies = movies.Where(c => c.Actor.Name.Contains(Keyword) || c.Movie.Name.Contains(Keyword));
+                movies = movies.Where(c => c.Name.Contains(Keyword));
 
             }
             return View(await movies.AsNoTracking().ToListAsync());
