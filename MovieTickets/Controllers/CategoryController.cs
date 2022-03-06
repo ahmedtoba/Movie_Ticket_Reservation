@@ -50,11 +50,11 @@ namespace MovieTickets.Controllers
         // To add new movie
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category newCategory)
+        public ActionResult Create(Category newCategory,IFormFile Image)
         {
             if (ModelState.IsValid)
             {
-                int numOfRowsInsertion = categoryRepo.insert(newCategory);
+                categoryRepo.insert(newCategory, Image);
                 return View();
             }
 
@@ -66,11 +66,11 @@ namespace MovieTickets.Controllers
         // To Edit any Movie
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Category editCategory, int id)
+        public ActionResult Edit(Category editCategory, int id,IFormFile Image)
         {
             if (ModelState.IsValid)
             {
-                int numOfRowsUpdated = categoryRepo.update(editCategory, id);
+                 categoryRepo.update(editCategory, id, Image);
                 return View();
             }
             return RedirectToAction();
