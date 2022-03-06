@@ -1,11 +1,14 @@
-﻿@model Cinema
+﻿
+
+
+@model Category
 
 @{
     Layout = "_AdminLayout";
 }
 
 <div class="container mt-5">
-<form asp-action = "UpdateCinema" asp-controller= "Cinema" asp-route-id="@Model.Id" class="w-50 m-auto" method= "post" enctype= "multipart/form-data" >
+<form asp-action = "UpdateCategory" asp-controller= "Category"  class="w-50 m-auto" method= "post" enctype= "multipart/form-data" >
     <div class="container">
    <div class="picture-container">
       <div class="picture">
@@ -25,19 +28,21 @@
         <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name" >
     </div>
-    <div>
-        <label asp-for="Location"></label>
-        <input class="form-control" asp-for="Location">
+     <div class="mb-3">
+        <label asp-for="Image" class="form-label"></label>
+        <input asp-for="Image" class="form-control" type="file" accept="image/*" />
+     
     </div>
-      <div>
+  <div>
         <label asp-for="Description"></label>
         <textarea class="form-control" asp-for="Description"></textarea>
     </div>
+  
    
  
       <div class="d-flex justify-content-between mt-3">
         <input type= "submit" value = "Update" class="btn btn-success ps-5 pe-5"  />
-        <a asp-action="AdminCinemas" class="btn btn-danger ">Cancel</a>
+        <a asp-action="AdminCategories" class="btn btn-danger ">Cancel</a>
 
     </div>
 

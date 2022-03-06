@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using MovieTickets.Models;
 using MovieTickets.Services;
 using MovieTickets.ViewModels;
@@ -58,6 +57,7 @@ namespace MovieTickets.Controllers
 
             return View("IndexUser", mivm);
         }
+<<<<<<< HEAD
         //searching by categories-------------------------
         [HttpGet]
         public async Task<IActionResult> filterSearch(string MovieName)
@@ -98,6 +98,8 @@ namespace MovieTickets.Controllers
             }
             return View(await movies.AsNoTracking().ToListAsync());
         }
+=======
+>>>>>>> 16ac73ffb7ed4f4591e070670ffbf15c5da1e3a2
 
         public ActionResult GetMoviesAdmin()
         {

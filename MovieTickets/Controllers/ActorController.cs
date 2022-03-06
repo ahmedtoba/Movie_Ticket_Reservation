@@ -18,11 +18,17 @@ namespace MovieTickets.Controllers
 
         }
 
-
+        //get all actors for users 
         public ActionResult Index()
         {
             List<Actor> Actors = actorRepository.GetAll();
-            return View();
+            return View("AllActors", Actors);
+        }
+        //get all actors for admin
+        public IActionResult AdminActors()
+        {
+            List<Actor> Actors = actorRepository.GetAll();
+            return View("AdminActors", Actors);
         }
 
 
@@ -32,16 +38,36 @@ namespace MovieTickets.Controllers
             Actor Actors = actorRepository.GetById(id);
             return View("DetailsUser", Actors);
         }
+        //The details of actors for admin
+        public ActionResult ActorsDetailsAdmin(int id)
+        {
+
+            Actor Actors = actorRepository.GetById(id);
+            return View("ActorsDetailsAdmin", Actors);
+        }
+
+       
+
+        //Details of actors for users---------------------------------- 
+        public IActionResult Actor(int id)
+        {
+            Actor Actor = actorRepository.GetById(id);
+            return View(Actor);
+        }
+        //Searching-------------------------------------
+       public ActionResult ActorName(string name)
+        {
+
+            Actor Actors = actorRepository.GetByName(name);
+            return View(Actors);
+        }
 
 
-
-        //public ActionResult Details(string name)
-        //{
-
-        //    Actor Actors = actorRepository.GetByName(name);
-        //    return View();
-        //}
-
+        //insert actor
+        public IActionResult InsertActorForm()
+        {
+            return View("InsertActorForm");
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Actor NewActor,List<IFormFile> Image)
@@ -52,8 +78,14 @@ namespace MovieTickets.Controllers
                 return View();
             }
 
-            return RedirectToAction();
+            return RedirectToAction("Actor");
         }
+        //--------------------------------------------------------------------------
+        //public IActionResult InsertActor(Actor InsertActor, IFormFile Image)
+        //{
+        //    actorRepository.insert(InsertActor, Image);
+        //    return View("Actor");
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Actor EditActor, int id, List<IFormFile> Image)
@@ -63,9 +95,20 @@ namespace MovieTickets.Controllers
                Task<int> numOfRowsUpdated = actorRepository.update(EditActor, id, Image);
                 return View();
             }
-            return RedirectToAction();
+            return RedirectToAction("Actor");
 
         }
+        //Update actor
+        public IActionResult UpdateActorForm()
+        {
+            return View("UpdateActorForm");
+        }
+        //------------------------------------------------------------
+        //public IActionResult UpdateActor(Actor EditActor, int id, IFormFile Image)
+        //{
+        //    actorRepository.update(EditActor, id, Image);
+        //    return View("Actor");
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -73,6 +116,12 @@ namespace MovieTickets.Controllers
         {
             int numOfRowsDeleted = actorRepository.delete(id);
             return View();
+        }
+        //Delete Actor
+        public IActionResult DeleteActor(int id)
+        {
+            actorRepository.delete(id);
+            return View("Index");
         }
     }
 }

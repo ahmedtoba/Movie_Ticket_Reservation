@@ -26,30 +26,363 @@
 				        <div id="tab22" class="tab active">
 				           <div class="row">
 				            	<div class="slick-multiItem h-100">
-									@foreach(var i in Model)
-										{
 				            		<div class="slide-it">
-										
+										@foreach(var i in Model)
+										{
 											<div class="movie-item">
 
 					            			<div class="mv-img">
-												@{
-													   var base64 = Convert.ToBase64String(@i.Image);
-														var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-												}
-					            				<img src="@imgSrc" alt="" style="width:inherit; height:50vh">
+					            				<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
 					            				<a  asp-action="Cinema" asp-route-id=@i.Id asp-controller="Cinema"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
+<<<<<<< HEAD
 					            				<h6 class="text-light" style="color:white;">@i.Name</h6>
+=======
+					            				<h6><a href="#">Interstellar</a></h6>
+>>>>>>> 16ac73ffb7ed4f4591e070670ffbf15c5da1e3a2
 					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
 					            			</div>
 					            		</div>
+										}
 				            			
 				            		</div>
-										}
+									<div class="slide-it">
+										<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The revenant</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+									</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Die hard</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The walk</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+										<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item2.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The revenant</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+									</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Die hard</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The walk</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+										<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The revenant</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+									</div>
+				            	</div>
+				            </div>
+				        </div>
+				        <div id="tab23" class="tab">
+				        	<div class="row">
+				            	<div class="slick-multiItem">
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+										<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item2.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The revenant</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+									</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Die hard</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The walk</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+										<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The revenant</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+									</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Die hard</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The walk</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Die hard</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            	</div>
+				            </div>
+			       	 	</div>
+			       	 	 <div id="tab24" class="tab">
+				        	<div class="row">
+				            	<div class="slick-multiItem">
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+										<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The revenant</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+									</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Die hard</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">The walk</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+				            		<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Die hard</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
 				            	</div>
 				            </div>
 			       	 	</div>

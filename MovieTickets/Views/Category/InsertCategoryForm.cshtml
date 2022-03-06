@@ -1,34 +1,35 @@
-﻿@model Cinema
+﻿@model Category
 
 @{
     Layout = "_AdminLayout";
 }
 
 <div class="container mt-5">
-<form asp-action = "UpdateCinema" asp-controller= "Cinema" asp-route-id="@Model.Id" class="w-50 m-auto" method= "post" enctype= "multipart/form-data" >
+<form asp-action = "InsertCategory" asp-controller= "Category" class="w-50 m-auto" method= "post" enctype= "multipart/form-data" >
     <div class="container">
    <div class="picture-container">
       <div class="picture">
-          @*image proplem ==================================================*@
-           
+            @*image proplem ===================================================================*@
           <img src = "/images/logo1.png" class="picture-src" style="height: 100%;" id="ProfileImg">
           <input name="imagsss" accept="image/*" type="file" class="picfile" id="fileInput" onchange="loadFile(event)">
                      @*<input type="file" asp-for="Image" id="Image" onchange="readURL(this);" />*@
-          @*image proplem ==================================================*@
-
+          @*image proplem =========================================================================*@
 
        </div>
        </div>
  </div>
+ 
     <div>
 
         <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name" >
     </div>
-    <div>
-        <label asp-for="Location"></label>
-        <input class="form-control" asp-for="Location">
+      <div class="mb-3">
+        <label asp-for="Image" class="form-label"></label>
+        <input asp-for="Image" class="form-control" type="file" accept="image/*" />
+      
     </div>
+
       <div>
         <label asp-for="Description"></label>
         <textarea class="form-control" asp-for="Description"></textarea>
@@ -36,8 +37,8 @@
    
  
       <div class="d-flex justify-content-between mt-3">
-        <input type= "submit" value = "Update" class="btn btn-success ps-5 pe-5"  />
-        <a asp-action="AdminCinemas" class="btn btn-danger ">Cancel</a>
+        <input type= "submit" value = "Insert" class="btn btn-success ps-5 pe-5"  />
+        <a asp-action="AdminCategories" class="btn btn-danger ">Cancel</a>
 
     </div>
 
