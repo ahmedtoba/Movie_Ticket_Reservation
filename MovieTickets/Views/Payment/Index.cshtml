@@ -1,0 +1,33 @@
+﻿
+@using Microsoft.Extensions.Options
+@inject IOptions<payment.PaymentData.StripeSettings> Stripe
+@model MovieOrder
+@{
+    Layout =  "_Layout";
+    ViewData["Title"] = "Payment";
+}
+
+<div class="text-center">
+
+
+
+    <form asp-action="Processing" asp-controller="Payment" method="post">
+
+        <!---<div class="form-group">
+                                <!--<label asp-for="Quantity" class="control-label"></label>
+                                <label>Enter the number of Tickets </label>
+                                <input asp-for="Quantity" type="number" class="form-control" />
+                                
+                            </div>--->
+       
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="@Stripe.Value.PublishableKey"
+                data-amount=ViewBag["AmountPaid"]
+                data-name="[Pay For tickets]"
+                data-description="@Model.Movie.Name"
+               
+                data-locale="en"
+                data-zip-code="true">
+        </script>
+    </form>
+</div>
