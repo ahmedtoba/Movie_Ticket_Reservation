@@ -1,4 +1,5 @@
-﻿using MovieTickets.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using MovieTickets.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -27,10 +28,12 @@ namespace MovieTickets.ViewModels
 
         [Display(Name = "Movie start date")]
         [Required(ErrorMessage = "Start date is required")]
+        [Remote(action:"StartDate", controller:"Validation", ErrorMessage ="Start Date Should not be before today" )]
         public DateTime StartDate { get; set; }
 
         [Display(Name = "Movie end date")]
         [Required(ErrorMessage = "End date is required")]
+        [Remote(action: "EndDate", controller: "Validation", AdditionalFields = "StartDate", ErrorMessage = "End Date Should be After Start Date")]
         public DateTime EndDate { get; set; }
 
         [Display(Name = "Select a category")]
@@ -51,6 +54,6 @@ namespace MovieTickets.ViewModels
         [Required(ErrorMessage = "Movie producer is required")]
         public int Producer_Id { get; set; }
         public byte[] Image { get; set; }
-
+        public string Trailer {get; set; }
     }
 }
