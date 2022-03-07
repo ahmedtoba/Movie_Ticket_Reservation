@@ -1243,3 +1243,4 @@ C:\MovieTicketsProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Mo
 C:\MovieTicketsProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\ref\MovieTickets.dll
 C:\MovieTicketsProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.pdb
 C:\MovieTicketsProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.genruntimeconfig.cache
+C:\MovieTicketsProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Home\Admin.cshtml.g.cs

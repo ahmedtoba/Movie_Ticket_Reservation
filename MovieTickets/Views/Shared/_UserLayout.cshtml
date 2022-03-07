@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 
 <html lang="en" class="no-js">
 
@@ -34,7 +36,9 @@
     </div>
 </div>
 <!--end of preloading-->
-<!--login form popup-->
+
+
+@*<!--login form popup-->
 <div class="login-wrapper" id="login-content">
     <div class="login-content">
         <a href="#" class="close">x</a>
@@ -113,7 +117,7 @@
     </div>
 </div>
 <!--end of signup form popup-->
-
+*@
 <!-- BEGIN | Header -->
 <header class="ht-header">
 	<div class="container">
@@ -151,14 +155,28 @@
 							<a class="btn btn-default dropdown-toggle lv1" asp-action="index" asp-controller="cinema">
 							Our Cinemas 
 							</a>
-							
 						</li>
+						@if(User.Identity.IsAuthenticated && User.IsInRole("Admin")){
+							<li class="dropdown first">
+								<a class="btn btn-default dropdown-toggle lv1" asp-action="Admin" asp-controller="Home">
+								Admin DashBoard 
+								</a>
+							</li>
+						}
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-						            
-						
-						<li class="loginLink"><a href="#">LOG In</a></li>
-						<li class="btn signupLink"><a href="#">sign up</a></li>
+						@if(User.Identity.IsAuthenticated){
+							<li><a href="">
+								
+								<img src="~/images/placeholder.jpg" alt=""
+								style="width:50px; height:50px; border-radius: 50%; object-fit:cover"/>
+								</a></li>
+							<li class="btn signupLink"><a asp-controller="Account" asp-action="LogOut">LOG Out</a></li>
+						} else
+						{
+							<li class="loginLink"><a asp-controller="Account" asp-action="Login">LOG In</a></li>
+							<li class="btn signupLink"><a asp-controller="Account" asp-action="SignUp">Sign Up</a></li>
+						}
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MovieTickets.Controllers
 {
@@ -25,6 +26,7 @@ namespace MovieTickets.Controllers
             return View("AllCinemas", cinemas);
         }
         //show all Cinemas User View--------------
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminCinemas()
         {
             List<Cinema> cinemas = cinemaRepo.GetAll();
@@ -38,6 +40,7 @@ namespace MovieTickets.Controllers
             return View("CinemaUserDetails", cinema);
         }
         //Cinema Details By link Read more Admin
+        [Authorize(Roles = "Admin")]
         public IActionResult CinemaDetailsAdmin(int id)
         {
             Cinema cinema = cinemaRepo.GetById(id);
@@ -59,12 +62,14 @@ namespace MovieTickets.Controllers
         }
         //[admin Section]=========================================================
         //insert From---------------------------------
+        [Authorize(Roles = "Admin")]
         public IActionResult InsertForm()
         {
 
             return View("Cinema_Insert_Form", new Cinema());
         }
         //insert---------------------------------
+        [Authorize(Roles = "Admin")]
         public IActionResult InsertCinema(Cinema InsertCinema, IFormFile Image)
         {
             if (ModelState.IsValid)
@@ -83,6 +88,7 @@ namespace MovieTickets.Controllers
             return View("CinemaUpdateForm", cinema);
         }
         //Update---------------------------------
+        [Authorize(Roles = "Admin")]
         public IActionResult UpdateCinema(Cinema EditCin, int id, IFormFile Image)
         {
             if (ModelState.IsValid)
@@ -94,6 +100,7 @@ namespace MovieTickets.Controllers
         }
         //------------------------------------------
         //Delete----------------------------------
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             cinemaRepo.delete(id);
@@ -101,6 +108,7 @@ namespace MovieTickets.Controllers
         }
         //Searching by name or location----------------------------
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AdminCinemas(string Keyword)
         {
             ViewData["searching"] = Keyword;

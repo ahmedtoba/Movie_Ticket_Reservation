@@ -34,7 +34,7 @@ using MovieTickets.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"76c8f09a08acd33997a4731333d006734f7992ff", @"/Views/Cinema/CinemaDetailsAdmin.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"079eb81a01d1a792c4bbac455db6644dedc4b68f", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ecf7c47bfdc3aac9156c693582efef788effc3d7", @"/Views/_ViewImports.cshtml")]
     public class Views_Cinema_CinemaDetailsAdmin : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Cinema>
     {
         #pragma warning disable 1998

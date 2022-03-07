@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieTickets.Models;
@@ -29,13 +30,17 @@ namespace MovieTickets.Controllers
             return View( Actors);
         }
         //get all actors for admin
+        [Authorize(Roles="Admin")]
         public IActionResult AdminActors()
         {
             List<Actor> Actors = actorRepository.GetAll();
             return View("AdminActors", Actors);
         }
         //searching----------------------------------------------
+
         [HttpGet]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> AdminActors(string Keyword)
         {
             ViewData["searching"] = Keyword;
@@ -57,6 +62,7 @@ namespace MovieTickets.Controllers
             return View("DetailsUser", Actors);
         }
         //The details of actors for admin
+        [Authorize(Roles = "Admin")]
         public ActionResult ActorsDetailsAdmin(int id)
         {
 
@@ -88,6 +94,7 @@ namespace MovieTickets.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Actor NewActor,List<IFormFile> Image)
         {
             if (ModelState.IsValid)
@@ -123,7 +130,7 @@ namespace MovieTickets.Controllers
 
         }
         //Update actor
-       
+
         //------------------------------------------------------------
         //public IActionResult UpdateActor(Actor EditActor, int id, IFormFile Image)
         //{
@@ -131,9 +138,10 @@ namespace MovieTickets.Controllers
         //    return View("Actor");
         //}
 
-        
-       
+
+
         //Delete Actor
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             actorRepository.delete(id);
