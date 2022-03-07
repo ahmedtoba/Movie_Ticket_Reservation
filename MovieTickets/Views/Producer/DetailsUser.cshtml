@@ -4,7 +4,7 @@
     Layout="~/Views/Shared/_UserLayout.cshtml";
 	
 		var base64 = "";
-		string imgsrc ;
+		string imgsrc="" ;
 	
 }
 <div class="hero hero3">
@@ -29,9 +29,9 @@
 				<div class="mv-ceb">
 					@if(Model.Image!=null){
 					base64=	Convert.ToBase64String(@Model.Image);
-                imgsrc= string.Format("data:images/*;base64,{0}", base64);}
+                imgsrc =string.Format("data:images/*;base64,{0}", base64);}
 					
-					<img src="imgsrc" alt="">
+					<img src="@imgsrc" alt="">
 					}
 				</div>
 			</div>
@@ -67,10 +67,10 @@
 														base64=	Convert.ToBase64String(@item.Image);
                                                 imgsrc= string.Format("data:images/*;base64,{0}", base64);}
 														
-														<img src="imgsrc"  style="width:40px ">
+														<img src="@imgsrc"  style="width:40px ">
 														}
 														<div>
-															<a href="#">@item.Name </a>
+															<a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">@item.Name </a>
 														
 														</div>
 														
@@ -87,6 +87,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 	</div>

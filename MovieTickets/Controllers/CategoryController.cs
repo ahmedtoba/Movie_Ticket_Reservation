@@ -34,17 +34,17 @@ namespace MovieTickets.Controllers
         {
 
             Category category = categoryRepo.GetById(id);
-            return View();
+            return View("DetailsUser", category);
         }
 
 
         //To get Category by name
-        public ActionResult Details(string name)
-        {
+        //public ActionResult Details(string name)
+        //{
 
-            Category category = categoryRepo.GetByName(name);
-            return View("DetailsUser");
-        }
+        //    Category category = categoryRepo.GetByName(name);
+        //    return View("DetailsUser");
+        //}
 
 
         // To add new movie

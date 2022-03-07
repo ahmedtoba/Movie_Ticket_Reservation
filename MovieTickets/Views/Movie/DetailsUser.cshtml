@@ -23,21 +23,23 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 		<div class="row ipad-width2">
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="movie-img sticky-sb">
-					@{var base64 = Convert.ToBase64String(@Model.Movie.Image);
+					@if(Model.Movie.Image!=null){
+						var base64 = Convert.ToBase64String(@Model.Movie.Image);
       string imgsrc = string.Format("data:images/*;base64,{0}", base64);
-					}
+					
 					<img src="@imgsrc" alt="">
+					}
 					<div class="movie-btn">	
 						<div class="btn-transform transform-vertical red">
 							<div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
-							<div><a href="https://www.youtube.com/embed/o-0hcF97wy0" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+							<div><a href="@Model.Movie.Trailer" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
 						</div>
 						@if(Model.Movie.EndDate>DateTime.Now){
 						<div class="btn-transform transform-vertical">
 							
 								
-							<div><a onclick="getData()" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
-							<div><a onclick="getData()" class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
+							<div><a  class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
+							<div><a  class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
 						
 						</div>
 						}
@@ -48,8 +50,8 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 				<div class="movie-single-ct main-content">
 					<h1 class="bd-hd">@Model.Movie.Name <span>2015</span></h1>
 					<div class="social-btn">
-						<a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
-							
+						<a onclick="getData()" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
+
 					</div>
 					<div class="hover-bnt">
 							<a  class="parent-btn"><i class="fa-solid fa-circle-dollar"></i>Price: @Model.Movie.Price</a>
@@ -58,8 +60,8 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
-							<p><span>8.1</span> /10<br>
-								<span class="rv">56 Reviews</span>
+							<p><span>@Model.Movie.Rate</span> /10<br>
+							
 							</p>
 						</div>
 						<div class="rate-star">
