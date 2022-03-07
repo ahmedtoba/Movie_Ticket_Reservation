@@ -38,8 +38,8 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 						<div class="btn-transform transform-vertical">
 							
 								
-							<div><a  class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
-							<div><a  class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
+							<div><a  asp-action="Index" asp-controller="Payment" asp-route-id="@Model.Movie.Id" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
+							<div><a asp-action="Index" asp-controller="Payment" asp-route-id="@Model.Movie.Id" class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
 						
 						</div>
 						}
@@ -48,15 +48,21 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 			</div>
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<div class="movie-single-ct main-content">
-					<h1 class="bd-hd">@Model.Movie.Name <span>2015</span></h1>
+					<h1 class="bd-hd">@Model.Movie.Name </h1>
 					<div class="social-btn">
-						<a onclick="getData()" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
-
+						@if(Model.carts.Count==0){
+							<a onclick="getData()" id="fav" class="parent-btn " style="cursor:pointer;"><i class="ion-heart"></i> Add to Favorite</a>
+							<a onclick="getData()" id="rev" class="parent-btns mystyle1" style="cursor:pointer; "><i class="ion-checkmark"></i> Added to Favorite</a>
+						}
+						else{
+							<a onclick="getData()" id="rev" class="parent-btn mystyle1" style="cursor:pointer;"><i class="ion-heart"></i> Add to Favorite</a>
+							<a onclick="getData()" id="fav" class="parent-btns " style="cursor:pointer; "><i class="ion-checkmark"></i> Added to Favorite</a>
+						}
 					</div>
-					<div class="hover-bnt">
-							<a  class="parent-btn"><i class="fa-solid fa-circle-dollar"></i>Price: @Model.Movie.Price</a>
+					
+					
+							<h3 style="color:white"><i class="fa-solid fa-circle-dollar"></i>Price: @Model.Movie.Price L.E</h3>
 						
-						</div>
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
@@ -101,7 +107,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 														 string imgsrc1 = string.Format("data:images/*;base64,{0}", base1);
 												<a class="img-lightbox"  data-fancybox-group="gallery" asp-action="Details" asp-controller="Cinema" asp-route-id="@item.Cinema.Id" >
 														
-					<img src="imgsrc1" alt="@item.Cinema.Name"></a>
+					<img src="@imgsrc1" alt="@item.Cinema.Name"></a>
 					
 													}}	
 											</div>
@@ -114,7 +120,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 						        <div id="cast" class="tab">
 						        	<div class="row">
 						            	
-					       	 			<input id="id" asp-for="Movie.Id" hidden/>
+					       	 			<input id="id" asp-for="Movie.Id" type="hidden"/>
 										<!-- //== -->
 					       	 			<div class="title-hd-sm">
 											<h4>Director</h4>
@@ -122,9 +128,13 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 										<div class="mvcast-item">											
 											<div class="cast-it">
 												<div class="cast-left" style="overflow: hidden; position: relative;">
-													<img src="@Model.Movie.Producer.Image" style=" object-fit: cover;"/>
-													<a asp-action="Details" asp-controller="Producer"
-													asp-route-id="@Model.Movie.Producer.Id">@Model.Movie.Producer.Name</a>
+													@if (@Model.Movie.Producer.Image != null)
+													{
+														var base1 = Convert.ToBase64String(@Model.Movie.Producer.Image);
+														string imgsrc1 = string.Format("data:images/*;base64,{0}", base1);
+														<img src="@imgsrc1" style=" object-fit: cover;"/>
+													}
+													<a asp-action="Details" asp-controller="Producer" asp-route-id="@Model.Movie.Producer.Id">@Model.Movie.Producer.Name</a>
 												</div>
 												
 											</div>
@@ -141,7 +151,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 													@{if(item.Actor.Image!=null){
 														var base1 = Convert.ToBase64String(@item.Actor.Image);
 														 string imgsrc1 = string.Format("data:images/*;base64,{0}", base1);
-													<img src="imgsrc1" style=" object-fit: cover;"/>
+													<img src="@imgsrc1" style=" object-fit: cover;"/>
 													}}
 													<a asp-action="Details" asp-controller="Actor" asp-route-id="@item.Actor.Id">@item.Actor.Name</a>
 												</div>
@@ -154,6 +164,10 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 										<!-- //== -->
 <script>
 	   function getData(){
+		   var element = document.getElementById("fav");
+		   var element1 = document.getElementById("rev");
+		    element.classList.toggle("mystyle");
+			 element1.classList.toggle("mystyle1");
         var id=$("#id").val();
         $.ajax(
             {

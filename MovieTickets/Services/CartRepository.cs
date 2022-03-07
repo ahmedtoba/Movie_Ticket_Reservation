@@ -12,10 +12,11 @@ namespace MovieTickets.Services
         {
             this.db = db;
         }
-        public void Delete(int id)
+        public void Delete(Cart cart)
         {
-            var movie = db.Cart.SingleOrDefault(w => w.Id == id);
+            var movie = db.Cart.Where(w => w.UserId == cart.UserId).SingleOrDefault(w=>w.MovieId==cart.MovieId);
             db.Cart.Remove(movie);
+            db.SaveChanges();
         }
 
         public List<Cart> GetAll(Cart carts)

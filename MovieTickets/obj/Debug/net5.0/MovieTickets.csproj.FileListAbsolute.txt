@@ -1035,3 +1035,12 @@ D:\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\c#\MVC\github\Movie_Ticket_Reserva
 D:\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\c#\MVC\github\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_Grid.cshtml.g.cs
 D:\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\c#\MVC\github\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_List.cshtml.g.cs
 D:\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\c#\MVC\github\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_LoginLayout.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\bin\Debug\net5.0\Stripe.net.dll
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Actor\Index.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Category\AdminCategories.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Category\CategoriesDetailsAdmin.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Category\InsertCategoryForm.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Category\UpdateCategoryForm.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Payment\Index.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Payment\succeeded.cshtml.g.cs
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_AddCinema.cshtml.g.cs

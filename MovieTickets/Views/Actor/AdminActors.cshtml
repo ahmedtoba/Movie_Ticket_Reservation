@@ -4,6 +4,13 @@
     Layout = "_AdminLayout";
 }
 
+<div class="search-box pull-left mb-5">
+                            <form asp-action="AdminActors" asp-controller="Actor" method = "get">
+                                <input type="search" value=@ViewData["searching"] name="Keyword" placeholder="Search for Actors..." >
+                                <i class="ti-search"></i>
+                                <input type="submit" style="display: none" />
+                            </form>
+                        </div>
 
 <div class="container mt-5">
 <table class="table table-hover">
@@ -13,8 +20,7 @@
       <th scope="col">Name</th>
       <th scope="col">Image</th>
       <th scope="col">Bio</th>
-      <th scope="col">Action</th>
-      <th scope="col">Details</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -24,11 +30,21 @@
       <td>@i.Name</td>
       <td>@i.Image</td>
       <td>@i.Bio</td>
-      <td><a asp-action="InsertActors"> <i class="fa fa-plus-circle"></i></a> <a asp-action="UpdateActor" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a></td>
-      <td><a asp-action="ActorsDetailsAdmin"><i class="fa fa-arrow-circle-right"></i></a></td>
-
+      <td> <a asp-action="UpdateActorForm" asp-controller="Actor" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a>
+      <a asp-action="ActorsDetailsAdmin" asp-route-id = "@i.Id"><i class="fa fa-arrow-circle-right"></i></a>
+      </td>
     </tr>
 	  }
   </tbody>
 </table>
+ @if (Model.Count == 0)
+    {
+        <img src="/images/error/notfound.png" style="height:50vh; text-align:center; margin-left:30%;" />
+        <a asp-action="InsertActorForm" class="btn btn-warning font-weight-bold" style=" color: white; width:70px; height:70px; border-radius:50%; text-align:center; padding: 2.5% 0;"> Add <i class="fa fa-plus-circle"></i></a>
+    }
+    @if(Model.Count != 0)
+    {
+        <a asp-action="InsertActorForm" class="btn btn-primary"> Add <i class="fa fa-plus-circle"></i></a>
+        
+    }
 </div>

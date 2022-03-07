@@ -6,16 +6,25 @@
 }
 
 <div class="container mt-5">
-<form asp-action = "UpdateProducer" asp-controller= "Producer"  class="w-50 m-auto" method= "post" enctype= "multipart/form-data" >
+<form asp-action = "edit" asp-controller= "Producer" asp-route-id=@Model.Id  class="w-50 m-auto" method= "post" enctype= "multipart/form-data" >
     <div class="container">
    <div class="picture-container">
       <div class="picture">
-          @*image proplem ==================================================*@
-           
-          <img src = "/images/logo1.png" class="picture-src" style="height: 100%;" id="ProfileImg">
-          <input name="imagsss" accept="image/*" type="file" class="picfile" id="fileInput" onchange="loadFile(event)">
+  @*image proplem ===================================================================*@
+                    @if(Model.Image == null)
+                    {
+                        <img src = "/images/placeholder.jfif" class="picture-src" style="height: 100%;" id="ProfileImg">
+                        
+                    }
+            @if(Model.Image != null){
+                var base64 = Convert.ToBase64String(Model.Image);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+          <img src = "@imgSrc" class="picture-src" style="height: 100%;" id="ProfileImg">
+            }
+          <input asp-for="Image" accept="image/*" type="file" class="picfile" id="fileInput" onchange="loadFile(event)">
                      @*<input type="file" asp-for="Image" id="Image" onchange="readURL(this);" />*@
-          @*image proplem ==================================================*@
+          @*image proplem =========================================================================*@
 
 
        </div>
@@ -25,11 +34,6 @@
 
         <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name" >
-    </div>
-     <div class="mb-3">
-        <label asp-for="Image" class="form-label"></label>
-        <input asp-for="Image" class="form-control" type="file" accept="image/*" />
-     
     </div>
   <div>
         <label asp-for="Bio"></label>

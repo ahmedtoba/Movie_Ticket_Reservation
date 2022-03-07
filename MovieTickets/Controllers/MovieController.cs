@@ -22,11 +22,12 @@ namespace MovieTickets.Controllers
         private readonly IActorRepository actorService;
         private readonly IMovieActorRepository movieactorService;
         private readonly IMovieInCinemaRepository movieincinemaService;
+        private readonly ICartRepository cartservice;
 
         public MovieController(MovieContext db, IMovieRepository movieRepo,
             ICategoryRepository categoryRepo, ICinemaRepository cinemaRepo,
             IProducerRepository produerService, IActorRepository actorService,
-            IMovieActorRepository movieactorService, IMovieInCinemaRepository movieincinemaService)
+            IMovieActorRepository movieactorService, IMovieInCinemaRepository movieincinemaService, ICartRepository cartservice)
         {
             this.db = db;
             this.movieRepo = movieRepo;
@@ -36,6 +37,7 @@ namespace MovieTickets.Controllers
             this.actorService = actorService;
             this.movieactorService = movieactorService;
             this.movieincinemaService = movieincinemaService;
+            this.cartservice = cartservice;
         }
 
 
@@ -106,6 +108,19 @@ namespace MovieTickets.Controllers
             return View("AdminMovie", MovieView);
 
         }
+        //searcing--------------------------------------
+        [HttpGet]
+        public async Task<IActionResult> GetMoviesAdmin(string Keyword)
+        {
+            ViewData["searching"] = Keyword;
+            var movies = db.Movies.Select(x => x);
+            if (!string.IsNullOrEmpty(Keyword))
+            {
+                movies = movies.Where(c => c.Name.Contains(Keyword));
+
+            }
+            return View("AdminMovie", await movies.AsNoTracking().ToListAsync());
+        }
 
         public ActionResult GetMoviesDetailsAdmin(Guid id)
 
@@ -130,11 +145,17 @@ namespace MovieTickets.Controllers
         // To Get Movie by ID
         public ActionResult Details(Guid id)
         {
+            Cart cart = new Cart();
+            cart.UserId = "2a1864ba-567e-4ddd-84af-0466ca59466c";
+
+
             MovieDetailsViewModel mdvm = new MovieDetailsViewModel()
             {
                 Movie = movieRepo.GetById(id),
                 MovieActors = movieactorService.GetAll().Where(w => w.MovieId == id).ToList(),
-                MoviesInCinemas = movieincinemaService.GetAll().Where(w => w.MovieId == id).ToList()
+                MoviesInCinemas = movieincinemaService.GetAll().Where(w => w.MovieId == id).ToList(),
+                carts = cartservice.GetAll(cart).Where(w => w.MovieId == id).ToList(),
+
             };
 
             return View("DetailsUser", mdvm);

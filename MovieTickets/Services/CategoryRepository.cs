@@ -40,7 +40,7 @@ namespace MovieTickets.Services
                         newCategory.Image = stream.ToArray();
                     }
                 
-            }
+                }
             db.Categories.Add(newCategory);
             int raws = db.SaveChanges();
             return raws;

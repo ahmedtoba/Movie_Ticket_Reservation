@@ -2,7 +2,9 @@
 using MovieTickets.Models;
 using MovieTickets.Services;
 using MovieTickets.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MovieTickets.Controllers
 {
@@ -23,7 +25,7 @@ namespace MovieTickets.Controllers
            List<Cart> carts= cartService.GetAll(cart);
             return View(carts);
         }
-        public IActionResult Insert(Movie product)
+        public JsonResult Insert(Movie product)
         {
 
             Cart cart = new Cart()
@@ -31,9 +33,17 @@ namespace MovieTickets.Controllers
                 UserId = "2a1864ba-567e-4ddd-84af-0466ca59466c",
                 MovieId = product.Id,
             };
-
-            cartService.Insert(cart);
-            return RedirectToAction("Index","home");
+            var c = cartService.GetAll(cart).ToList();
+            if (c.Count == 0)
+            {
+                cartService.Insert(cart);
+            }
+            else
+            {
+                cartService.Delete(cart);
+            }
+           
+            return Json(true);
         }
 
 

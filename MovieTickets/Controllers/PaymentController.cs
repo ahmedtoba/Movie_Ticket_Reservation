@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieTickets.Models;
+using MovieTickets.Services;
 using Stripe;
 using System;
 
@@ -7,28 +8,52 @@ namespace MovieTickets.Controllers
 {
     public class PaymentController : Controller
     {
+       static MovieOrder orders;
+
 
         decimal mony;
-        public IActionResult Index()
+        private readonly IMovieOrderRepository movieorderService;
+        private readonly IMovieRepository movieservice;
+
+        public PaymentController(IMovieOrderRepository movieorderService,IMovieRepository movieservice)
         {
+            this.movieorderService = movieorderService;
+            this.movieservice = movieservice;
+        }
+       
 
-           
+        public IActionResult Index(Movie movie)
+        {
+            
+          orders  = new MovieOrder();
+            orders.UserId = "2a1864ba-567e-4ddd-84af-0466ca59466c";
+            orders.Movie = movieservice.GetById(movie.Id); 
 
-            return View();
+
+            return View(orders);
         }
 
 
 
         [HttpPost]
-        public IActionResult Processing(string stripeToken, string stripeEmail)
+        public IActionResult Processing(MovieOrder order,string stripeToken, string stripeEmail)
         {
-            mony = (decimal)(50 * 5);
+          MovieOrder o=new MovieOrder()
+          {
+              MovieId =order.Movie.Id,
+              UserId=order.UserId,
+              Quantity =order.Quantity,
+
+          };
+
+            mony = (decimal)(order.Quantity * orders.Movie.Price);
 
             var optionsCust = new CustomerCreateOptions
             {
                 Email = stripeEmail,
                 Name = "Robert",
-                Phone = "04-234567"
+                Phone = "04-234567",
+                
 
             };
             var serviceCust = new CustomerService();
@@ -47,11 +72,12 @@ namespace MovieTickets.Controllers
             Charge charge = service.Create(optionsCharge);
             if (charge.Status == "succeeded")
             {
+                movieorderService.insert(o);   
                 string BalanceTransactionId = charge.BalanceTransactionId;
                 ViewBag.AmountPaid = Convert.ToDecimal(charge.Amount)  ;
                 ViewBag.BalanceTxId = BalanceTransactionId;
                 ViewBag.Customer = customer.Name;
-                return View("succeeded");
+                return RedirectToAction("Index","Cart");
             }
 
             return View();

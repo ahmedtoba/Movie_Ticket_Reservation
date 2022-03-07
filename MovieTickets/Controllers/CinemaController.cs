@@ -94,10 +94,10 @@ namespace MovieTickets.Controllers
         }
         //------------------------------------------
         //Delete----------------------------------
-        public IActionResult DeleteCinema(int id)
+        public IActionResult Delete(int id)
         {
             cinemaRepo.delete(id);
-            return View("Index");
+            return RedirectToAction("AdminCinemas");
         }
         //Searching by name or location----------------------------
         [HttpGet]

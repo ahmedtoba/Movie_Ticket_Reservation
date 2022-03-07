@@ -26,13 +26,18 @@
 			<div class="col-md-8 col-sm-12 col-xs-12">
 			@foreach(var item in Model){
 				<div class="movie-item-style-2">
-					<img src="/images/uploads/mv2.jpg" alt="">
+					@if(item.Movie.Image!=null){
+			var base64 = Convert.ToBase64String(@item.Movie.Image);
+			 string imgsrc = string.Format("data:images/*;base64,{0}", base64);
+	
+					<img src="@imgsrc" alt="">
+					}
 					<div class="mv-item-infor">
 						<h6><a href="moviesingle.html">@item.Movie.Name</a></h6>
 						<p class="rate"><i class="fa-solid fa-circle-dollar"></i><span>@item.Movie.Price</span><span> L.E</span></p>
 						<p class="describe">As Steve Rogers struggles to embrace his role in the modern world, he teams up with a fellow Avenger and S.H.I.E.L.D agent, Black Widow, to battle a new threat...</p>
 						<p class="run-time">   <span> </span> <span></span></p>
-						<p><a href="">Buy Ticket</a></p>
+						<p><a asp-action="index" asp-controller="payment" asp-route-id="@item.Movie.Id">Buy Ticket</a></p>
 						
 					 
 				
