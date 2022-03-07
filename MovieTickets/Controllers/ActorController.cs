@@ -22,7 +22,7 @@ namespace MovieTickets.Controllers
         public ActionResult Index()
         {
             List<Actor> Actors = actorRepository.GetAll();
-            return View("AllActors", Actors);
+            return View( Actors);
         }
         //get all actors for admin
         public IActionResult AdminActors()

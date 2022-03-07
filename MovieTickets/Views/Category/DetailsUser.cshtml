@@ -1,57 +1,90 @@
 ﻿@model Category
 @{
-Layout="~/Views/Shared/_UserLayout.cshtml";
+	Layout="~/Views/Shared/_UserLayout.cshtml";
 	ViewData["Title"] = "Details Page";
+	var base64 = "";
+	string imgsrc;
 }
-<div class="slider sliderv2">
+<div class="hero hero3">
 	<div class="container">
 		<div class="row">
-	    	<div class="slider-single-item">
-	    		<div class="movie-item">
-	    			<div class="row">
-	    				<div class="col-md-8 col-sm-12 col-xs-12">
-	    					<div class="title-in">
-			    				
-			    				<h1>@Model.Name</h1>
-								
-			    				
-			    						
-			    			</div>
-	    				</div>
-	    				<div class="col-md-4 col-sm-12 col-xs-12">
-		    				<div class="mv-img-2">
-			    				<a href="#"><img src="images/uploads/poster1.jpg" alt=""></a>
-			    			</div>
-		    			</div>
-	    			</div>	
-	    		</div>
-	    		
-	    	</div>
-	    </div>
-	</div>
-</div>
-
-<div class="latestnew full-width">
-		<div class="row">
 			<div class="col-md-12">
-				
-				<div class="title-hd">
-					<h2>Latest news</h2>
-					<a href="bloggrid.html" class="viewall">All Movies <i class="ion-ios-arrow-right"></i></a>
-				</div>
-				<div class="latestnewv2">
-					@foreach(var item in Model.Movies){
-					<div class="blog-item-style-2">
-						<a asp-action="DetailsUser" asp-controller="Movie" asp-route-id="@item.Id"><img src="@item.Image" alt=""></a>
-						<div class="blog-it-infor">
-							<h3><a asp-action="DetailsUser" asp-controller="Movie" asp-route-id="@item.Id">@item.Name</a></h3>
-							<span class="time">@item.StartDate</span>
-							<p>@item.Description</p>
-						</div>
-					</div>
-					}
-				</div>
+				<!-- <h1> movie listing - list</h1>
+				<ul class="breadcumb">
+					<li class="active"><a href="#">Home</a></li>
+					<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+				</ul> -->
 			</div>
-		
 		</div>
 	</div>
+</div>
+<!-- celebrity single section-->
+
+<div class="page-single movie-single cebleb-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="mv-ceb">
+					@{
+						if(Model.Image!=null){
+							base64=	Convert.ToBase64String(@Model.Image);
+                imgsrc= string.Format("data:images/*;base64,{0}", base64);
+					<img src="/images/uploads/blog-it1.jpg" alt="">
+					}}
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="movie-single-ct">
+					<h1 class="bd-hd">@Model.Name</h1>
+					<p class="ceb-single" >@Model.Description </p>
+					<div class="social-link cebsingle-socail" hidden>
+						<br />
+						<br />
+					</div>
+					<div class="movie-tabs">
+						<div class="tabs">
+							<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li class="active"><a href="#overviewceb">Overview</a></li>
+								                      
+							</ul>
+						    <div class="tab-content">
+						        <div id="overviewceb" class="tab active">
+						            <div class="row">
+						            	<div class="col-md-8 col-sm-12 col-xs-12">
+						            	
+						            	
+											<!-- movie cast -->
+											<div class="mvcast-item">	
+												@foreach(var item in Model.Movies){
+												<div class="cast-it">
+													<div class="cast-left cebleb-film">
+														@{
+															if(item.Image!=null) {
+																base64=	Convert.ToBase64String(@item.Image);
+                                                imgsrc= string.Format("data:images/*;base64,{0}", base64);
+														<img src="@imgsrc"  style="width:40px ">
+															}}
+														<div>
+															<a asp-action="details" asp-controller="movie" asp-route-id="@item.Id">@item.Name </a>
+														
+														</div>
+														
+													</div>
+													
+												</div>
+												}
+											</div>
+						            	</div>
+						            
+						            </div>
+
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

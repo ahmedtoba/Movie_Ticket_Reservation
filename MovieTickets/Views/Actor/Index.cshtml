@@ -1,0 +1,53 @@
+﻿@model List<Actor>
+@{
+    Layout="~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="hero common-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Actors</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				
+					
+                      <div class="flex-wrap-movielist mv-grid-fw"  >
+				
+
+                           @foreach(var item in Model){
+						<div class="movie-item-style-2 movie-item-style-1">
+							<a asp-action="Details" asp-controller="Category" asp-route-Id="@item.Id">
+									@if(item.Image!=null){
+				var base64 = Convert.ToBase64String(@item.Image);
+      var imgsrc = string.Format("data:images/*;base64,{0}", base64);
+							<img src="@imgsrc" alt="">
+									}
+							<div class="hvr-inner">
+	            				<a  asp-action="Details" asp-controller="Actor" asp-route-id="@item.Id"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+	            			</div>
+							<div class="mv-item-infor">
+								<h6><a asp-action="Details" asp-controller="Actor" asp-route-id="@item.Id">@item.Name</a></h6>
+								
+							</div>
+							</a>
+						</div>	
+						}	
+
+						</div>
+                   
+			</div>
+		</div>
+		</div>
+	</div>

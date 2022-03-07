@@ -20,13 +20,18 @@
 				@foreach(var item in Model.Movies){
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img @item.Image alt="" width="285" height="437"></a>
+							@if(@item.Image != null){
+												
+						   var base64 = Convert.ToBase64String(@item.Image);
+							var imgSrc = String.Format("data:image/gif;base64,{0}", base64);				
+	    				<a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id"><img src="@imgSrc" alt="" width="285" height="437"></a>
+							}
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
-	    					<span class="blue"><a href="#">@item.Category.Name</a></span>
+	    					<span class="blue"><a >@item.Category.Name</a></span>
 	    				</div>
-	    				<h6><a href="#">@item.Name</a></h6>
+	    				<h6><a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">@item.Name</a></h6>
 	    			
 	    			</div>
 	    		</div>
@@ -41,7 +46,7 @@
 			<div class="col-md-8">
 				<div class="title-hd">
 					<h2>Categories</h2>
-					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+					<a asp-action="index" asp-controller="category" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
 				</div>
 				<div class="tabs">
 					
@@ -50,16 +55,21 @@
 				            <div class="row">
 				            	<div class="slick-multiItem">
 									@foreach(var item in Model.Categories){
-				            		<div class="slide-it">
-				            			<div class="movie-item">
-					            			<div class="mv-img">
-					            				<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
-					            			</div> 
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													@if (item.Image != null)
+													{
+														  var base64 = Convert.ToBase64String(@item.Image);
+															var imgSrc = String.Format("data:image/gif;base64,{0}", base64);				
+														<img src="imgSrc" alt="" width="185" height="284">
+													}
+												</div> 
 					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  asp-action ="Details" asp-controller="Category" asp-route-id="@item.Id"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
-					            				<h6><a href="#">@item.Name</a></h6>
+					            				<h6><a asp-action ="Details" asp-controller="category" asp-route-id="@item.Id">@item.Name</a></h6>
 					            				
 					            			</div>
 					            		</div>
@@ -86,14 +96,18 @@
 				            		<div class="slide-it">
 				            			<div class="movie-item">
 					            			<div class="mv-img">
+												@if (item.Image != null)
+													{
+														  var base64 = Convert.ToBase64String(@item.Image);
+											var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 					            				<img src="@item.Image" alt="" width="185" height="284">
+													}
 					            			</div>
 					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  asp-action ="Details" asp-controller="Cinema" asp-route-id="@item.Id"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
-					            				<h6><a href="#">@item.Name</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            				<h6><a asp-action ="Details" asp-controller="Cinema" asp-route-id="@item.Id">@item.Name</a></h6>
 					            			</div>
 					            		</div>
 				            		</div>
@@ -112,12 +126,12 @@
 						<img src="images/uploads/ads1.png" alt="" width="336" height="296">
 					</div>
 					<div class="celebrities">
-						<h4 class="sb-title">Spotlight Celebrities</h4>
+						<h4 class="sb-title">Actors</h4>
 						@foreach(var item in Model.Actors){
 						<div class="celeb-item">
-							<a href="#"><img src="@item.Image" alt="" width="70" height="70"></a>
+							<a asp-action ="Details" asp-controller="Actor" asp-route-id="@item.Id"><img src="@item.Image" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
-								<h6><a href="#">@item.Name</a></h6>
+								<h6><a asp-action ="Details" asp-controller="Actor" asp-route-id="@item.Id">@item.Name</a></h6>
 								
 							</div>
 							</div>
@@ -127,7 +141,7 @@
 						}
 						
 						
-						<a href="#" class="btn">See all Actors<i class="ion-ios-arrow-right"></i></a>
+						<a asp-action ="Index" asp-controller="Actor"  class="btn">See all Actors<i class="ion-ios-arrow-right"></i></a>
 					</div>
 				</div>
 			</div>

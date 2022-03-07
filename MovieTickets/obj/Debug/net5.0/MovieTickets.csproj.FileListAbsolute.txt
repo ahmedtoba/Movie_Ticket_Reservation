@@ -916,3 +916,4 @@ D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Cinema\CinemaUserDetails.cshtml.g.cs
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Movie\movieSearch.cshtml.g.cs
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Shared\_AddCinema.cshtml.g.cs
+D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Actor\Index.cshtml.g.cs
