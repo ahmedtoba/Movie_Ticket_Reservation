@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieTickets.Models;
 using MovieTickets.Services;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MovieTickets.Controllers
@@ -12,11 +14,13 @@ namespace MovieTickets.Controllers
 
          IProducerRepository producerRepository;
         IMovieRepository movieRepository;
+        MovieContext db;
 
-        public ProducerController(IProducerRepository ProducRepo,IMovieRepository MovRepo)
+        public ProducerController(IProducerRepository ProducRepo,IMovieRepository MovRepo, MovieContext _db)
         {
           producerRepository = ProducRepo;
            movieRepository = MovRepo;
+            db = _db;
 
         }
         //get all Producers for users 
@@ -32,7 +36,19 @@ namespace MovieTickets.Controllers
             return View("AdminProducers", producers);
         }
 
+        //searching----------------------------------------------
+        [HttpGet]
+        public async Task<IActionResult> AdminProducers(string Keyword)
+        {
+            ViewData["searching"] = Keyword;
+            var producers = db.Producers.Select(x => x);
+            if (!string.IsNullOrEmpty(Keyword))
+            {
+                producers = producers.Where(c => c.Name.Contains(Keyword));
 
+            }
+            return View(await producers.AsNoTracking().ToListAsync());
+        }
 
 
         public ActionResult Details(int id)
@@ -69,7 +85,7 @@ namespace MovieTickets.Controllers
         //insert Producer
         public IActionResult InsertProducerForm()
         {
-            return View("InsertProducerForm");
+            return View("InsertProducer", new Producer());
         } 
 
         [HttpPost]
@@ -79,7 +95,7 @@ namespace MovieTickets.Controllers
             if (ModelState.IsValid)
             {
                 Task<int> numOfRowsInsertion = producerRepository.insert(NewProducer, Image);
-                return View();
+                return RedirectToAction("AdminProducers");
             }
 
             return RedirectToAction("Producer");
@@ -97,15 +113,16 @@ namespace MovieTickets.Controllers
             if (ModelState.IsValid)
             {
                Task< int> numOfRowsUpdated = producerRepository.update(EditProducer, id,Image);
-                return View();
+                return RedirectToAction("AdminProducers");
             }
             return RedirectToAction("Producer");
 
         }
         //Update producer
-        public IActionResult UpdateProducerForm()
+        public IActionResult UpdateProducerForm(int id)
         {
-            return View("UpdateProducerForm");
+            var producer = producerRepository.GetById(id);
+            return View("UpdateProducer", producer);
         }
         //-------------------------------------------------------------
         //public IActionResult UpdateProducer(Producer EditProducer, int id, IFormFile Image)
@@ -114,17 +131,12 @@ namespace MovieTickets.Controllers
         //    return View("Producer");
         //}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
-        {
-            int numOfRowsDeleted = producerRepository.delete(id);
-            return View();
-        }
-        public IActionResult DeleteProducer(int id)
+        
+        
+        public IActionResult Delete(int id)
         {
             producerRepository.delete(id);
-            return View("Index");
+            return RedirectToAction("adminproducers");
         }
     }
 }

@@ -5,6 +5,14 @@
 }
 
 
+<div class="search-box pull-left mb-5">
+                            <form asp-action="AdminProducers" asp-controller="Producer" method = "get">
+                                <input type="search" value=@ViewData["searching"] name="Keyword" placeholder="Search for Producers..." >
+                                <i class="ti-search"></i>
+                                <input type="submit" style="display: none" />
+                            </form>
+                        </div>
+
 <div class="container mt-5">
 <table class="table table-hover">
   <thead>
@@ -13,8 +21,7 @@
       <th scope="col">Name</th>
       <th scope="col">Image</th>
       <th scope="col">Bio</th>
-       <th scope="col">Action</th>
-      <th scope="col">Details</th>
+       <th scope="col">Actions</th>
     
     </tr>
   </thead>
@@ -25,14 +32,24 @@
       <td>@i.Name</td>
       <td>@i.Image</td>
       <td>@i.Bio</td>
-      <td><a asp-action="Create" asp-controller="Producer"> <i class="fa fa-plus-circle"></i></a> 
-          <a asp-action="Edit" asp-controller="Producer" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a>
+      <td>
+          <a asp-action="UpdateProducerForm" asp-controller="Producer" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a>
           <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a>
+          <a asp-action="Details" asp-controller="Producer"asp-route-id = "@i.Id"><i class="fa fa-arrow-circle-right"></i></a>
       </td>
-      <td><a asp-action="Details" asp-controller="Producer"asp-route-id = "@i.Id"><i class="fa fa-arrow-circle-right"></i></a></td>
 
     </tr>
 	  }
   </tbody>
 </table>
+ @if (Model.Count == 0)
+    {
+        <img src="/images/error/notfound.png" style="height:50vh; text-align:center; margin-left:30%;" />
+        <a asp-action="InsertProducerForm" class="btn btn-warning font-weight-bold" style=" color: white; width:70px; height:70px; border-radius:50%; text-align:center; padding: 2.5% 0;"> Add <i class="fa fa-plus-circle"></i></a>
+    }
+    @if(Model.Count != 0)
+    {
+        <a asp-action="InsertProducerForm" class="btn btn-primary"> Add <i class="fa fa-plus-circle"></i></a>
+        
+    }
 </div>

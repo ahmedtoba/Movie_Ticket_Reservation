@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieTickets.Models;
 using MovieTickets.Services;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MovieTickets.Controllers
@@ -11,10 +13,12 @@ namespace MovieTickets.Controllers
     {
         IActorRepository actorRepository;
         IMovieRepository movieRepository;
-        public ActorController(IActorRepository ActRepo,IMovieRepository MovRepo)
+        MovieContext db;
+        public ActorController(IActorRepository ActRepo,IMovieRepository MovRepo, MovieContext _db)
         {
             actorRepository= ActRepo;
             movieRepository= MovRepo;
+            db= _db;
 
         }
 
@@ -30,6 +34,20 @@ namespace MovieTickets.Controllers
             List<Actor> Actors = actorRepository.GetAll();
             return View("AdminActors", Actors);
         }
+        //searching----------------------------------------------
+        [HttpGet]
+        public async Task<IActionResult> AdminActors(string Keyword)
+        {
+            ViewData["searching"] = Keyword;
+            var actors = db.Actors.Select(x => x);
+            if (!string.IsNullOrEmpty(Keyword))
+            {
+                actors = actors.Where(c => c.Name.Contains(Keyword));
+
+            }
+            return View(await actors.AsNoTracking().ToListAsync());
+        }
+
 
 
         public ActionResult Details(int id)
@@ -66,7 +84,7 @@ namespace MovieTickets.Controllers
         //insert actor
         public IActionResult InsertActorForm()
         {
-            return View("InsertActorForm");
+            return View("InsertActor", new Actor());
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -75,7 +93,7 @@ namespace MovieTickets.Controllers
             if (ModelState.IsValid)
             {
                Task<int> numOfRowsInsertion = actorRepository.insert(NewActor,Image);
-                return View();
+                return RedirectToAction("AdminActors");
             }
 
             return RedirectToAction("Actor");
@@ -86,6 +104,12 @@ namespace MovieTickets.Controllers
         //    actorRepository.insert(InsertActor, Image);
         //    return View("Actor");
         //}
+        public IActionResult UpdateActorForm(int id)
+        {
+            var actor = actorRepository.GetById(id);
+
+            return View("UpdateActor",actor);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Actor EditActor, int id, List<IFormFile> Image)
@@ -99,10 +123,7 @@ namespace MovieTickets.Controllers
 
         }
         //Update actor
-        public IActionResult UpdateActorForm()
-        {
-            return View("UpdateActorForm");
-        }
+       
         //------------------------------------------------------------
         //public IActionResult UpdateActor(Actor EditActor, int id, IFormFile Image)
         //{
@@ -110,18 +131,13 @@ namespace MovieTickets.Controllers
         //    return View("Actor");
         //}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
-        {
-            int numOfRowsDeleted = actorRepository.delete(id);
-            return View();
-        }
+        
+       
         //Delete Actor
-        public IActionResult DeleteActor(int id)
+        public IActionResult Delete(int id)
         {
             actorRepository.delete(id);
-            return View("Index");
+            return RedirectToAction("AdminActors");
         }
     }
 }

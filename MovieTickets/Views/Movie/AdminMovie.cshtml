@@ -5,6 +5,15 @@
 }
 
 @*Admin Section Start------------------------------------------------------*@
+
+<div class="search-box pull-left mb-5">
+                            <form asp-action="GetMoviesAdmin" asp-controller="Movie" method = "get">
+                                <input type="search" value=@ViewData["searching"] name="Keyword" placeholder="Search for Movies..." >
+                                <i class="ti-search"></i>
+                                <input type="submit" style="display: none" />
+                            </form>
+                        </div>
+
 <div class="container mt-5">
 <table class="table table-hover">
   <thead>
@@ -15,6 +24,7 @@
       <th scope="col">Rate</th>
       <th scope="col">StartDate</th>
       <th scope="col">EndDate</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -25,15 +35,27 @@
       <td>@i.Rate</td>
       <td>@i.StartDate</td>
       <td>@i.EndDate</td>
-      <td><a asp-action="Create"> <i class="fa fa-plus-circle"></i></a> 
+      <td> 
        <a asp-action="EditMovieFromAdmin" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i>
-           </a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a></td>
-      <td><a asp-action="GetMoviesDetailsAdmin" asp-route-id = "@i.Id">
-              <i class="fa fa-arrow-circle-right"></i></a></td>
+           </a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a>
+                 <a asp-action="GetMoviesDetailsAdmin" asp-route-id = "@i.Id">
+              <i class="fa fa-arrow-circle-right"></i></a>
+           </td>
+
 
     </tr>
 	  }
   </tbody>
 </table>
+ @if (Model.Count == 0)
+    {
+        <img src="/images/error/notfound.png" style="height:50vh; text-align:center; margin-left:30%;" />
+        <a asp-action="Create" class="btn btn-warning font-weight-bold" style=" color: white; width:70px; height:70px; border-radius:50%; text-align:center; padding: 2.5% 0;"> Add <i class="fa fa-plus-circle"></i></a>
+    }
+    @if(Model.Count != 0)
+    {
+        <a asp-action="Create" class="btn btn-primary"> Add <i class="fa fa-plus-circle"></i></a>
+        
+    }
 </div>
 @*Admin Section end -----------------------------------------*@

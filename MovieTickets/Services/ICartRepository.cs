@@ -9,6 +9,6 @@ namespace MovieTickets.Services
         public List<Cart> GetAll(Cart cart);
   
         public void Insert(Cart mic);
-        public void Delete(int id);
+        public void Delete(Cart cart);
     }
 }

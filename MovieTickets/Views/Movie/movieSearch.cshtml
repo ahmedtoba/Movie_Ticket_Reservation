@@ -1,4 +1,5 @@
-﻿@model List<Movie>
+﻿@using MovieTickets.Models
+@model List<Movie>
 @{
     Layout = "_UserLayout";
 }
@@ -41,7 +42,7 @@
 					            			</div>
 												}
 					            			<div class="hvr-inner">
-					            				<a  asp-action="Cinema" asp-route-id=@i.Id asp-controller="Cinema"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  asp-action="Details" asp-route-id=@i.Id asp-controller="Movie"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
 					            				<h6>@i.Name</h6>

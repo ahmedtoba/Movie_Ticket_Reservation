@@ -19,15 +19,17 @@
                                 <input asp-for="Quantity" type="number" class="form-control" />
                                 
                             </div>--->
-       
+       <input asp-for="@Model.Movie.Id" type="hidden">
+       <input asp-for="@Model.UserId" type="hidden">
+       <input asp-for="@Model.Quantity" required>
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="@Stripe.Value.PublishableKey"
                 data-amount=ViewBag["AmountPaid"]
                 data-name="[Pay For tickets]"
                 data-description="@Model.Movie.Name"
-               
                 data-locale="en"
                 data-zip-code="true">
         </script>
+        <
     </form>
 </div>
