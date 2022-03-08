@@ -250,8 +250,7 @@ namespace MovieTickets.Controllers
 
 
         // To delete movies
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+     
         public ActionResult Delete(Guid id)
         {
             movieRepo.delete(id);
