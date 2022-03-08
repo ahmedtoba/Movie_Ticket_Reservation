@@ -108,7 +108,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 													if(item.Cinema.Image!=null){
 														var base1 = Convert.ToBase64String(@item.Cinema.Image);
 														 string imgsrc1 = string.Format("data:images/*;base64,{0}", base1);
-												<a class="img-lightbox"  data-fancybox-group="gallery" asp-action="Details" asp-controller="Cinema" asp-route-id="@item.Cinema.Id" >
+												<a class="img-lightbox"  data-fancybox-group="gallery" asp-action="cinema" asp-controller="Cinema" asp-route-id="@item.Cinema.Id" >
 														
 					<img src="@imgsrc1" alt="@item.Cinema.Name"></a>
 					
