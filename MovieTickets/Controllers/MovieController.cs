@@ -41,6 +41,7 @@ namespace MovieTickets.Controllers
             this.cartservice = cartservice;
         }
 
+        static Guid iid;
 
 
         // To get All Movies
@@ -213,19 +214,17 @@ namespace MovieTickets.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(MovieViewModel editMovie, Guid id, List<IFormFile> Image)
+        public ActionResult Edit(MovieViewModel editMovie, List<IFormFile> Image)
         {
-            if (ModelState.IsValid)
-            {
-                Task<int> numOfRowsUpdated = movieRepo.update(editMovie, id, Image);
-                return View("AdminMovie");
-            }
-            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
-            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
-            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
-            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
+           
+                Task<int> numOfRowsUpdated = movieRepo.update(editMovie, iid, Image);
+            return RedirectToAction("Getmoviesadmin");
 
-            return RedirectToAction("Edit");
+
+
+
+
+
 
         }
 
@@ -233,7 +232,7 @@ namespace MovieTickets.Controllers
         public ActionResult EditMovieFromAdmin(Guid id)
 
         {
-
+            iid = id;
             MovieViewModel Moviemodel = movieRepo.GetMovieByIdAdmin(id);
 
             ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
@@ -251,13 +250,14 @@ namespace MovieTickets.Controllers
 
 
         // To delete movies
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+     
         public ActionResult Delete(Guid id)
         {
-            int numOfRowsDeleted = movieRepo.delete(id);
-            return View();
+            movieRepo.delete(id);
+            return RedirectToAction("Getmoviesadmin");
+
         }
+
 
         // POST: MovieController/Delete/5
 
