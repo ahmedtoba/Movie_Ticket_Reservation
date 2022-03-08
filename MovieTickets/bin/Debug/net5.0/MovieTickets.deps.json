@@ -33,6 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "MovieTickets/1.0.0": {
         "dependencies": {
+          "IdentityModel": "6.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.13",
           "Microsoft.CodeAnalysis.Analyzers": "3.3.3",
           "Microsoft.EntityFrameworkCore": "5.0.14",
@@ -356,6 +357,17 @@
             "assemblyVersion": "2.8.0.0",
             "fileVersion": "2.8.26.1919"
           }
+        }
+      },
+      "IdentityModel/6.0.0": {
+        "runtime": {
+          "lib/net5.0/IdentityModel.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/IdentityModel.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/5.0.13": {
@@ -4000,6 +4012,13 @@
       "sha512": "sha512-OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
+    },
+    "IdentityModel/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eVHCR7a6m/dm5RFcBzE3qs/Jg5j9R5Rjpu8aTOv9e4AFvaQtBXb5ah7kmwU+YwA0ufRwz4wf1hnIvsD2hSnI4g==",
+      "path": "identitymodel/6.0.0",
+      "hashPath": "identitymodel.6.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/5.0.13": {
       "type": "package",

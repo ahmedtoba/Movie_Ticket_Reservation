@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ts+1rPB8o4PgJU4g6F2CmT7+WBoNjOlM2FafbnezkUunEbejNlKOPb+/nyMeCz+ODXZ4jz7fiOU8SH7yLUxdsw==",
+  "dgSpecHash": "Pga++5h80Drmr614MAluAxvL0xIgoPApYi8ELyb2/5SxyC7ilxFz1RKJovVMrSb4aE1G9FloaAzYoh8SmuBKOQ==",
   "success": true,
   "projectFilePath": "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\TanTawy\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\TanTawy\\.nuget\\packages\\identitymodel\\6.0.0\\identitymodel.6.0.0.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.13\\microsoft.aspnetcore.cryptography.internal.5.0.13.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.13\\microsoft.aspnetcore.cryptography.keyderivation.5.0.13.nupkg.sha512",
     "C:\\Users\\TanTawy\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

@@ -32,6 +32,7 @@ namespace MovieTickets.Controllers
         {
             if (ModelState.IsValid)
             {
+                string x = User.Identity.Name;
                 var user = await userManager.FindByNameAsync(loginVM.UserLogin);
                 user = (user != null) ? user : await userManager.FindByEmailAsync(loginVM.UserLogin);
                 if (user != null)
@@ -42,11 +43,14 @@ namespace MovieTickets.Controllers
                         var result = await signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                         if (result.Succeeded)
                         {
+                            HttpContext.Session.SetString("id", user.Id);
+                            ViewBag.Image = user.Image;
 
                             var checkIfAdmin = await userManager.GetRolesAsync(user);
                             if (checkIfAdmin.Contains("Admin"))
-                                return RedirectToAction("Admin", "Home");
-                            HttpContext.Session.SetString("id", user.Id);
+                               
+                            return RedirectToAction("Admin", "Home");
+                            
                             return RedirectToAction("Index", "Home");
                         }
                     }
