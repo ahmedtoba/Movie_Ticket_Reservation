@@ -28,6 +28,7 @@ namespace MovieTickets.Controllers
             return View(carts);
         }
         
+        [Authorize]
         public JsonResult Insert(Movie product)
         {
 
