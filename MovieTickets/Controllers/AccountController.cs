@@ -32,7 +32,7 @@ namespace MovieTickets.Controllers
         {
             if (ModelState.IsValid)
             {
-                string x = User.Identity.Name;
+                
                 var user = await userManager.FindByNameAsync(loginVM.UserLogin);
                 user = (user != null) ? user : await userManager.FindByEmailAsync(loginVM.UserLogin);
                 if (user != null)
@@ -44,7 +44,7 @@ namespace MovieTickets.Controllers
                         if (result.Succeeded)
                         {
                             HttpContext.Session.SetString("id", user.Id);
-                            ViewBag.Image = user.Image;
+                            
 
                             var checkIfAdmin = await userManager.GetRolesAsync(user);
                             if (checkIfAdmin.Contains("Admin"))
