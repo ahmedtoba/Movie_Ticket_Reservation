@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieTickets.Models;
@@ -30,6 +31,7 @@ namespace MovieTickets.Controllers
             return View("AllProducers", Producers);
         }
         //get all producers for admin
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminProducers()
         {
             List<Producer> producers = producerRepository.GetAll();
@@ -38,6 +40,7 @@ namespace MovieTickets.Controllers
 
         //searching----------------------------------------------
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AdminProducers(string Keyword)
         {
             ViewData["searching"] = Keyword;
@@ -58,6 +61,7 @@ namespace MovieTickets.Controllers
             return View("DetailsUser",producer);
         }
         //The details of actors for admin
+        [Authorize(Roles = "Admin")]
         public ActionResult ProducersDetailsAdmin(int id)
         {
 
@@ -83,6 +87,7 @@ namespace MovieTickets.Controllers
 
 
         //insert Producer
+        [Authorize(Roles = "Admin")]
         public IActionResult InsertProducerForm()
         {
             return View("InsertProducer", new Producer());
@@ -90,6 +95,7 @@ namespace MovieTickets.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Producer NewProducer, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
@@ -108,6 +114,7 @@ namespace MovieTickets.Controllers
         //}
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Producer EditProducer, int id,List<IFormFile> Image)
         {
             if (ModelState.IsValid)
@@ -131,8 +138,8 @@ namespace MovieTickets.Controllers
         //    return View("Producer");
         //}
 
-        
-        
+
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             producerRepository.delete(id);

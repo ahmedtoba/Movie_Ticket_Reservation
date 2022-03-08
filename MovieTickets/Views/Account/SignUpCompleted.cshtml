@@ -2,7 +2,14 @@
     <div class="col-md-6 offset-3 alert alert-success text-center">
         <h2>Your account was created successfully</h2>
         <p>You can now log in to your account using your credentials.</p>
+        <p>You Will Be Directed in 10 seconds to <a asp-controller="Account" asp-action="Login">log in</a> page</p>
         <hr />
         <p>Thank you!</p>
     </div>
 </div>
+
+<script>
+         setTimeout(function(){
+            window.location.href = '/account/login';
+         }, 10000);
+</script>

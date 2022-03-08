@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieTickets.Models;
@@ -50,6 +51,7 @@ namespace MovieTickets.Controllers
 
 
         //get all Categories for admin
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminCategories()
         {
             List<Category> categories = categoryRepo.GetAll();
@@ -57,6 +59,7 @@ namespace MovieTickets.Controllers
         }
         //searching ---------------------------
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AdminCategories(string Keyword)
         {
             ViewData["searching"] = Keyword;
@@ -78,6 +81,7 @@ namespace MovieTickets.Controllers
             return View("DetailsUser");
         }
         //The details of Categories for admin
+        [Authorize(Roles = "Admin")]
         public ActionResult CategoriesDetailsAdmin(int id)
         {
 
@@ -92,6 +96,7 @@ namespace MovieTickets.Controllers
         // To add new movie
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(Category newCategory, IFormFile Image)
         {
             if (ModelState.IsValid)

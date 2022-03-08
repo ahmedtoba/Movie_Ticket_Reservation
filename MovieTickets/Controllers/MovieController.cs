@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -100,7 +101,7 @@ namespace MovieTickets.Controllers
             }
             return View(await movies.AsNoTracking().ToListAsync());
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult GetMoviesAdmin()
         {
             List<Movie> MovieView = movieRepo.GetAll();
@@ -110,6 +111,7 @@ namespace MovieTickets.Controllers
         }
         //searcing--------------------------------------
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetMoviesAdmin(string Keyword)
         {
             ViewData["searching"] = Keyword;
@@ -121,7 +123,7 @@ namespace MovieTickets.Controllers
             }
             return View("AdminMovie", await movies.AsNoTracking().ToListAsync());
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult GetMoviesDetailsAdmin(Guid id)
 
         {
@@ -171,6 +173,7 @@ namespace MovieTickets.Controllers
 
         // To add new movie
         //get method opening create page
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
@@ -209,6 +212,7 @@ namespace MovieTickets.Controllers
         // To Edit any Movie
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(MovieViewModel editMovie, Guid id, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
@@ -225,7 +229,7 @@ namespace MovieTickets.Controllers
 
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult EditMovieFromAdmin(Guid id)
 
         {
@@ -260,6 +264,7 @@ namespace MovieTickets.Controllers
 
         //partial view for adding quantites of tickets of the movie for each cinema
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddCinema(List<string> cinemas)
         {
             var cinemaNames = new List<string>();

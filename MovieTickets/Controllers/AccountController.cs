@@ -95,8 +95,7 @@ namespace MovieTickets.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> LogOut()
         {
             await signInManager.SignOutAsync();
