@@ -31,7 +31,7 @@
 				
 					base64=	Convert.ToBase64String(@Model.Image);
                 imgsrc= string.Format("data:images/*;base64,{0}", base64);
-					<img src="@imgsrc" alt="">
+					<img src="@imgsrc" style="width:350px; height:500px; object-fit:cover">
 					}
 				</div>
 			</div>
@@ -68,7 +68,7 @@
 		
 															base64=	Convert.ToBase64String(@item.Movie.Image);
                                                 imgsrc= string.Format("data:images/*;base64,{0}", base64);
-														<img src="@imgsrc"  style="width:40px ">
+														<img src="@imgsrc"  style="width:120px; height:90px; object-fit:cover">
 														}
 														<div>
 															<a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Movie.Id">@item.Movie.Name </a>

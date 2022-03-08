@@ -27,7 +27,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 						var base64 = Convert.ToBase64String(@Model.Movie.Image);
       string imgsrc = string.Format("data:images/*;base64,{0}", base64);
 					
-					<img src="@imgsrc" alt="">
+					<img src="@imgsrc" alt="" >
 					}
 					<div class="movie-btn">	
 						<div class="btn-transform transform-vertical red">
@@ -116,7 +116,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 														 string imgsrc1 = string.Format("data:images/*;base64,{0}", base1);
 												<a class="img-lightbox"  data-fancybox-group="gallery" asp-action="cinema" asp-controller="Cinema" asp-route-id="@item.Cinema.Id" >
 														
-					<img src="@imgsrc1" alt="@item.Cinema.Name"></a>
+					<img src="@imgsrc1" alt="@item.Cinema.Name" style="width:120px; height:90px; object-fit:cover"></a>
 					
 													}}	
 											</div>
@@ -141,7 +141,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 													{
 														var base1 = Convert.ToBase64String(@Model.Movie.Producer.Image);
 														string imgsrc1 = string.Format("data:images/*;base64,{0}", base1);
-														<img src="@imgsrc1" style=" object-fit: cover;"/>
+														<img src="@imgsrc1" style="width:100px; height:100px; border-radius:50%; object-fit:cover"/>
 													}
 													<a asp-action="Details" asp-controller="Producer" asp-route-id="@Model.Movie.Producer.Id">@Model.Movie.Producer.Name</a>
 												</div>
@@ -160,7 +160,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 													@{if(item.Actor.Image!=null){
 														var base1 = Convert.ToBase64String(@item.Actor.Image);
 														 string imgsrc1 = string.Format("data:images/*;base64,{0}", base1);
-													<img src="@imgsrc1" style=" object-fit: cover;"/>
+													<img src="@imgsrc1" style="width:80px; height:80px; border-radius:50%; object-fit:cover"/>
 													}}
 													<a asp-action="Details" asp-controller="Actor" asp-route-id="@item.Actor.Id">@item.Actor.Name</a>
 												</div>

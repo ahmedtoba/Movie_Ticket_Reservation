@@ -8,7 +8,7 @@
 
 <div class="slider movie-items">
 	<div class="container">
-		<div class="row">
+		<div class="row ipad-width">
 			<div class="social-link">
 				<p>Follow us: </p>
 				<a href="#"><i class="ion-social-facebook"></i></a>
@@ -16,9 +16,10 @@
 				<a href="#"><i class="ion-social-googleplus"></i></a>
 				<a href="#"><i class="ion-social-youtube"></i></a>
 			</div>
-	    	<div  class="slick-multiItemSlider">
+
+	    	<div  class="slick-multiItemSlider  ">
 				@foreach(var item in Model.Movies){
-	    		<div class="movie-item">
+	    		<div class="movie-item  col-sm-12">
 	    			<a class="mv-img" asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id" >
 							@if(@item.Image != null){
 												
@@ -62,7 +63,7 @@
 													{
 														  var base64 = Convert.ToBase64String(@item.Image);
 															var imgSrc = String.Format("data:image/gif;base64,{0}", base64);				
-														<img src="@imgSrc" alt="" width="185" height="284">
+														<img src="@imgSrc" alt=""  style="width:120px; height:90px; object-fit:cover">
 													}
 												</div> 
 					            			<div class="hvr-inner">
@@ -100,7 +101,7 @@
 													{
 														  var base64 = Convert.ToBase64String(@item.Image);
 											var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-					            				<img src="@imgSrc" alt="" width="185" height="284">
+					            				<img src="@imgSrc" alt="" style="width:120px; height:90px; object-fit:cover">
 													}
 					            			</div>
 					            			<div class="hvr-inner">
@@ -134,16 +135,18 @@
 													{
 														  var base64 = Convert.ToBase64String(@item.Image);
 											var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-					            				<img src="@imgSrc" alt="" width="185" height="284">
+					            				<img src="@imgSrc" alt="" style="width:100px;height:100px; border-radius:50%;object-fit:cover">
 													}</a>
 							<div class="celeb-author">
 								<h6><a asp-action ="Details" asp-controller="Actor" asp-route-id="@item.Id">@item.Name</a></h6>
 								
 							</div>
 							</div>
-							if(i==6){
+
+							@if(i==5){
 								break;
 							}
+							i++;
 						}
 						
 						
