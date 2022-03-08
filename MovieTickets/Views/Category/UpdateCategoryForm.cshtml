@@ -8,7 +8,7 @@
 }
 
 <div class="container mt-5">
-<form asp-action = "UpdateCategory" asp-controller= "Category"  class="w-50 m-auto" method= "post" enctype= "multipart/form-data" >
+<form asp-action = "UpdateCategory" asp-controller= "Category"  asp-route-id="@Model.Id" class="w-50 m-auto" method= "post" enctype= "multipart/form-data" >
     <div class="container">
    <div class="picture-container">
       <div class="picture">

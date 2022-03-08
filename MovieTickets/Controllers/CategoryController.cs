@@ -42,12 +42,12 @@ namespace MovieTickets.Controllers
             Category category = categoryRepo.GetById(id);
             return View(category);
         }
-        //public ActionResult Details(int id)
-        //{
+        public ActionResult Details(int id)
+        {
 
-        //    Category category = categoryRepo.GetById(id);
-        //    return View();
-        //}
+            Category category = categoryRepo.GetById(id);
+            return View("DetailsUser",category);
+        }
 
 
         //get all Categories for admin
@@ -74,12 +74,12 @@ namespace MovieTickets.Controllers
 
 
         //To get Category by name
-        public ActionResult Details(string name)
-        {
+        //public ActionResult Details(string name)
+        //{
 
-            Category category = categoryRepo.GetByName(name);
-            return View("DetailsUser");
-        }
+        //    Category category = categoryRepo.GetByName(name);
+        //    return View("DetailsUser");
+        //}
         //The details of Categories for admin
         [Authorize(Roles = "Admin")]
         public ActionResult CategoriesDetailsAdmin(int id)
@@ -123,11 +123,11 @@ namespace MovieTickets.Controllers
             return View("UpdateCategoryForm", category);
         }
        // ------------------------------------------------------------
-        public IActionResult UpdateCategory(Category EditCategory, int id, IFormFile Image)
+        public IActionResult UpdateCategory(Category EditCategory, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
-                categoryRepo.update(EditCategory, id, Image);
+                categoryRepo.update(EditCategory,  Image);
                 return RedirectToAction("AdminCategories");
             }
             return RedirectToAction("UpdateCategoryForm", EditCategory);

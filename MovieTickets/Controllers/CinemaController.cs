@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using MovieTickets.ViewModels;
 
 namespace MovieTickets.Controllers
 {
@@ -14,10 +15,13 @@ namespace MovieTickets.Controllers
     {
         ICinemaRepository cinemaRepo;
         MovieContext db;
-        public CinemaController(ICinemaRepository _cinemaRepo, MovieContext _db)
+        private readonly IMovieInCinemaRepository movieInCinemaService;
+
+        public CinemaController(ICinemaRepository _cinemaRepo, MovieContext _db,IMovieInCinemaRepository movieInCinemaService)
         {
             cinemaRepo = _cinemaRepo;
             db = _db;
+            this.movieInCinemaService = movieInCinemaService;
         }
         //show all Cinemas User View--------------
         public IActionResult Index()
@@ -36,7 +40,12 @@ namespace MovieTickets.Controllers
         //Cinema Details By link Read more User 
         public IActionResult Cinema(int id)
         {
-            Cinema cinema = cinemaRepo.GetById(id);
+            MovieCinemaViewModel cinema = new MovieCinemaViewModel()
+            {
+                Cinema = cinemaRepo.GetById(id),
+                Movies = movieInCinemaService.GetAll().Where(w => w.Id == id).ToList(),
+            };
+           
             return View("CinemaUserDetails", cinema);
         }
         //Cinema Details By link Read more Admin

@@ -30,7 +30,12 @@
     <tr>
       <th scope="row">@i.Id</th>
       <td>@i.Name</td>
-      <td>@i.Image</td>
+      <td> @if (i.Image != null)
+                        {
+                            var base64 = Convert.ToBase64String(@i.Image);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            <img src="@imgSrc"  >
+                        }</td>
       <td>@i.Bio</td>
       <td>
           <a asp-action="UpdateProducerForm" asp-controller="Producer" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a>

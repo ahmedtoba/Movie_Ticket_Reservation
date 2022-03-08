@@ -34,6 +34,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 							<div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
 							<div><a href="@Model.Movie.Trailer" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
 						</div>
+						@if(Model.UserId!=null){
 						@if(Model.Movie.EndDate>DateTime.Now){
 						<div class="btn-transform transform-vertical">
 							
@@ -42,7 +43,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 							<div><a asp-action="Index" asp-controller="Payment" asp-route-id="@Model.Movie.Id" class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
 						
 						</div>
-						}
+						}}
 					</div>
 				</div>
 			</div>
@@ -50,6 +51,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 				<div class="movie-single-ct main-content">
 					<h1 class="bd-hd">@Model.Movie.Name </h1>
 					<div class="social-btn">
+						@if(Model.UserId!=null){
 						@if(Model.carts.Count==0){
 							<a onclick="getData()" id="fav" class="parent-btn " style="cursor:pointer;"><i class="ion-heart"></i> Add to Favorite</a>
 							<a onclick="getData()" id="rev" class="parent-btns mystyle1" style="cursor:pointer; "><i class="ion-checkmark"></i> Added to Favorite</a>
@@ -57,6 +59,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 						else{
 							<a onclick="getData()" id="rev" class="parent-btn mystyle1" style="cursor:pointer;"><i class="ion-heart"></i> Add to Favorite</a>
 							<a onclick="getData()" id="fav" class="parent-btns " style="cursor:pointer; "><i class="ion-checkmark"></i> Added to Favorite</a>
+						}
 						}
 					</div>
 					
@@ -105,7 +108,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 													if(item.Cinema.Image!=null){
 														var base1 = Convert.ToBase64String(@item.Cinema.Image);
 														 string imgsrc1 = string.Format("data:images/*;base64,{0}", base1);
-												<a class="img-lightbox"  data-fancybox-group="gallery" asp-action="Details" asp-controller="Cinema" asp-route-id="@item.Cinema.Id" >
+												<a class="img-lightbox"  data-fancybox-group="gallery" asp-action="cinema" asp-controller="Cinema" asp-route-id="@item.Cinema.Id" >
 														
 					<img src="@imgsrc1" alt="@item.Cinema.Name"></a>
 					

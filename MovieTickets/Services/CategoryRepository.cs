@@ -45,9 +45,9 @@ namespace MovieTickets.Services
             int raws = db.SaveChanges();
             return raws;
         }
-        public async Task<int> update(Category editCategory, int id,IFormFile Image)
+        public async Task<int> update(Category editCategory,IFormFile Image)
         {
-            var category = db.Categories.SingleOrDefault(c => c.Id == id);
+            var category = db.Categories.SingleOrDefault(c => c.Id == editCategory.Id);
             
                 if (Image.Length > 0)
                 {

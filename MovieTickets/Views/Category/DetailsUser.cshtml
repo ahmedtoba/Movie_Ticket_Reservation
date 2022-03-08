@@ -29,7 +29,7 @@
 						if(Model.Image!=null){
 							base64=	Convert.ToBase64String(@Model.Image);
                 imgsrc= string.Format("data:images/*;base64,{0}", base64);
-					<img src="/images/uploads/blog-it1.jpg" alt="">
+					<img src="@imgsrc" alt="">
 					}}
 				</div>
 			</div>

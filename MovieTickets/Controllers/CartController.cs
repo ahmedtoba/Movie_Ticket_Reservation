@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MovieTickets.Models;
 using MovieTickets.Services;
 using MovieTickets.ViewModels;
@@ -8,7 +10,7 @@ using System.Linq;
 
 namespace MovieTickets.Controllers
 {
-
+    [Authorize]
     public class CartController : Controller
     {
         private readonly ICartRepository cartService;
@@ -20,17 +22,19 @@ namespace MovieTickets.Controllers
         public IActionResult Index(Cart cart)
         {
            
-            cart.UserId = "2a1864ba-567e-4ddd-84af-0466ca59466c";
+            cart.UserId = HttpContext.Session.GetString("id");
             
            List<Cart> carts= cartService.GetAll(cart);
             return View(carts);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public JsonResult Insert(Movie product)
         {
 
             Cart cart = new Cart()
             {
-                UserId = "2a1864ba-567e-4ddd-84af-0466ca59466c",
+                UserId = HttpContext.Session.GetString("id"),
                 MovieId = product.Id,
             };
             var c = cartService.GetAll(cart).ToList();

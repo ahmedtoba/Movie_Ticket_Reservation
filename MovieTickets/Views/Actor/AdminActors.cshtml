@@ -28,7 +28,12 @@
     <tr>
       <th scope="row">@i.Id</th>
       <td>@i.Name</td>
-      <td>@i.Image</td>
+      <td>     @if (i.Image != null)
+                        {
+                            var base64 = Convert.ToBase64String(@i.Image);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            <img src="@imgSrc"  >
+                        }</td>
       <td>@i.Bio</td>
       <td> <a asp-action="UpdateActorForm" asp-controller="Actor" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a>
       <a asp-action="ActorsDetailsAdmin" asp-route-id = "@i.Id"><i class="fa fa-arrow-circle-right"></i></a>

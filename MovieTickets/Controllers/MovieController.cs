@@ -149,11 +149,12 @@ namespace MovieTickets.Controllers
         public ActionResult Details(Guid id)
         {
             Cart cart = new Cart();
-            cart.UserId = "2a1864ba-567e-4ddd-84af-0466ca59466c";
+            cart.UserId = HttpContext.Session.GetString("id");
 
 
             MovieDetailsViewModel mdvm = new MovieDetailsViewModel()
             {
+                UserId = HttpContext.Session.GetString("id"),
                 Movie = movieRepo.GetById(id),
                 MovieActors = movieactorService.GetAll().Where(w => w.MovieId == id).ToList(),
                 MoviesInCinemas = movieincinemaService.GetAll().Where(w => w.MovieId == id).ToList(),

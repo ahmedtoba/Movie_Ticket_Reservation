@@ -10,7 +10,12 @@
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <img src="@Model.Image">
+     @if (Model.Image != null)
+                        {
+                            var base64 = Convert.ToBase64String(@Model.Image);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            <img src="@imgSrc" style="border-radius:100%; ">
+                        }
     </div>
     <div class="col-md-8">
       <div class="card-body">
