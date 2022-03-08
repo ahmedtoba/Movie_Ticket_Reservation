@@ -13,7 +13,7 @@ namespace MovieTickets.Services
         Category GetById(int id);
         Category GetByName(string name);
         Task<int> insert(Category newCinema,IFormFile Image);
-        Task<int> update(Category editMovie, int id, IFormFile Image);
+        Task<int> update(Category editMovie,  IFormFile Image);
         
 
     }

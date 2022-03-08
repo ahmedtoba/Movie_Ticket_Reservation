@@ -29,10 +29,21 @@
     <tr>
       <th scope="row">@i.Id</th>
       <td>@i.Name</td>
-      <td>@i.Image</td>
+                  
+
+
+
+       <td>  @if (i.Image != null)
+                        {
+                            var base64 = Convert.ToBase64String(@i.Image);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            <img src="@imgSrc" style="border-radius:100%; width:70px; height:50px">
+                        }
+                    </td>
+
       <td>@i.Description</td>
-      <td> <a asp-action="UpdateCategoryForm" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a> <a asp-action="Delete" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a>
-          <a asp-action="CategoriesDetailsAdmin"><i class="fa fa-arrow-circle-right"></i></a>
+      <td> <a asp-action="UpdateCategoryForm" asp-controller="Category" asp-route-id = "@i.Id"> <i class="fa fa-edit"></i></a> <a asp-action="Delete" asp-controller="Category" asp-route-id = "@i.Id"> <i class="ti-trash"></i></a>
+          <a asp-action="CategoriesDetailsAdmin" asp-controller="Category" asp-route-id="@i.Id"><i class="fa fa-arrow-circle-right"></i></a>
           </td>
       <td></td>
 

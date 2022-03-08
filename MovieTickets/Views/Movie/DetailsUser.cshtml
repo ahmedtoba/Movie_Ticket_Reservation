@@ -34,6 +34,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 							<div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
 							<div><a href="@Model.Movie.Trailer" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
 						</div>
+						@if(Model.UserId!=null){
 						@if(Model.Movie.EndDate>DateTime.Now){
 						<div class="btn-transform transform-vertical">
 							
@@ -42,7 +43,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 							<div><a asp-action="Index" asp-controller="Payment" asp-route-id="@Model.Movie.Id" class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
 						
 						</div>
-						}
+						}}
 					</div>
 				</div>
 			</div>

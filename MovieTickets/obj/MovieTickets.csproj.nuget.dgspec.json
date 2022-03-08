@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj": {}
+    "D:\\MVCProject\\Movie_Ticket_Reservation-1\\MovieTickets\\MovieTickets.csproj": {}
   },
   "projects": {
-    "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj": {
+    "D:\\MVCProject\\Movie_Ticket_Reservation-1\\MovieTickets\\MovieTickets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+        "projectUniqueName": "D:\\MVCProject\\Movie_Ticket_Reservation-1\\MovieTickets\\MovieTickets.csproj",
         "projectName": "MovieTickets",
-        "projectPath": "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+        "projectPath": "D:\\MVCProject\\Movie_Ticket_Reservation-1\\MovieTickets\\MovieTickets.csproj",
         "packagesPath": "C:\\Users\\TanTawy\\.nuget\\packages\\",
-        "outputPath": "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\obj\\",
+        "outputPath": "D:\\MVCProject\\Movie_Ticket_Reservation-1\\MovieTickets\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\TanTawy\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieTickets.Models;
 using MovieTickets.Services;
@@ -9,7 +10,7 @@ using System.Linq;
 
 namespace MovieTickets.Controllers
 {
-
+    [Authorize]
     public class CartController : Controller
     {
         private readonly ICartRepository cartService;
@@ -26,6 +27,8 @@ namespace MovieTickets.Controllers
            List<Cart> carts= cartService.GetAll(cart);
             return View(carts);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public JsonResult Insert(Movie product)
         {
 
