@@ -197,7 +197,7 @@ namespace MovieTickets.Controllers
             if (ModelState.IsValid)
             {
                 movieRepo.Insert(movievm, Image);
-                return RedirectToAction();
+                return RedirectToAction("GetMoviesAdmin", "Movie");
             }
 
 

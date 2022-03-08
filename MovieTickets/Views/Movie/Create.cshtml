@@ -78,6 +78,12 @@
                                 <textarea asp-for="Description" class="form-control"></textarea>
                                 <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
+                        </div> <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Trailer" class="control-label"></label>
+                                <textarea asp-for="Trailer" class="form-control"></textarea>
+                                <span asp-validation-for="Trailer" class="text-danger"></span>
+                            </div>
                         </div>
                     </div>
                      <input type="file" asp-for="Image" id="Image" onchange="readURL(this);" />

@@ -97,7 +97,7 @@ namespace MovieTickets.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public IActionResult Create(Category newCategory, IFormFile Image)
+        public IActionResult Create(Category newCategory, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
@@ -123,7 +123,7 @@ namespace MovieTickets.Controllers
             return View("UpdateCategoryForm", category);
         }
        // ------------------------------------------------------------
-        public IActionResult UpdateCategory(Category EditCategory, IFormFile Image)
+        public IActionResult UpdateCategory(Category EditCategory, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {

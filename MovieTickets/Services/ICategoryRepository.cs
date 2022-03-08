@@ -12,8 +12,8 @@ namespace MovieTickets.Services
         List<Category> GetAll();
         Category GetById(int id);
         Category GetByName(string name);
-        Task<int> insert(Category newCinema,IFormFile Image);
-        Task<int> update(Category editMovie,  IFormFile Image);
+        Task<int> insert(Category newCinema,List<IFormFile> Image);
+        Task<int> update(Category editMovie, List< IFormFile> Image);
         
 
     }
