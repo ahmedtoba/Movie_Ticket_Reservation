@@ -13,30 +13,114 @@ namespace MovieTickets.Controllers
     public class ActorController : Controller
     {
         IActorRepository actorRepository;
-        IMovieRepository movieRepository;
         MovieContext db;
-        public ActorController(IActorRepository ActRepo,IMovieRepository MovRepo, MovieContext _db)
+        #region Constructor Injection
+        public ActorController(IActorRepository ActRepo, MovieContext _db)
         {
             actorRepository= ActRepo;
-            movieRepository= MovRepo;
             db= _db;
 
         }
-
+        #endregion
         //get all actors for users 
+        #region User
+        #region User Index
         public ActionResult Index()
         {
             List<Actor> Actors = actorRepository.GetAll();
-            return View( Actors);
+            return View(Actors);
         }
-        //get all actors for admin
-        [Authorize(Roles="Admin")]
+        #endregion
+        #region User Details
+        public ActionResult Details(int id)
+        {
+
+            Actor Actors = actorRepository.GetById(id);
+            return View("DetailsUser", Actors);
+        }
+        #endregion
+        #endregion
+
+        #region Admin
+        #region  Index
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminActors()
         {
             List<Actor> Actors = actorRepository.GetAll();
             return View("AdminActors", Actors);
         }
-        //searching----------------------------------------------
+        #endregion
+        #region  Details
+        [Authorize(Roles = "Admin")]
+        public ActionResult ActorsDetailsAdmin(int id)
+        {
+
+            Actor Actors = actorRepository.GetById(id);
+            return View("ActorsDetailsAdmin", Actors);
+        }
+        #endregion
+        #region Insert
+        #region Get
+        public IActionResult InsertActorForm()
+        {
+            return View("InsertActor", new Actor());
+        }
+        #endregion
+        #region post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Create(Actor NewActor, List<IFormFile> Image)
+        {
+            if (ModelState.IsValid)
+            {
+                Task<int> numOfRowsInsertion = actorRepository.insert(NewActor, Image);
+                return RedirectToAction("AdminActors");
+            }
+
+            return RedirectToAction("Actor");
+        }
+        #endregion
+
+        #endregion
+        #region Update
+        #region Get
+        public IActionResult UpdateActorForm(int id)
+        {
+            var actor = actorRepository.GetById(id);
+
+            return View("UpdateActor", actor);
+        }
+        #endregion
+        #region post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Actor EditActor, int id, List<IFormFile> Image)
+        {
+            if (ModelState.IsValid)
+            {
+                actorRepository.update(EditActor, id, Image);
+                return RedirectToAction("AdminActors", "Actor");
+            }
+            return View("UpdateActor");
+
+
+        }
+        #endregion
+        #endregion
+        #region Delete
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
+        {
+            actorRepository.delete(id);
+            return RedirectToAction("AdminActors");
+        }
+        #endregion
+        #endregion
+
+
+        #region Search
+
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
@@ -52,84 +136,47 @@ namespace MovieTickets.Controllers
             }
             return View(await actors.AsNoTracking().ToListAsync());
         }
-
-
-
-        public ActionResult Details(int id)
-        {
-
-            Actor Actors = actorRepository.GetById(id);
-            return View("DetailsUser", Actors);
-        }
-        //The details of actors for admin
-        [Authorize(Roles = "Admin")]
-        public ActionResult ActorsDetailsAdmin(int id)
-        {
-
-            Actor Actors = actorRepository.GetById(id);
-            return View("ActorsDetailsAdmin", Actors);
-        }
-
        
 
-        //Details of actors for users---------------------------------- 
-        public IActionResult Actor(int id)
-        {
-            Actor Actor = actorRepository.GetById(id);
-            return View(Actor);
-        }
-        //Searching-------------------------------------
-       public ActionResult ActorName(string name)
+        #endregion
+
+
+        #region GetByName
+        public ActionResult ActorName(string name)
         {
 
             Actor Actors = actorRepository.GetByName(name);
             return View(Actors);
         }
+        #endregion
+
+
+
+        //The details of actors for admin
+       
+
+       
+
+        //Details of actors for users---------------------------------- 
+        //public IActionResult Actor(int id)
+        //{
+        //    Actor Actor = actorRepository.GetById(id);
+        //    return View(Actor);
+        //}
+        //Searching-------------------------------------
+     
 
 
         //insert actor
-        public IActionResult InsertActorForm()
-        {
-            return View("InsertActor", new Actor());
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Create(Actor NewActor,List<IFormFile> Image)
-        {
-            if (ModelState.IsValid)
-            {
-               Task<int> numOfRowsInsertion = actorRepository.insert(NewActor,Image);
-                return RedirectToAction("AdminActors");
-            }
-
-            return RedirectToAction("Actor");
-        }
+       
         //--------------------------------------------------------------------------
         //public IActionResult InsertActor(Actor InsertActor, IFormFile Image)
         //{
         //    actorRepository.insert(InsertActor, Image);
         //    return View("Actor");
         //}
-        public IActionResult UpdateActorForm(int id)
-        {
-            var actor = actorRepository.GetById(id);
-
-            return View("UpdateActor",actor);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Actor EditActor, int id, List<IFormFile> Image)
-        {
-            if (ModelState.IsValid)
-            {
-                actorRepository.update(EditActor, id, Image);
-                return RedirectToAction("AdminActors", "Actor");
-            }
-            return View("UpdateActor");
-           
-
-        }
+       
+      
         //Update actor
 
         //------------------------------------------------------------
@@ -142,11 +189,6 @@ namespace MovieTickets.Controllers
 
 
         //Delete Actor
-        [Authorize(Roles = "Admin")]
-        public IActionResult Delete(int id)
-        {
-            actorRepository.delete(id);
-            return RedirectToAction("AdminActors");
-        }
+      
     }
 }

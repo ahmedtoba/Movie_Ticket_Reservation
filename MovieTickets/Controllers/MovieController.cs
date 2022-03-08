@@ -24,7 +24,7 @@ namespace MovieTickets.Controllers
         private readonly IMovieActorRepository movieactorService;
         private readonly IMovieInCinemaRepository movieincinemaService;
         private readonly ICartRepository cartservice;
-
+        #region Constructor Injection
         public MovieController(MovieContext db, IMovieRepository movieRepo,
             ICategoryRepository categoryRepo, ICinemaRepository cinemaRepo,
             IProducerRepository produerService, IActorRepository actorService,
@@ -40,11 +40,12 @@ namespace MovieTickets.Controllers
             this.movieincinemaService = movieincinemaService;
             this.cartservice = cartservice;
         }
-
+        #endregion
         static Guid iid;
 
 
-        // To get All Movies
+        #region User
+        #region Index
         public ActionResult Index()
         {
 
@@ -62,12 +63,141 @@ namespace MovieTickets.Controllers
 
             return View("IndexUser", mivm);
         }
-        //searching by categories-------------------------
+        #endregion
+        #region Details
+        public ActionResult Details(Guid id)
+        {
+            Cart cart = new Cart();
+            cart.UserId = HttpContext.Session.GetString("id");
+
+
+            MovieDetailsViewModel mdvm = new MovieDetailsViewModel()
+            {
+                UserId = HttpContext.Session.GetString("id"),
+                Movie = movieRepo.GetById(id),
+                MovieActors = movieactorService.GetAll().Where(w => w.MovieId == id).ToList(),
+                MoviesInCinemas = movieincinemaService.GetAll().Where(w => w.MovieId == id).ToList(),
+                carts = cartservice.GetAll(cart).Where(w => w.MovieId == id).ToList(),
+
+            };
+
+            return View("DetailsUser", mdvm);
+        }
+        #endregion
+        #endregion
+        #region Admin
+        #region Index
+        [Authorize(Roles = "Admin")]
+        public ActionResult GetMoviesAdmin()
+        {
+            List<Movie> MovieView = movieRepo.GetAll();
+
+            return View("AdminMovie", MovieView);
+
+        }
+        #endregion
+        #region Details
+        [Authorize(Roles = "Admin")]
+        public ActionResult GetMoviesDetailsAdmin(Guid id)
+
+        {
+            MovieViewModel Moviemodel = movieRepo.GetMovieByIdAdmin(id);
+
+            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
+            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
+            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
+
+
+
+
+
+            return View("MovieDetailsAdmain", Moviemodel);
+        }
+        #endregion
+        #region Insert
+        #region Get
+        [Authorize(Roles = "Admin")]
+        public IActionResult Create()
+        {
+            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
+            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
+            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
+
+            return View(new MovieViewModel());
+
+        }
+        #endregion
+        #region Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(MovieViewModel movievm, List<IFormFile> Image)
+        {
+            if (ModelState.IsValid)
+            {
+                movieRepo.Insert(movievm, Image);
+                return RedirectToAction("GetMoviesAdmin", "Movie");
+            }
+
+
+            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
+            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
+            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
+            return View(movievm);
+
+        }
+        #endregion
+        #endregion
+        #region Update
+        #region Get
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditMovieFromAdmin(Guid id)
+
+        {
+            iid = id;
+            MovieViewModel Moviemodel = movieRepo.GetMovieByIdAdmin(id);
+
+            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
+            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
+            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
+
+
+
+            return View("Edit", Moviemodel);
+        }
+        #endregion
+        #region Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(MovieViewModel editMovie, List<IFormFile> Image)
+        {
+
+            Task<int> numOfRowsUpdated = movieRepo.update(editMovie, iid, Image);
+            return RedirectToAction("Getmoviesadmin");
+        }
+        #endregion
+        #endregion
+        #region Delete
+        public ActionResult Delete(Guid id)
+        {
+            movieRepo.delete(id);
+            return RedirectToAction("Getmoviesadmin");
+
+        }
+
+        #endregion
+        #endregion
+        #region Search
+        #region Filter
         [HttpGet]
         public async Task<IActionResult> filterSearch(string MovieName)
         {
             ViewData["MovieName"] = MovieName;
-           
+
             if (!string.IsNullOrEmpty(MovieName))
             {
                 var movies = new MovieItemViewModel()
@@ -88,8 +218,8 @@ namespace MovieTickets.Controllers
             return Content("nothing");
 
         }
-
-        //search by name or actor-------------------
+        #endregion
+        #region By Name
         [HttpGet]
         public async Task<IActionResult> movieSearch(string Keyword)
         {
@@ -102,15 +232,9 @@ namespace MovieTickets.Controllers
             }
             return View(await movies.AsNoTracking().ToListAsync());
         }
-        [Authorize(Roles = "Admin")]
-        public ActionResult GetMoviesAdmin()
-        {
-            List<Movie> MovieView = movieRepo.GetAll();
 
-            return View("AdminMovie", MovieView);
-
-        }
-        //searcing--------------------------------------
+        #endregion
+        #region Another Search
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetMoviesAdmin(string Keyword)
@@ -124,146 +248,8 @@ namespace MovieTickets.Controllers
             }
             return View("AdminMovie", await movies.AsNoTracking().ToListAsync());
         }
-        [Authorize(Roles = "Admin")]
-        public ActionResult GetMoviesDetailsAdmin(Guid id)
-
-        {
-            MovieViewModel Moviemodel = movieRepo.GetMovieByIdAdmin(id);
-
-            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
-            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
-            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
-            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
-
-
-
-
-
-            return View("MovieDetailsAdmain", Moviemodel);
-        }
-
-
-
-
-        // To Get Movie by ID
-        public ActionResult Details(Guid id)
-        {
-            Cart cart = new Cart();
-            cart.UserId = HttpContext.Session.GetString("id");
-
-
-            MovieDetailsViewModel mdvm = new MovieDetailsViewModel()
-            {
-                UserId = HttpContext.Session.GetString("id"),
-                Movie = movieRepo.GetById(id),
-                MovieActors = movieactorService.GetAll().Where(w => w.MovieId == id).ToList(),
-                MoviesInCinemas = movieincinemaService.GetAll().Where(w => w.MovieId == id).ToList(),
-                carts = cartservice.GetAll(cart).Where(w => w.MovieId == id).ToList(),
-
-            };
-
-            return View("DetailsUser", mdvm);
-        }
-
-
-        //To get Movie by name
-        //public ActionResult Details(string name)
-        //{
-        //    Movie movie = movieRepo.GetByName(name);
-        //    return View();
-        //}
-
-        // To add new movie
-        //get method opening create page
-        [Authorize(Roles = "Admin")]
-        public IActionResult Create()
-        {
-            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
-            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
-            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
-            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
-
-            return View(new MovieViewModel());
-
-        }
-
-
-
-        // post create method
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(MovieViewModel movievm, List<IFormFile> Image)
-        {
-            if (ModelState.IsValid)
-            {
-                movieRepo.Insert(movievm, Image);
-                return RedirectToAction("GetMoviesAdmin", "Movie");
-            }
-
-
-            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
-            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
-            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
-            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
-            return View(movievm);
-
-        }
-
-
-
-        // To Edit any Movie
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Edit(MovieViewModel editMovie, List<IFormFile> Image)
-        {
-           
-                Task<int> numOfRowsUpdated = movieRepo.update(editMovie, iid, Image);
-            return RedirectToAction("Getmoviesadmin");
-
-
-
-
-
-
-
-        }
-
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditMovieFromAdmin(Guid id)
-
-        {
-            iid = id;
-            MovieViewModel Moviemodel = movieRepo.GetMovieByIdAdmin(id);
-
-            ViewBag.Cinemas = new SelectList(db.Cinemas.ToList(), "Id", "Name");
-            ViewBag.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
-            ViewBag.Actors = new SelectList(db.Actors.ToList(), "Id", "Name");
-            ViewBag.Producers = new SelectList(db.Producers.ToList(), "Id", "Name");
-
-
-
-            return View("Edit", Moviemodel);
-        }
-
-        // POST: MovieController/Edit/5
-
-
-
-        // To delete movies
-     
-        public ActionResult Delete(Guid id)
-        {
-            movieRepo.delete(id);
-            return RedirectToAction("Getmoviesadmin");
-
-        }
-
-
-        // POST: MovieController/Delete/5
-
-
-        //partial view for adding quantites of tickets of the movie for each cinema
+        #endregion
+        #region Add Cinema
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public IActionResult AddCinema(List<string> cinemas)
@@ -276,6 +262,60 @@ namespace MovieTickets.Controllers
             ViewBag.Cinemas = cinemaNames;
             return PartialView("_AddCinema", new MovieViewModel());
         }
+        #endregion
+        #endregion
+
+
+        //search by name or actor-------------------
+
+
+        //searcing--------------------------------------
+
+
+
+
+
+
+        // To Get Movie by ID
+
+
+
+        //To get Movie by name
+        //public ActionResult Details(string name)
+        //{
+        //    Movie movie = movieRepo.GetByName(name);
+        //    return View();
+        //}
+
+        // To add new movie
+        //get method opening create page
+
+
+
+
+        // post create method
+
+
+
+
+        // To Edit any Movie
+
+
+
+
+        // POST: MovieController/Edit/5
+
+
+
+        // To delete movies
+
+
+
+        // POST: MovieController/Delete/5
+
+
+        //partial view for adding quantites of tickets of the movie for each cinema
+
 
     }
 }
