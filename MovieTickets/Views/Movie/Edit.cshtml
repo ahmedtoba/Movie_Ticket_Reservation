@@ -21,9 +21,9 @@
                         <div class="col-md-6">
 
                              <div class="form-group">
-                                <label  type="hidden" class="control-label"></label>
-                                <input type="hidden" class="form-control" />
-                                <span asp-validation-for="Name" class="text-danger"></span>
+                                
+                                <input type="hidden" value="ViewBag.id" class="form-control" />
+                                <span asp-validation-for=Name class="text-danger"></span>
                             </div>
 
 
@@ -90,8 +90,8 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="Edit" value="Create" class="btn btn-outline-success float-right" />
-                        <a class="btn btn-outline-secondary" asp-action="Index">Show all</a>
+                        <input  type="submit" value="update" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Getmoviesadmin">Show all</a>
                     </div>
 
                 </form>
@@ -101,6 +101,7 @@
 
     </div>
 </div>
+
 
 
 

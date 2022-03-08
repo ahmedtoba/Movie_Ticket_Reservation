@@ -129,24 +129,27 @@ public class MovieRepository : IMovieRepository
         movie.Cat_Id = editMovie.Category_Id;
         movie.Producer_Id = editMovie.Producer_Id;
 
-
-        foreach (var id in editMovie.ActorIds)
+        if (editMovie.ActorIds != null)
         {
-            db.MovieActors.Update(new MovieActor()
+            foreach (var id in editMovie.ActorIds)
             {
-                MovieId = Mid,
-                ActorId = id
-            });
+                db.MovieActors.Update(new MovieActor()
+                {
+                    MovieId = Mid,
+                    ActorId = id
+                });
+            }
         }
         //adding to cinema movies table
-        foreach (var id in editMovie.CinemaIds)
-        {
-            db.MovieInCinemas.Add(new MovieInCinema()
+        if (editMovie.CinemaIds != null)
+            foreach (var id in editMovie.CinemaIds)
             {
-                MovieId = Mid,
-                CinemaId = id
-            });
-        }
+                db.MovieInCinemas.Add(new MovieInCinema()
+                {
+                    MovieId = Mid,
+                    CinemaId = id
+                });
+            }
         int raws = db.SaveChanges();
         return raws;
     }
@@ -158,6 +161,7 @@ public class MovieRepository : IMovieRepository
         return raws;
     }
 }
+
 
 
 
