@@ -46,16 +46,7 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             
-                               <li><a href="index3.html">SEO dashboard</a></li>
-                            
-                        
-                               
-                         
-                            
-                            
-                           
-                          
-                              
+                               <li><a asp-action="GetMoviesAdmin" asp-controller="Movie">Movies</a></li>
                                     <li><a asp-action="AdminCinemas" asp-controller="Cinema">Cinemas</a></li>
                                     <li><a asp-action="AdminActors" asp-controller="Actor">Actors</a></li>
                                     <li><a asp-action="AdminCategories" asp-controller="Category">Categories</a></li>
@@ -83,6 +74,7 @@
                     <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 clearfix">
                         <ul class="notification-area pull-right">
+                            <li id="Log out"><a class="btn btn-primary" asp-controller="Account" asp-action="LogOut">Log Out</a></li>
                             <li id="full-view"><i class="ti-fullscreen"></i></li>
                             <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                             <li class="dropdown">
@@ -249,7 +241,7 @@
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Message</a>
                                 <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" asp-action="Logout" asp-controller="Account">Log Out</a>
+                                <a class="dropdown-item" asp-action="LogOut" asp-controller="Account">Log Out</a>
                             </div>
                         </div>
                     </div>

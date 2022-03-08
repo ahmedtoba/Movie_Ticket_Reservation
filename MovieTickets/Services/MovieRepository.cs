@@ -78,7 +78,8 @@ public class MovieRepository : IMovieRepository
             Cat_Id = movievm.Category_Id,
             Rate = movievm.Rate,
             Producer_Id = movievm.Producer_Id,
-            Image = movievm.Image
+            Image = movievm.Image,
+            Trailer = movievm.Trailer
 
         });
         //Adding to actor movies table

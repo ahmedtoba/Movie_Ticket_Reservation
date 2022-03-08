@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MovieTickets.Services;
-using MovieTickets.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -63,6 +59,8 @@ namespace MovieTickets.Models
                     });
                 }
 
+                //Adding Cinemas
+
                 if (!db.Cinemas.Any())
                 {
                     db.Cinemas.AddRange(new List<Cinema>()
@@ -74,6 +72,8 @@ namespace MovieTickets.Models
                     });
                 }
 
+
+                //Adding Actors
                 if (!db.Actors.Any())
                 {
                     db.Actors.AddRange(new List<Actor>()
