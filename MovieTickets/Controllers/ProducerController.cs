@@ -16,7 +16,7 @@ namespace MovieTickets.Controllers
          IProducerRepository producerRepository;
         IMovieRepository movieRepository;
         MovieContext db;
-
+        #region Constructor Injection
         public ProducerController(IProducerRepository ProducRepo,IMovieRepository MovRepo, MovieContext _db)
         {
           producerRepository = ProducRepo;
@@ -24,43 +24,35 @@ namespace MovieTickets.Controllers
             db = _db;
 
         }
-        //get all Producers for users 
+        #endregion
+        #region User
+        #region Index
         public ActionResult Index()
         {
             List<Producer> Producers = producerRepository.GetAll();
             return View("AllProducers", Producers);
         }
-        //get all producers for admin
+        #endregion
+        #region Details
+        public ActionResult Details(int id)
+        {
+
+            Producer producer = producerRepository.GetById(id);
+            return View("DetailsUser", producer);
+        }
+        #endregion
+        #endregion
+
+        #region Admin
+        #region Index
         [Authorize(Roles = "Admin")]
         public IActionResult AdminProducers()
         {
             List<Producer> producers = producerRepository.GetAll();
             return View("AdminProducers", producers);
         }
-
-        //searching----------------------------------------------
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AdminProducers(string Keyword)
-        {
-            ViewData["searching"] = Keyword;
-            var producers = db.Producers.Select(x => x);
-            if (!string.IsNullOrEmpty(Keyword))
-            {
-                producers = producers.Where(c => c.Name.Contains(Keyword));
-
-            }
-            return View(await producers.AsNoTracking().ToListAsync());
-        }
-
-
-        public ActionResult Details(int id)
-        {
-
-            Producer producer = producerRepository.GetById(id);
-            return View("DetailsUser",producer);
-        }
-        //The details of actors for admin
+        #endregion
+        #region Details
         [Authorize(Roles = "Admin")]
         public ActionResult ProducersDetailsAdmin(int id)
         {
@@ -68,31 +60,18 @@ namespace MovieTickets.Controllers
             Producer Actors = producerRepository.GetById(id);
             return View("ProducersDetailsAdmin", Actors);
         }
-
-        //Details of producers for users---------------------------------- 
-        public IActionResult Producer(int id)
-        {
-           Producer Producer = producerRepository.GetById(id);
-            return View(Producer);
-        }
-
-
-        //searching----------------------------------------------
-        public ActionResult ProducerName(string name)
-        {
-
-            Producer Prouducer = producerRepository.GetByName(name);
-            return View(Prouducer);
-        }
-
-
-        //insert Producer
+        #endregion
+        #region Insert
+        #region Get
         [Authorize(Roles = "Admin")]
         public IActionResult InsertProducerForm()
         {
             return View("InsertProducer", new Producer());
-        } 
+        }
 
+
+        #endregion
+        #region Post
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
@@ -106,31 +85,90 @@ namespace MovieTickets.Controllers
 
             return RedirectToAction("Producer");
         }
+        #endregion
+
+        #endregion
+        #region Update
+        #region Get
+        public IActionResult UpdateProducerForm(int id)
+        {
+            var producer = producerRepository.GetById(id);
+            return View("UpdateProducer", producer);
+        }
+        #endregion
+        #region post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(Producer EditProducer, int id, List<IFormFile> Image)
+        {
+            if (ModelState.IsValid)
+            {
+                Task<int> numOfRowsUpdated = producerRepository.update(EditProducer, id, Image);
+                return RedirectToAction("AdminProducers");
+            }
+            return RedirectToAction("Producer");
+
+        }
+        #endregion
+        #endregion
+        #region Delete
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
+        {
+            producerRepository.delete(id);
+            return RedirectToAction("adminproducers");
+        }
+        #endregion
+        #endregion
+        #region Search
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AdminProducers(string Keyword)
+        {
+            ViewData["searching"] = Keyword;
+            var producers = db.Producers.Select(x => x);
+            if (!string.IsNullOrEmpty(Keyword))
+            {
+                producers = producers.Where(c => c.Name.Contains(Keyword));
+
+            }
+            return View(await producers.AsNoTracking().ToListAsync());
+        }
+        #endregion
+
+        #region GetProducerById
+        public IActionResult Producer(int id)
+        {
+            Producer Producer = producerRepository.GetById(id);
+            return View(Producer);
+        }
+        #endregion
+
+        #region GetProducerByName
+        public ActionResult ProducerName(string name)
+        {
+
+            Producer Prouducer = producerRepository.GetByName(name);
+            return View(Prouducer);
+        }
+        #endregion
+
+
+
+
+
+        //insert Producer
+
         //-------------------------------------------------------------------
         //public IActionResult InsertProducer(Producer InsertProducer, IFormFile Image)
         //{
         //    producerRepository.insert(InsertProducer, Image);
         //    return View("Producer");
         //}
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Edit(Producer EditProducer, int id,List<IFormFile> Image)
-        {
-            if (ModelState.IsValid)
-            {
-               Task< int> numOfRowsUpdated = producerRepository.update(EditProducer, id,Image);
-                return RedirectToAction("AdminProducers");
-            }
-            return RedirectToAction("Producer");
 
-        }
         //Update producer
-        public IActionResult UpdateProducerForm(int id)
-        {
-            var producer = producerRepository.GetById(id);
-            return View("UpdateProducer", producer);
-        }
+
         //-------------------------------------------------------------
         //public IActionResult UpdateProducer(Producer EditProducer, int id, IFormFile Image)
         //{
@@ -139,11 +177,6 @@ namespace MovieTickets.Controllers
         //}
 
 
-        [Authorize(Roles = "Admin")]
-        public IActionResult Delete(int id)
-        {
-            producerRepository.delete(id);
-            return RedirectToAction("adminproducers");
-        }
+
     }
 }

@@ -30,7 +30,7 @@ namespace MovieTickets.Controllers
         
         [Authorize]
         public JsonResult Insert(Movie product)
-        {
+        { 
 
             Cart cart = new Cart()
             {

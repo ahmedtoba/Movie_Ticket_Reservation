@@ -32,6 +32,15 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
+      "IdentityModel/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/IdentityModel.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/IdentityModel.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/5.0.13": {
         "type": "package",
         "compile": {
@@ -2847,6 +2856,33 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "IdentityModel/6.0.0": {
+      "sha512": "eVHCR7a6m/dm5RFcBzE3qs/Jg5j9R5Rjpu8aTOv9e4AFvaQtBXb5ah7kmwU+YwA0ufRwz4wf1hnIvsD2hSnI4g==",
+      "type": "package",
+      "path": "identitymodel/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.jpg",
+        "identitymodel.6.0.0.nupkg.sha512",
+        "identitymodel.nuspec",
+        "lib/net461/IdentityModel.dll",
+        "lib/net461/IdentityModel.pdb",
+        "lib/net461/IdentityModel.xml",
+        "lib/net472/IdentityModel.dll",
+        "lib/net472/IdentityModel.pdb",
+        "lib/net472/IdentityModel.xml",
+        "lib/net5.0/IdentityModel.dll",
+        "lib/net5.0/IdentityModel.pdb",
+        "lib/net5.0/IdentityModel.xml",
+        "lib/net6.0/IdentityModel.dll",
+        "lib/net6.0/IdentityModel.pdb",
+        "lib/net6.0/IdentityModel.xml",
+        "lib/netstandard2.0/IdentityModel.dll",
+        "lib/netstandard2.0/IdentityModel.pdb",
+        "lib/netstandard2.0/IdentityModel.xml"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/5.0.13": {
@@ -9372,6 +9408,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "IdentityModel >= 6.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.13",
       "Microsoft.CodeAnalysis.Analyzers >= 3.3.3",
       "Microsoft.EntityFrameworkCore >= 5.0.14",
@@ -9384,19 +9421,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SoftLaptop\\.nuget\\packages\\": {}
+    "C:\\Users\\TanTawy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\documents\\visual studio\\MVC_PROJECT\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+      "projectUniqueName": "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
       "projectName": "MovieTickets",
-      "projectPath": "D:\\documents\\visual studio\\MVC_PROJECT\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
-      "packagesPath": "C:\\Users\\SoftLaptop\\.nuget\\packages\\",
-      "outputPath": "D:\\documents\\visual studio\\MVC_PROJECT\\Movie_Ticket_Reservation\\MovieTickets\\obj\\",
+      "projectPath": "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\MovieTickets.csproj",
+      "packagesPath": "C:\\Users\\TanTawy\\.nuget\\packages\\",
+      "outputPath": "D:\\MVCProject\\Movie_Ticket_Reservation\\MovieTickets\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\SoftLaptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\TanTawy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9422,6 +9459,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "IdentityModel": {
+            "target": "Package",
+            "version": "[6.0.0, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.13, )"
@@ -9473,6 +9514,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.13, 5.0.13]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -9481,7 +9528,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

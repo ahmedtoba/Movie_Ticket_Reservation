@@ -1,48 +1,77 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MovieTickets.Models;
 using MovieTickets.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace MovieTickets.Controllers
 {
     public class UpdateProfileController : Controller
     {
         IUpdateProfileRepository UpProfRepo;
+        private readonly UserManager<User> userManager;
 
-        public UpdateProfileController(IUpdateProfileRepository _UpProfRepo)
+        public UpdateProfileController(IUpdateProfileRepository _UpProfRepo, UserManager<User> userManager)
         {
             UpProfRepo = _UpProfRepo;
-            
+            this.userManager = userManager;
         }
        
-        public IActionResult UpdateAdminForm(string id= "b0ced795-8acb-4c58-854b-0d344b6c6fa8")
+        public async Task<IActionResult> UpdateAdminForm()
         {
-            var user = UpProfRepo.GetById(id);
+            string id = HttpContext.Session.GetString("id");
+            var user = await userManager.FindByIdAsync(id);
             return View(user);
         }
-        public IActionResult Update(User UpdateUser, List<IFormFile> Image,string id = "b0ced795-8acb-4c58-854b-0d344b6c6fa8")
+        public async Task<IActionResult> UpdateAsync(User UpdateUser, List<IFormFile> Image)
         {
+            foreach (var item in Image)
+            {
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        UpdateUser.Image = stream.ToArray();
+                    }
+                }
+            }
+            string id = HttpContext.Session.GetString("id");
             if (ModelState.IsValid)
             {
-                UpProfRepo.update(id, UpdateUser, Image);
+                UpProfRepo.update(id, UpdateUser);
                 return RedirectToAction("GetMoviesAdmin", "Movie");
             }
             return View("UpdateAdminForm", UpdateUser);
         }
-        public IActionResult UpdateUserForm(string id = "de815c71-7175-4ef8-a28e-3e6b7a1e08b2")
+        public IActionResult UpdateUserForm()
         {
+            string id=HttpContext.Session.GetString("id");
             var user = UpProfRepo.GetById(id);
             return View(user);
         }
-        public IActionResult UpdateUser(User UpdateUser, List<IFormFile>Image, string id = "de815c71-7175-4ef8-a28e-3e6b7a1e08b2")
+        public async Task<IActionResult> UpdateUserAsync(User UpdateUser, List<IFormFile>Image)
         {
-            if (ModelState.IsValid)
+            foreach (var item in Image)
             {
-                var user = UpProfRepo.update(id,UpdateUser, Image);
-                return RedirectToAction("Index", "Home");
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        UpdateUser.Image = stream.ToArray();
+                    }
+                }
             }
+            string id=HttpContext.Session.GetString("id");
+           
+                UpProfRepo.update(id,UpdateUser);
+                return RedirectToAction("Index", "Home");
+            
             return View("UpdateUserForm", UpdateUser);
         }
     }

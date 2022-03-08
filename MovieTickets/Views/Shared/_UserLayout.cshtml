@@ -1,4 +1,7 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
+
+
+	
 
 <!DOCTYPE html>
 
@@ -147,7 +150,7 @@
 							
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" asp-action="UpdateUserForm" asp-controller="UpdateProfile" asp-route-id="de815c71-7175-4ef8-a28e-3e6b7a1e08b2">
+							<a class="btn btn-default dropdown-toggle lv1" asp-action="UpdateUserForm" asp-controller="UpdateProfile" >
 							Profile 
 							</a>
 							
@@ -173,10 +176,21 @@
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
 						@if(User.Identity.IsAuthenticated){
-							<li><a asp-action="UpdateUserForm" asp-controller="UpdateProfile" asp-route-id = "de815c71-7175-4ef8-a28e-3e6b7a1e08b2">
+							
+							<li><a asp-action="UpdateUserForm" asp-controller="UpdateProfile" >
 								
+								@*@if(user.Image==null){
 								<img src="~/images/placeholder.jpg" alt=""
 								style="width:50px; height:50px; border-radius: 50%; object-fit:cover"/>
+									}
+									else
+									{
+										var base64 = Convert.ToBase64String(@user.Image);
+										var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+										<img src="@imgSrc" alt=""
+								style="width:50px; height:50px; border-radius: 50%; object-fit:cover"/>
+									}*@
 								</a></li>
 							<li class="btn signupLink"><a asp-controller="Account" asp-action="LogOut">LOG Out</a></li>
 						} else
@@ -184,6 +198,7 @@
 							<li class="loginLink"><a asp-controller="Account" asp-action="Login">LOG In</a></li>
 							<li class="btn signupLink"><a asp-controller="Account" asp-action="SignUp">Sign Up</a></li>
 						}
+						
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->

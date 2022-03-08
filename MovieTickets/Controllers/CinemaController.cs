@@ -16,68 +16,66 @@ namespace MovieTickets.Controllers
         ICinemaRepository cinemaRepo;
         MovieContext db;
         private readonly IMovieInCinemaRepository movieInCinemaService;
-
+        #region Constructor Injection
         public CinemaController(ICinemaRepository _cinemaRepo, MovieContext _db,IMovieInCinemaRepository movieInCinemaService)
         {
             cinemaRepo = _cinemaRepo;
             db = _db;
             this.movieInCinemaService = movieInCinemaService;
         }
-        //show all Cinemas User View--------------
+        #endregion
+ 
+        #region User
+        #region Index
         public IActionResult Index()
         {
             List<Cinema> cinemas = cinemaRepo.GetAll();
             return View("AllCinemas", cinemas);
         }
-        //show all Cinemas User View--------------
+        #endregion
+        #region Details
+        public IActionResult Cinema(int id)
+        {
+            MovieCinemaViewModel cinema = new MovieCinemaViewModel()
+            {
+                Cinema = cinemaRepo.GetById(id),
+                Movies = movieInCinemaService.GetAll().Where(w => w.Cinema.Id == id).ToList(),
+            };
+
+            return View("CinemaUserDetails", cinema);
+        }
+        #endregion
+        #endregion
+
+        #region Admin
+        #region Index
         [Authorize(Roles = "Admin")]
         public IActionResult AdminCinemas()
         {
             List<Cinema> cinemas = cinemaRepo.GetAll();
             return View("AdminCinemas", cinemas);
         }
-        //-----------------------------
-        //Cinema Details By link Read more User 
-        public IActionResult Cinema(int id)
-        {
-            MovieCinemaViewModel cinema = new MovieCinemaViewModel()
-            {
-                Cinema = cinemaRepo.GetById(id),
-                Movies = movieInCinemaService.GetAll().Where(w => w.Cinema.Id==id).ToList(),
-            };
-           
-            return View("CinemaUserDetails", cinema);
-        }
-        //Cinema Details By link Read more Admin
+        #endregion
+        #region Details
         [Authorize(Roles = "Admin")]
         public IActionResult CinemaDetailsAdmin(int id)
         {
             Cinema cinema = cinemaRepo.GetById(id);
             return View("CinemaDetailsAdmin", cinema);
         }
-        //-------------------------------
-        //for searcing by name-----------
-        public IActionResult CinemaName(string name)
-        {
-            Cinema cinema = cinemaRepo.GetByName(name);
-            return View(cinema);
-        }
-        //------------------------------
-        //for searcing by Location-----------
-        public IActionResult CinemaLocation(string location)
-        {
-            Cinema cinema = cinemaRepo.GetByLocation(location);
-            return View(cinema);
-        }
-        //[admin Section]=========================================================
-        //insert From---------------------------------
+        #endregion
+        #region Insert
+        #region Get
         [Authorize(Roles = "Admin")]
         public IActionResult InsertForm()
         {
 
             return View("Cinema_Insert_Form", new Cinema());
         }
-        //insert---------------------------------
+
+
+        #endregion
+        #region Post
         [Authorize(Roles = "Admin")]
         public IActionResult InsertCinema(Cinema InsertCinema, List<IFormFile> Image)
         {
@@ -89,14 +87,22 @@ namespace MovieTickets.Controllers
             return RedirectToAction("InsertForm", InsertCinema);
             //Retrun to Details
         }
-        //Update From---------------------------------
+        #endregion
+
+        #endregion
+        #region Update
+
+        #region Get
         public IActionResult UpdateForm(int id)
         {
 
             Cinema cinema = cinemaRepo.GetById(id);
             return View("CinemaUpdateForm", cinema);
         }
-        //Update---------------------------------
+
+
+        #endregion
+        #region Post
         [Authorize(Roles = "Admin")]
         public IActionResult UpdateCinema(Cinema EditCin, int id, List<IFormFile> Image)
         {
@@ -107,15 +113,21 @@ namespace MovieTickets.Controllers
             }
             return View("CinemaUpdateForm", EditCin);//Retrun to Details
         }
-        //------------------------------------------
-        //Delete----------------------------------
+        #endregion
+
+        #endregion
+
+        #region Delete
         [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             cinemaRepo.delete(id);
             return RedirectToAction("AdminCinemas");
         }
-        //Searching by name or location----------------------------
+        #endregion
+
+        #endregion
+        #region Search
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AdminCinemas(string Keyword)
@@ -129,5 +141,22 @@ namespace MovieTickets.Controllers
             }
             return View(await cinemas.AsNoTracking().ToListAsync());
         }
+        #endregion
+
+        #region GetCinemaByNmae
+        public IActionResult CinemaName(string name)
+        {
+            Cinema cinema = cinemaRepo.GetByName(name);
+            return View(cinema);
+        }
+        #endregion
+        #region GetcinemaByLocation
+        public IActionResult CinemaLocation(string location)
+        {
+            Cinema cinema = cinemaRepo.GetByLocation(location);
+            return View(cinema);
+        }
+        #endregion
+       
     }
 }

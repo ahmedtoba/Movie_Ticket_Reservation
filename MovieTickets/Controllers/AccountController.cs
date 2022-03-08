@@ -12,14 +12,15 @@ namespace MovieTickets.Controllers
         private readonly SignInManager<User> signInManager;
         private readonly UserManager<User> userManager;
         private readonly MovieContext db;
-
+        #region Constructor Injection
         public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, MovieContext db)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.db = db;
         }
-
+        #endregion
+        #region LogIn
         public IActionResult Login()
         {
             return View(new LoginViewModel());
@@ -31,6 +32,7 @@ namespace MovieTickets.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 var user = await userManager.FindByNameAsync(loginVM.UserLogin);
                 user = (user != null) ? user : await userManager.FindByEmailAsync(loginVM.UserLogin);
                 if (user != null)
@@ -41,10 +43,14 @@ namespace MovieTickets.Controllers
                         var result = await signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                         if (result.Succeeded)
                         {
+                            HttpContext.Session.SetString("id", user.Id);
+                            
+
                             var checkIfAdmin = await userManager.GetRolesAsync(user);
                             if (checkIfAdmin.Contains("Admin"))
-                                return RedirectToAction("Admin", "Home");
-                            HttpContext.Session.SetString("id", user.Id);
+                               
+                            return RedirectToAction("Admin", "Home");
+                            
                             return RedirectToAction("Index", "Home");
                         }
                     }
@@ -55,7 +61,9 @@ namespace MovieTickets.Controllers
         }
 
 
+        #endregion 
 
+        #region SignUp
         public IActionResult SignUp()
         {
             return View(new SignUpViewModel());
@@ -95,18 +103,20 @@ namespace MovieTickets.Controllers
             TempData["Error"] = "Login Error, Please Try again, Ensure to enclue complex password";
             return View(signUpVM);
         }
-
+        
         public IActionResult SignUpCompleted()
         {
             return View();
         }
 
-        
+        #endregion
+        #region LogOut
         public async Task<IActionResult> LogOut()
         {
             await signInManager.SignOutAsync();
             HttpContext.Session.Remove("id");
             return RedirectToAction("Index", "Home");
-        } 
+        }
+        #endregion
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MovieTickets.Models;
@@ -19,27 +21,32 @@ namespace MovieTickets.Controllers
         private readonly ICategoryRepository categoryService;
         private readonly ICinemaRepository cinemaService;
         private readonly IMovieRepository movieServie;
+        private readonly UserManager<User> userService;
 
-        public HomeController(ILogger<HomeController> logger,IActorRepository ActorService, ICategoryRepository CategoryService,ICinemaRepository CinemaService,IMovieRepository MovieServie)
+        public HomeController(ILogger<HomeController> logger,IActorRepository ActorService, 
+            ICategoryRepository CategoryService,ICinemaRepository CinemaService,
+            IMovieRepository MovieServie, UserManager<User> userService)
         {
             _logger = logger;
             actorService = ActorService;
             categoryService = CategoryService;
             cinemaService = CinemaService;
             movieServie = MovieServie;
+            this.userService = userService;
         }
 
-        public IActionResult Index()
+        public async Task< IActionResult> Index()
         {
-
+            string id = HttpContext.Session.GetString("id");
             HomeViewModel addHome = new HomeViewModel()
             {
+                user =await userService.FindByIdAsync(id),
                 Cinemas = cinemaService.GetAll(),
                 Movies = movieServie.GetAll(),
                 Categories = categoryService.GetAll(),
                 Actors = actorService.GetAll()
             };
-            return View(addHome);
+            return PartialView(addHome);
         }
 
         public IActionResult Privacy()
