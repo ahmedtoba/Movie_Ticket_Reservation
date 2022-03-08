@@ -27,8 +27,7 @@ namespace MovieTickets.Controllers
            List<Cart> carts= cartService.GetAll(cart);
             return View(carts);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public JsonResult Insert(Movie product)
         {
 
