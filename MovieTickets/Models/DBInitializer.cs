@@ -46,16 +46,15 @@ namespace MovieTickets.Models
                 {
                     db.Categories.AddRange(new List<Category>()
                     {
-                        new Category() { Name = "Comdey"},
-                        new Category() { Name = "Romance"},
-                        new Category() { Name = "Drama"},
-                        new Category() { Name = "Action"},
-                        new Category() { Name = "Thriller"},
-                        new Category() { Name = "Horror"},
-                        new Category() { Name = "Animation"},
-                        new Category() { Name = "Adventure"},
-                        new Category() { Name = "Documentary"},
-                        new Category() { Name = "Science Fiction"}
+                        new Category() { Name = "Comdey", Image= await ImageConverter("Comedy.jpg")},
+                        new Category() { Name = "Romance", Image= await ImageConverter("Romance.jpg")},
+                        new Category() { Name = "Drama", Image= await ImageConverter("Drama.jpg")},
+                        new Category() { Name = "Action", Image= await ImageConverter("Action.jpg")},
+                        new Category() { Name = "Thriller", Image= await ImageConverter("Thriller.jpg")},
+                        new Category() { Name = "Horror", Image= await ImageConverter("Horror.jpg")},
+                        new Category() { Name = "Animation", Image= await ImageConverter("Animation.jpg")},
+                        new Category() { Name = "Adventure", Image= await ImageConverter("Adventure.jpg")},
+                        new Category() { Name = "Documentary", Image= await ImageConverter("Documentary.jpg")},
                     });
                 }
 
@@ -65,10 +64,10 @@ namespace MovieTickets.Models
                 {
                     db.Cinemas.AddRange(new List<Cinema>()
                     {
-                        new Cinema() { Name ="IMax Americana", Location ="Giza", Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-                        new Cinema() { Name ="Point 90 Cinema", Location ="Cairo", Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-                        new Cinema() { Name ="Vox Cinema", Location ="Cairo", Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-                        new Cinema() { Name ="Renaissance Cinema St. Stefano", Location ="Alexandria", Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
+                        new Cinema() { Name ="IMax Americana", Location ="Giza", Image= await ImageConverter("/Cinema/Galaxy.jpg"), Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
+                        new Cinema() { Name ="Point 90 Cinema", Location ="Cairo", Image= await ImageConverter("/Cinema/vox.jpg"), Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
+                        new Cinema() { Name ="Vox Cinema", Location ="Cairo", Image= await ImageConverter("/Cinema/Galaxy.jpg"), Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
+                        new Cinema() { Name ="Renaissance Cinema St. Stefano", Image= await ImageConverter("/Cinema/vox.jpg"), Location ="Alexandria", Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
                     });
                 }
 
@@ -106,6 +105,18 @@ namespace MovieTickets.Models
                         {
                             Name ="Will Smith",
                             Image = await ImageConverter("actor-5.jpeg"),
+                            Bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        },
+                        new Actor()
+                        {
+                            Name ="Dwayne Johnson",
+                            Image = await ImageConverter("actor-6.jpg"),
+                            Bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        },
+                        new Actor()
+                        {
+                            Name ="Jason Statham",
+                            Image = await ImageConverter("actor-7.jpg"),
                             Bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                         },
 
@@ -301,6 +312,88 @@ namespace MovieTickets.Models
                     }
                     //end of adding one movie
 
+
+                    //start of adding movie
+                    Guid guid5 = Guid.NewGuid();
+                    var movie5 = new Movie()
+                    {
+                        Id = guid5,
+                        Name = "Dumb and Dumber (1994)",
+                        StartDate = new DateTime(2022, 5, 30),
+                        EndDate = new DateTime(2023, 10, 14),
+                        Rate = 8,
+                        Trailer = "https://www.youtube.com/watch?v=l13yPhimE3o",
+                        Price = 190,
+                        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        Producer_Id = 2,
+                        Cat_Id = 1,
+                        Image = await ImageConverter("Comedy.jpg"),
+                    };
+                    db.Movies.Add(movie5);
+                    var actors5 = new List<int> { 1, 4, 3 };
+                    foreach (var id in actors5)
+                    {
+                        db.MovieActors.Add(new MovieActor()
+                        {
+                            MovieId = guid5,
+                            ActorId = id
+                        });
+                    }
+                    var cinemas5 = new List<int> { 2, 4 };
+                    var quantities5 = new List<int> { 40, 60 };
+
+                    //adding to cinema movies table
+                    for (var i = 0; i < cinemas5.Count; i++)
+                    {
+                        db.MovieInCinemas.Add(new MovieInCinema()
+                        {
+                            Quantity = quantities5[i],
+                            MovieId = guid5,
+                            CinemaId = cinemas5[i]
+                        });
+                    }
+                    //end of adding one movie
+
+                    //start of adding movie
+                    Guid guid6 = Guid.NewGuid();
+                    var movie6 = new Movie()
+                    {
+                        Id = guid6,
+                        Name = "Encanto (2021)",
+                        StartDate = new DateTime(2021, 5, 30),
+                        EndDate = new DateTime(2023, 10, 14),
+                        Rate = 8,
+                        Trailer = "https://www.youtube.com/watch?v=CaimKeDcudo",
+                        Price = 130,
+                        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        Producer_Id = 2,
+                        Cat_Id = 7,
+                        Image = await ImageConverter("Animation.jpg"),
+                    };
+                    db.Movies.Add(movie6);
+                    var actors6 = new List<int> { 1, 6, 5 };
+                    foreach (var id in actors6)
+                    {
+                        db.MovieActors.Add(new MovieActor()
+                        {
+                            MovieId = guid6,
+                            ActorId = id
+                        });
+                    }
+                    var cinemas6 = new List<int> { 1, 4 };
+                    var quantities6 = new List<int> { 40, 60 };
+
+                    //adding to cinema movies table
+                    for (var i = 0; i < cinemas6.Count; i++)
+                    {
+                        db.MovieInCinemas.Add(new MovieInCinema()
+                        {
+                            Quantity = quantities6[i],
+                            MovieId = guid6,
+                            CinemaId = cinemas6[i]
+                        });
+                    }
+                    //end of adding one movie
                 }
 
 
