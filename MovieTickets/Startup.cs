@@ -46,9 +46,11 @@ namespace MovieTickets
             services.AddScoped<IMovieActorRepository, MovieActorRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<IMovieOrderRepository, MovieOrderRepository>();
+            services.AddScoped<IUpdateProfileRepository, UpdateProfileRepository>();
+
             //___________________________________________
             //Authentication and Authorization
-            
+
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<MovieContext>();
             services.AddMemoryCache();
             services.AddSession();
