@@ -124,7 +124,8 @@ public class MovieRepository : IMovieRepository
         movie.StartDate = editMovie.StartDate;
         movie.EndDate = editMovie.EndDate;
         movie.Price = editMovie.Price;
-        movie.Image = editMovie.Image;
+        if (Image.Count != 0)
+            movie.Image = editMovie.Image;
         movie.Rate = editMovie.Rate;
         movie.Cat_Id = editMovie.Category_Id;
         movie.Producer_Id = editMovie.Producer_Id;

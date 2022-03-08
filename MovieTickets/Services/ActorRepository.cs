@@ -68,7 +68,10 @@ namespace MovieTickets.Services
             }
             Actor.Id = EditActor.Id;
             Actor.Name = EditActor.Name;
-            Actor.Image = EditActor.Image;
+            if (Image.Count!= 0)
+            {
+                Actor.Image = EditActor.Image;
+            }
             Actor.Bio = EditActor.Bio;
             int raws = db.SaveChanges();
             return raws;

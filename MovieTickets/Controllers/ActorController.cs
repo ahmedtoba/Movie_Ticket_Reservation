@@ -123,10 +123,11 @@ namespace MovieTickets.Controllers
         {
             if (ModelState.IsValid)
             {
-               Task<int> numOfRowsUpdated = actorRepository.update(EditActor, id, Image);
-                return View();
+                actorRepository.update(EditActor, id, Image);
+                return RedirectToAction("AdminActors", "Actor");
             }
-            return RedirectToAction("Actor");
+            return View("UpdateActor");
+           
 
         }
         //Update actor

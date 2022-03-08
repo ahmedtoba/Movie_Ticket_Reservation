@@ -24,7 +24,7 @@
     <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
-<body onload="getData()">
+<body>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -38,44 +38,29 @@
             <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="/images/logo1.png" alt="logo"></a><p style="color:white; font-weight:bold; font-size:18px">&nbsp;&nbsp; ADMIN</p>
+                    <a asp-action="Index" asp-controller="Home"><img src="/images/logo1.png" alt="logo"></a><p style="color:white; font-weight:bold; font-size:18px">&nbsp;&nbsp; ADMIN</p>
                 </div>
             </div>
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                <ul class="collapse">
-                                    <li class="active"><a href="index.html">ICO dashboard</a></li>
-                                    <li><a href="index2.html">Ecommerce dashboard</a></li>
-                                    <li><a href="index3.html">SEO dashboard</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Sidebar
-                                        Types
-                                    </span></a>
-                                <ul class="collapse">
-                                    <li><a href="index.html">Left Sidebar</a></li>
-                                    <li><a href="index3-horizontalmenu.html">Horizontal Sidebar</a></li>
-                                </ul>
-                            </li>
+                            
+                               <li><a href="index3.html">SEO dashboard</a></li>
+                            
+                        
+                               
+                         
                             
                             
                            
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Tables</span></a>
-                                <ul class="collapse">
+                          
+                              
                                     <li><a asp-action="AdminCinemas" asp-controller="Cinema">Cinemas</a></li>
                                     <li><a asp-action="AdminActors" asp-controller="Actor">Actors</a></li>
                                     <li><a asp-action="AdminCategories" asp-controller="Category">Categories</a></li>
                                     <li><a asp-action="AdminProducers" asp-controller="Producer">Producers</a></li>
-                                    <li><a asp-action="GetMoviesAdmin" asp-controller="Movie">Movies</a></li>
-                                </ul>
-                            </li>
+                               
                         </ul>
                     </nav>
                 </div>
@@ -264,7 +249,7 @@
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Message</a>
                                 <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
+                                <a class="dropdown-item" asp-action="Logout" asp-controller="Account">Log Out</a>
                             </div>
                         </div>
                     </div>

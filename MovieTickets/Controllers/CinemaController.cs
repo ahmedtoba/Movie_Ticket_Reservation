@@ -43,7 +43,7 @@ namespace MovieTickets.Controllers
             MovieCinemaViewModel cinema = new MovieCinemaViewModel()
             {
                 Cinema = cinemaRepo.GetById(id),
-                Movies = movieInCinemaService.GetAll().Where(w => w.Id == id).ToList(),
+                Movies = movieInCinemaService.GetAll().Where(w => w.Cinema.Id==id).ToList(),
             };
            
             return View("CinemaUserDetails", cinema);
@@ -79,7 +79,7 @@ namespace MovieTickets.Controllers
         }
         //insert---------------------------------
         [Authorize(Roles = "Admin")]
-        public IActionResult InsertCinema(Cinema InsertCinema, IFormFile Image)
+        public IActionResult InsertCinema(Cinema InsertCinema, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace MovieTickets.Controllers
         }
         //Update---------------------------------
         [Authorize(Roles = "Admin")]
-        public IActionResult UpdateCinema(Cinema EditCin, int id, IFormFile Image)
+        public IActionResult UpdateCinema(Cinema EditCin, int id, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {

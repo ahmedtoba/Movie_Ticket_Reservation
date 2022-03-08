@@ -72,7 +72,7 @@ namespace MovieTickets.Services
             }
             Producer.Id = EditProducer.Id;
             Producer.Name = EditProducer.Name;
-
+            if(Image.Count!=0)
             Producer.Image = EditProducer.Image;
             Producer.Bio = EditProducer.Bio;
             int raws = db.SaveChanges();
