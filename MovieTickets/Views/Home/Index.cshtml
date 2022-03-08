@@ -62,7 +62,7 @@
 													{
 														  var base64 = Convert.ToBase64String(@item.Image);
 															var imgSrc = String.Format("data:image/gif;base64,{0}", base64);				
-														<img src="imgSrc" alt="" width="185" height="284">
+														<img src="@imgSrc" alt="" width="185" height="284">
 													}
 												</div> 
 					            			<div class="hvr-inner">
@@ -100,7 +100,7 @@
 													{
 														  var base64 = Convert.ToBase64String(@item.Image);
 											var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-					            				<img src="@item.Image" alt="" width="185" height="284">
+					            				<img src="@imgSrc" alt="" width="185" height="284">
 													}
 					            			</div>
 					            			<div class="hvr-inner">
@@ -129,7 +129,13 @@
 						<h4 class="sb-title">Actors</h4>
 						@foreach(var item in Model.Actors){
 						<div class="celeb-item">
-							<a asp-action ="Details" asp-controller="Actor" asp-route-id="@item.Id"><img src="@item.Image" alt="" width="70" height="70"></a>
+							<a asp-action ="Details" asp-controller="Actor" asp-route-id="@item.Id">
+								@if (item.Image != null)
+													{
+														  var base64 = Convert.ToBase64String(@item.Image);
+											var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+					            				<img src="@imgSrc" alt="" width="185" height="284">
+													}</a>
 							<div class="celeb-author">
 								<h6><a asp-action ="Details" asp-controller="Actor" asp-route-id="@item.Id">@item.Name</a></h6>
 								

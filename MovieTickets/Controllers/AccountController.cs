@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MovieTickets.Models;
 using MovieTickets.ViewModels;
@@ -40,6 +41,7 @@ namespace MovieTickets.Controllers
                         var result = await signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                         if (result.Succeeded)
                         {
+                            HttpContext.Session.SetString("id", user.Id);
                             return RedirectToAction("Index", "Home");
                         }
                     }

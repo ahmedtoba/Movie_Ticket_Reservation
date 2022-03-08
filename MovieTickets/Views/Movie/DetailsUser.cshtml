@@ -50,6 +50,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 				<div class="movie-single-ct main-content">
 					<h1 class="bd-hd">@Model.Movie.Name </h1>
 					<div class="social-btn">
+						@if(Model.UserId!=null){
 						@if(Model.carts.Count==0){
 							<a onclick="getData()" id="fav" class="parent-btn " style="cursor:pointer;"><i class="ion-heart"></i> Add to Favorite</a>
 							<a onclick="getData()" id="rev" class="parent-btns mystyle1" style="cursor:pointer; "><i class="ion-checkmark"></i> Added to Favorite</a>
@@ -57,6 +58,7 @@ Layout="~/Views/Shared/_UserLayout.cshtml";
 						else{
 							<a onclick="getData()" id="rev" class="parent-btn mystyle1" style="cursor:pointer;"><i class="ion-heart"></i> Add to Favorite</a>
 							<a onclick="getData()" id="fav" class="parent-btns " style="cursor:pointer; "><i class="ion-checkmark"></i> Added to Favorite</a>
+						}
 						}
 					</div>
 					

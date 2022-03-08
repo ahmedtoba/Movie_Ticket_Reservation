@@ -1252,3 +1252,4 @@ D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views
 C:\MovieTicketsProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Home\Admin.cshtml.g.cs
 >>>>>>> upstream/main
 D:\itiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\c#\MVC\github\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Home\Admin.cshtml.g.cs
+D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\Home\Admin.cshtml.g.cs
