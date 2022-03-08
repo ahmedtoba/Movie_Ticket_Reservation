@@ -599,3 +599,4 @@ D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.pdb
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.genruntimeconfig.cache
 D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\ref\MovieTickets.dll
+D:\documents\visual studio\MVC_project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\UpdateProfile\UpdateUserForm.cshtml.g.cs

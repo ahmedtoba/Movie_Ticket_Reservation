@@ -1,13 +1,22 @@
 ﻿@model User
 
 @{
-    Layout = "_AdminLayout";
+    Layout = "_UserLayout";
 }
 
-<div class="container mt-5">
-<form  class="w-50 m-auto" asp-action="Update" asp-controller="UpdateProfile" asp-route-id="b0ced795-8acb-4c58-854b-0d344b6c6fa8" enctype= "multipart/form-data" >
- <div class="container">
-   <div class="picture-container">
+<div class="slider movie-items">
+	<div class="container">
+	<div class="container">
+		<div class="row ipad-width">
+<div class="col-md-12">
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="form-style-1 user-pro" action="#">
+					<form asp-action="UpdateUser" asp-controller="UpdateProfile" asp-route-id="de815c71-7175-4ef8-a28e-3e6b7a1e08b2" class="user">
+						<h4>@Model.FullName Profile</h4>
+
+   <div class="picture-container" style="margin-right:50%">
       <div class="picture">
             @*image proplem ===================================================================*@
                     @if(Model.Image == null)
@@ -27,28 +36,30 @@
 
        </div>
        </div>
- </div>
-    <div>
-
-        <label asp-for="FullName">Name</label>
-        <input class="form-control" asp-for="FullName" >
-    </div>
-    <div>
-        <label asp-for="Adress">Address</label>
-        <input class="form-control" asp-for="Adress">
-    </div>
-    
-   
- 
-      <div class="d-flex justify-content-between mt-3">
-        <input type= "submit" value = "Update" class="btn btn-success ps-5 pe-5"  />
-        <a asp-action="GetMoviesAdmin" asp-controller="Movie" class="btn btn-danger ">Cancel</a>
-
-    </div>
-
-</form>
-
-</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label asp-for="FullName">Username</label>
+								<input asp-for="FullName">
+							</div>
+							<div class="col-md-6 form-it">
+								<label asp-for="Adress">Address</label>
+								<input asp-for="Adress">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<input class="submit" type="submit" value="save">
+							</div>
+						</div>	
+					</form>
+					
+				</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
 
 <script>
     var loadFile = function (event) {
