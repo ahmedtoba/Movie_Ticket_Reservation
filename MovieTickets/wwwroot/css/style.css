@@ -5889,6 +5889,28 @@ ul {
   border: 1px solid #dd003f;
   margin-right: 10px;
   font-size: 16px;
+}.social-btn a.parent-btns {
+  font-family: 'Dosis', sans-serif;
+  font-size: 14px;
+  color:lawngreen ;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 35px;
+}
+@media (max-width: 767px) {
+  .social-btn a.parent-btns {
+    margin-bottom: 40px;
+  }
+}
+.social-btn a.parent-btns i {
+    padding: 10px 14px;
+    text-align: center;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid lawngreen;
+    margin-right: 10px;
+    font-size: 16px;
 }
 .social-btn .hover-bnt {
   display: -webkit-flex;
@@ -8284,10 +8306,8 @@ footer.full-width-ft .ft-copyright {
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
 }
-.mystyle {
-    display: none;
-}
-
-.mystyle1 {
-    display: none;
+.mystyle{
+    display:none;
+}.mystyle1{
+    display:none;
 }
