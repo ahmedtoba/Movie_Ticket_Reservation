@@ -101,6 +101,7 @@ namespace MovieTickets.Controllers
         public async Task<IActionResult> LogOut()
         {
             await signInManager.SignOutAsync();
+            HttpContext.Session.Remove("id");
             return RedirectToAction("Index", "Home");
         } 
     }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieTickets.Models;
 using MovieTickets.Services;
@@ -28,7 +29,7 @@ namespace MovieTickets.Controllers
         {
             
           orders  = new MovieOrder();
-            orders.UserId = "2a1864ba-567e-4ddd-84af-0466ca59466c";
+            orders.UserId = HttpContext.Session.GetString("id");
             orders.Movie = movieservice.GetById(movie.Id); 
 
 
