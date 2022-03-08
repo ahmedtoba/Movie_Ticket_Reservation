@@ -41,6 +41,9 @@ namespace MovieTickets.Controllers
                         var result = await signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                         if (result.Succeeded)
                         {
+                            var checkIfAdmin = await userManager.GetRolesAsync(user);
+                            if (checkIfAdmin.Contains("Admin"))
+                                return RedirectToAction("Admin", "Home");
                             HttpContext.Session.SetString("id", user.Id);
                             return RedirectToAction("Index", "Home");
                         }
