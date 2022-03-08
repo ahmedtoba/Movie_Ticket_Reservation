@@ -92,6 +92,7 @@ namespace MovieTickets.Controllers
                     TempData["Error"] = "Email Already Exists";
                 return View(signUpVM);
             }
+            TempData["Error"] = "Login Error, Please Try again, Ensure to enclue complex password";
             return View(signUpVM);
         }
 
