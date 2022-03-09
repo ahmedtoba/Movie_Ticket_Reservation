@@ -802,4 +802,3 @@ D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\ref\MovieTi
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.pdb
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.genruntimeconfig.cache
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\bin\Debug\net5.0\IdentityModel.dll
-D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.csproj.AssemblyReference.cache

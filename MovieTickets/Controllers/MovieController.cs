@@ -69,6 +69,7 @@ namespace MovieTickets.Controllers
         {
             Cart cart = new Cart();
             cart.UserId = HttpContext.Session.GetString("id");
+                cart.MovieId=id;
 
 
             MovieDetailsViewModel mdvm = new MovieDetailsViewModel()
@@ -77,7 +78,7 @@ namespace MovieTickets.Controllers
                 Movie = movieRepo.GetById(id),
                 MovieActors = movieactorService.GetAll().Where(w => w.MovieId == id).ToList(),
                 MoviesInCinemas = movieincinemaService.GetAll().Where(w => w.MovieId == id).ToList(),
-                carts = cartservice.GetAll(cart).Where(w => w.MovieId == id).ToList(),
+                carts = cartservice.GetData(cart),
 
             };
 

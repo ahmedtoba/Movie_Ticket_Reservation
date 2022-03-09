@@ -9,6 +9,6 @@ namespace MovieTickets.Services
     {
         User GetById(string id);
         Task<int> insert(User NewUser, List<IFormFile> Image);
-        int update(string id, User UpdateUser);
+        Task<int> updateAsync(string id, User UpdateUser, List<IFormFile> Image);
     }
 }
