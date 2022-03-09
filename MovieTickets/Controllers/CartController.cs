@@ -24,7 +24,7 @@ namespace MovieTickets.Controllers
            
             cart.UserId = HttpContext.Session.GetString("id");
             
-           List<Cart> carts= cartService.GetAll(cart);
+           List<Cart> carts= cartService.GetData(cart);
             return View(carts);
         }
         
@@ -37,7 +37,8 @@ namespace MovieTickets.Controllers
                 UserId = HttpContext.Session.GetString("id"),
                 MovieId = product.Id,
             };
-            var c = cartService.GetAll(cart).ToList();
+            var c = cartService.GetData(cart).ToList();
+           
             if (c.Count == 0)
             {
                 cartService.Insert(cart);

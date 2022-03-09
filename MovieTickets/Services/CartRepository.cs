@@ -25,7 +25,11 @@ namespace MovieTickets.Services
             return cart;
         }
 
-        
+        public List<Cart> GetData(Cart carts)
+        {
+            var cart = db.Cart.Where(w => w.UserId == carts.UserId).Where(w => w.MovieId == carts.MovieId).ToList();
+            return cart;
+        }
 
         public void Insert(Cart cart)
         {

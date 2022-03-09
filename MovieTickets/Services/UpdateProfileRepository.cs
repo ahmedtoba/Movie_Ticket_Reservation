@@ -21,13 +21,26 @@ namespace MovieTickets.Services
             return user;
         }
         //Update user profile -----------------------
-        public int update(string id, User UpdateUser)
+        public async Task<int> updateAsync(string id, User UpdateUser,List<IFormFile> Image)
         {
+            foreach (var item in Image)
+            {
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        UpdateUser.Image = stream.ToArray();
+                    }
+                }
+            }
             var user = db.Users.SingleOrDefault(u => u.Id == id);
            
             user.FullName = UpdateUser.FullName;
-            
+            if (Image.Count != 0)
+            {
                 user.Image = UpdateUser.Image;
+            }
             user.Adress = UpdateUser.Adress;
             int raws = db.SaveChanges();
             return raws;

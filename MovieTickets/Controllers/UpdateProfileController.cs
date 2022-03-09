@@ -43,7 +43,7 @@ namespace MovieTickets.Controllers
             string id = HttpContext.Session.GetString("id");
             if (ModelState.IsValid)
             {
-                UpProfRepo.update(id, UpdateUser);
+              await  UpProfRepo.updateAsync(id, UpdateUser,Image);
                 return RedirectToAction("GetMoviesAdmin", "Movie");
             }
             return View("UpdateAdminForm", UpdateUser);
@@ -54,22 +54,12 @@ namespace MovieTickets.Controllers
             var user = UpProfRepo.GetById(id);
             return View(user);
         }
-        public async Task<IActionResult> UpdateUserAsync(User UpdateUser, List<IFormFile>Image)
+        public async Task<IActionResult> UpdateUserAsync(User UpdateUser,List<IFormFile> Image)
         {
-            foreach (var item in Image)
-            {
-                if (item.Length > 0)
-                {
-                    using (var stream = new MemoryStream())
-                    {
-                        await item.CopyToAsync(stream);
-                        UpdateUser.Image = stream.ToArray();
-                    }
-                }
-            }
+            
             string id=HttpContext.Session.GetString("id");
            
-                UpProfRepo.update(id,UpdateUser);
+              await  UpProfRepo.updateAsync(id,UpdateUser, Image);
                 return RedirectToAction("Index", "Home");
             
             return View("UpdateUserForm", UpdateUser);
