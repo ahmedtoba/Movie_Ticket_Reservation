@@ -244,12 +244,25 @@
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="/assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                            @if(@user.Image==null){
+									
+								<img src="~/images/placeholder.jpg"
+								class="avatar user-thumb" alt="avatar"/>
+									}
+									else
+									{
+										var base64 = Convert.ToBase64String(@user.Image);
+										var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+										<img src="@imgSrc" class="avatar user-thumb" alt="avatar"
+                                        asp-action="UpdateAdminform" asp-controller="UpdateProfile" asp-route-id="@user.Id"/>
+									}
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">@user.FullName <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Message</a>
                                 <a class="dropdown-item" href="#">Settings</a>
                                 <a class="dropdown-item" asp-action="Logout" asp-controller="Account">Log Out</a>
+                                
                             </div>
                         </div>
                     </div>
