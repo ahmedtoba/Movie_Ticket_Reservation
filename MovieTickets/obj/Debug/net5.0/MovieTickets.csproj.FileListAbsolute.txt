@@ -802,3 +802,6 @@ D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\ref\MovieTi
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.pdb
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\MovieTickets.genruntimeconfig.cache
 D:\MVCProject\Movie_Ticket_Reservation\MovieTickets\bin\Debug\net5.0\IdentityModel.dll
+C:\ITI Project\Movie_Ticket_Reservation\MovieTickets\bin\Debug\net5.0\IdentityModel.dll
+C:\ITI Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\UpdateProfile\UpdateAdminForm.cshtml.g.cs
+C:\ITI Project\Movie_Ticket_Reservation\MovieTickets\obj\Debug\net5.0\Razor\Views\UpdateProfile\UpdateUserForm.cshtml.g.cs
