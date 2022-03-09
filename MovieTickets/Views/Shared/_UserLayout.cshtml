@@ -8,10 +8,6 @@
 
 	
 
-
-
-	
-
 <!DOCTYPE html>
 
 <html lang="en" class="no-js">
@@ -182,7 +178,7 @@
 					<ul class="nav navbar-nav flex-child-menu menu-right">
 						@if(User.Identity.IsAuthenticated){
 							
-							<li><a asp-action="UpdateUserForm" asp-controller="UpdateProfile" >
+							<li><a asp-action="UpdateUserForm" asp-controller="UpdateProfile" asp-route-id="@user.Id">
 								
 								
 									@if(@user.Image==null){

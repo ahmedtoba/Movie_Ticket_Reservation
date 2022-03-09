@@ -1,4 +1,12 @@
-﻿<!doctype html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<User> usermanager
+@{
+	User user = await usermanager.GetUserAsync(User);
+}
+
+
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -46,20 +54,12 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            
-                               <li><a href="index3.html">SEO dashboard</a></li>
-                            
-                        
-                               
-                                    
-                                    
-                            
-                            
-                                    <li><a asp-action="UpdateAdminform" asp-controller="UpdateProfile" asp-route-id="b0ced795-8acb-4c58-854b-0d344b6c6fa8">Profile</a></li>
-                                    <li><a asp-action="AdminCinemas" asp-controller="Cinema">Cinemas</a></li>
-                                    <li><a asp-action="AdminActors" asp-controller="Actor">Actors</a></li>
-                                    <li><a asp-action="AdminCategories" asp-controller="Category">Categories</a></li>
-                                    <li><a asp-action="AdminProducers" asp-controller="Producer">Producers</a></li>
+                        <li><a asp-action="Movie" asp-controller="GetMoviesAdmin">Movies</a></li>
+                        <li><a asp-action="UpdateAdminform" asp-controller="UpdateProfile" asp-route-id="@user.Id">Profile</a></li>
+                        <li><a asp-action="AdminCinemas" asp-controller="Cinema">Cinemas</a></li>
+                        <li><a asp-action="AdminActors" asp-controller="Actor">Actors</a></li>
+                        <li><a asp-action="AdminCategories" asp-controller="Category">Categories</a></li>
+                        <li><a asp-action="AdminProducers" asp-controller="Producer">Producers</a></li>
                                
                         </ul>
                     </nav>

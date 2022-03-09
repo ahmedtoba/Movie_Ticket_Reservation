@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MovieTickets.Models;
@@ -21,12 +22,14 @@ namespace MovieTickets.Controllers
             this.userManager = userManager;
         }
        
-        public async Task<IActionResult> UpdateAdminForm()
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> UpdateAdminForm(Guid id)
         {
-            string id = HttpContext.Session.GetString("id");
-            var user = await userManager.FindByIdAsync(id);
+            var user = await userManager.FindByIdAsync(id.ToString());
             return View(user);
         }
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateAsync(User UpdateUser, List<IFormFile> Image)
         {
             foreach (var item in Image)
@@ -48,10 +51,11 @@ namespace MovieTickets.Controllers
             }
             return View("UpdateAdminForm", UpdateUser);
         }
-        public IActionResult UpdateUserForm()
+
+        [Authorize]
+        public IActionResult UpdateUserForm(Guid id)
         {
-            string id=HttpContext.Session.GetString("id");
-            var user = UpProfRepo.GetById(id);
+            var user = UpProfRepo.GetById(id.ToString());
             return View(user);
         }
         public async Task<IActionResult> UpdateUserAsync(User UpdateUser,List<IFormFile> Image)
