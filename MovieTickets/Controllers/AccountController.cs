@@ -45,11 +45,7 @@ namespace MovieTickets.Controllers
                         if (result.Succeeded)
                         {
                             HttpContext.Session.SetString("id", user.Id);
-                            var x = Convert.ToBase64String(user.Image);
-                            //HttpContext.Session.SetString("image",x);
-                             // TempData["image"]=x;
-                            //Response.Cookies.Append("image", x);
-
+                            
 
                             var checkIfAdmin = await userManager.GetRolesAsync(user);
                             if (checkIfAdmin.Contains("Admin"))
