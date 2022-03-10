@@ -2,7 +2,10 @@
 
 @inject UserManager<User> usermanager
 @{
-	User user = await usermanager.GetUserAsync(User);
+	User user;
+	if (@User.Identity.IsAuthenticated)
+		user = await usermanager.GetUserAsync(User);
+	else user = null;
 }
 
 
@@ -176,10 +179,9 @@
 						}
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-						@if(User.Identity.IsAuthenticated){
+						@if(User.Identity.IsAuthenticated && user != null){
 							
 							<li><a asp-action="UpdateUserForm" asp-controller="UpdateProfile" asp-route-id="@user.Id">
-								
 								
 									@if(@user.Image==null){
 									
