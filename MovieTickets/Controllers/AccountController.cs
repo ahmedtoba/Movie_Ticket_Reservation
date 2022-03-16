@@ -95,9 +95,9 @@ namespace MovieTickets.Controllers
 
                     return RedirectToAction("SignUpCompleted");
                 }
-                if (userByUserName == null)
+                if (userByUserName != null)
                     TempData["Error"] = "UserName Already Exists";
-                if (userByEmail == null)
+                if (userByEmail != null)
                     TempData["Error"] = "Email Already Exists";
                 return View(signUpVM);
             }
